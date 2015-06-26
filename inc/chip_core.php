@@ -29,4 +29,14 @@ class chipcore {
         }
     }
 
+//    Create form fields and other options
+    private function create_field($args) {
+        switch ($args['type']) {
+            case 'textbox':
+                $content .=sprintf('<input type="text" name="%s" id="%s" value="%s" />', $args['name'], $args['name'], $args['value']);
+                break;
+        }
+        return $content;
+    }
+
 }

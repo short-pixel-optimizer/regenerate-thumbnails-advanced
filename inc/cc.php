@@ -2,7 +2,7 @@
 
 global $cc_args;
 
-class chipcore {
+class cc {
 
 //    create basic page in the admin panel, with menu settings too
     public function create_admin_page($args) {

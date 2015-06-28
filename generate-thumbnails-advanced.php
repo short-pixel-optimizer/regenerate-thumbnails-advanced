@@ -37,7 +37,8 @@ class cc {
     public function create_page_callback() {
         global $cc_args;
         $args = $cc_args;
-        echo "<h2>" . __('Generate Thumbnails Advanced', 'generate_thumbnails_advanced') . "</h2>";
+        $content .= sprintf("<h2>%s</h2>",'Generate Thumbnails Advanced');
+        echo $content;
     }
 
 //    callback function for the add_menu_page - this is where the settings are registered

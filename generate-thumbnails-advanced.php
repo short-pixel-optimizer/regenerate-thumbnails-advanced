@@ -39,14 +39,36 @@ class cc {
                 return;
             }
         }
-        wp_enqueue_script('jquery-ui-core');
+        wp_enqueue_script('jquery-ui-progressbar');
         wp_enqueue_style('gta-jquery-ui', plugin_dir_url(__FILE__) . 'jquery-ui.css');
+        wp_enqueue_style('gta', plugin_dir_url(__FILE__) . 'style.css');
         wp_enqueue_script('gta', plugin_dir_url(__FILE__) . 'script.js');
     }
 
 //    Callback for the admin_init hook - this is where the page is created.... text, form fields and all
     public function create_page_callback() {
+        $content .= sprintf('<!--GTA wrap START -->'
+                . '<div id="gta">');
         $content .= sprintf("<h2>%s</h2>", 'Generate Thumbnails Advanced');
+//        Progress bar
+        $content .= sprintf('<div id="progressbar">'
+                . '<div class="progress-label">0&#37;</div>'
+                . '</div>');
+//        Dropdown
+        $content .= sprintf('<h3>Select a period</h3>');
+        $content .= sprintf('<select name="period">');
+        $content .= sprintf('<option value="0">All</option>');
+        $content .= sprintf('<option value="1">past day</option>');
+        $content .= sprintf('<option value="2">past week</option>');
+        $content .= sprintf('<option value="2">past Month</option>');
+        $content .= sprintf('</select>');
+        $content .= sprintf('<p class="submit">'
+                . '<button class="button button-primary">Regenerate Thumbnails</button>'
+                . '</p>');
+
+        $content .= sprintf('</div>'
+                . '<!--GTA wrap END -->');
+
         echo $content;
     }
 

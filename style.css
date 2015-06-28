@@ -1,1 +1,16 @@
-/*The plugin style in the backend*/
+#gta .ui-progressbar{
+    position:relative;
+}
+#gta .ui-progressbar .ui-progressbar-value.ui-widget-header{
+    background-color: #34e749;
+    position:relative;
+}
+
+#gta .ui-progressbar .progress-label {
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+    z-index: 10;
+}s

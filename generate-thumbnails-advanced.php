@@ -1,4 +1,5 @@
 <?php
+
 /*
   Plugin Name: Generate Thumbnails - advanced
   Plugin URI: http://turcuciprian.com
@@ -7,7 +8,7 @@
   Author: turcuciprian
   Author URI: http://turcuciprian.com
   License: GPLv2 or later
-  Text Domain: akismet
+  Text Domain: gta
  */
 
 //Global variables for arguments
@@ -15,11 +16,14 @@
 class cc {
 
 //    create basic page in the admin panel, with menu settings too
-    public function create_admin_page() {
-        add_action('admin_menu', array($this, 'amc'));
+    public function start() {
+        //create admin menu page and content
+        add_action('admin_menu', array($this, 'create_menu'));
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_admin'));
     }
+
 //    Admin menu calback
-    public function amc() {
+    public function create_menu() {
         global $cc_args;
         $args = $cc_args;
 //         Add a new submenu under Tools:
@@ -27,6 +31,17 @@ class cc {
         //call register settings function
         add_action('admin_init', array($this, 'rapc'));
         return true;
+    }
+
+    function enqueue_admin($hook) {
+        if (isset($_GET['page']) && isset($hook)) {
+            if ($_GET['page'] != 'generate_thumbnails_advanced' && $hook != 'options-general.php ') {
+                return;
+            }
+        }
+        wp_enqueue_script('jquery-ui-core');
+        wp_enqueue_style('gta-jquery-ui', plugin_dir_url(__FILE__) . 'jquery-ui.css');
+        wp_enqueue_script('gta', plugin_dir_url(__FILE__) . 'script.js');
     }
 
 //    Callback for the admin_init hook - this is where the page is created.... text, form fields and all
@@ -44,4 +59,4 @@ class cc {
 
 /* var @cc cc */
 $cc = new cc();
-$cc->create_admin_page();
+$cc->start();

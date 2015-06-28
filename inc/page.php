@@ -4,7 +4,7 @@ $args = array(
     'menu_title' => 'GT Adv',//the name of the menu
     'capability' => 'administrator',//who has access to this
     'menu_slug' => 'generate_thumbnails_advanced',//who has access to this
-    'icon_url' => '',//the icon of the menu
+    'icon_url' => '../images/icon.png',//the icon of the menu
     'position' => 81, //settings
     'fields' => array(
         array(

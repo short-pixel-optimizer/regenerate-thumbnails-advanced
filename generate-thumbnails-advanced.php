@@ -12,3 +12,4 @@
  */
 //include Chip Core (cc) file
 require_once 'inc/cc.php';
+require_once 'inc/page.php';

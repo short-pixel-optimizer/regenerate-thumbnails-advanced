@@ -1,12 +1,12 @@
-#gta .ui-progressbar{
+#rta .ui-progressbar{
     position:relative;
 }
-#gta .ui-progressbar .ui-progressbar-value.ui-widget-header{
+#rta .ui-progressbar .ui-progressbar-value.ui-widget-header{
     background-color: #34e749;
     position:relative;
 }
 
-#gta .ui-progressbar .progress-label {
+#rta .ui-progressbar .progress-label {
     position: absolute;
     left: 50%;
     top: 4px;

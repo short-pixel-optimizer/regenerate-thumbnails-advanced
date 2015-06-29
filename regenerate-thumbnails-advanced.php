@@ -85,7 +85,9 @@ class cc {
 //        Dropdown
         $content .= sprintf('<h3>Select a period</h3>');
         $content .= sprintf('<select name="period" id="rta_period">');
+        //get all the images in the database
         $content .= sprintf('<option value="0">All</option>');
+        //
         $content .= sprintf('<option value="1">past day</option>');
         $content .= sprintf('<option value="2">past week</option>');
         $content .= sprintf('<option value="2">past Month</option>');
@@ -94,6 +96,7 @@ class cc {
         $content .= sprintf('<input type="hidden" name="total" value="%s"/>', $total);
         //store the offset to get the next media item by
         $content .= sprintf('<input type="hidden" name="offset" value="%s"/>', $offset);
+        //
         $content .= sprintf('<p class="submit">'
                 . '<button class="button button-primary RTA">Regenerate Thumbnails</button>'
                 . '</p>');

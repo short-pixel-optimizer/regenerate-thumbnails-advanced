@@ -1,7 +1,7 @@
 <?php
 
 /*
-  Plugin Name: Generate Thumbnails - advanced
+  Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://turcuciprian.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
   Version: 0.1
@@ -20,6 +20,11 @@ class cc {
         //create admin menu page and content
         add_action('admin_menu', array($this, 'create_menu'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin'));
+        //ajax callback
+        add_action('wp_ajax_gta_rt',array($this,'ajax_callback'));
+    }
+    public function ajax_callback(){
+        
     }
 
 //    Admin menu calback
@@ -56,7 +61,7 @@ class cc {
                 . '</div>');
 //        Dropdown
         $content .= sprintf('<h3>Select a period</h3>');
-        $content .= sprintf('<select name="period">');
+        $content .= sprintf('<select name="period" id="gta_period">');
         $content .= sprintf('<option value="0">All</option>');
         $content .= sprintf('<option value="1">past day</option>');
         $content .= sprintf('<option value="2">past week</option>');

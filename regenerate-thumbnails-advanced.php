@@ -90,7 +90,9 @@ class cc {
         $content .= sprintf('<option value="2">past week</option>');
         $content .= sprintf('<option value="2">past Month</option>');
         $content .= sprintf('</select>');
+        //store the total number of media items
         $content .= sprintf('<input type="hidden" name="total" value="%s"/>', $total);
+        //store the offset to get the next media item by
         $content .= sprintf('<input type="hidden" name="offset" value="%s"/>', $offset);
         $content .= sprintf('<p class="submit">'
                 . '<button class="button button-primary RTA">Regenerate Thumbnails</button>'

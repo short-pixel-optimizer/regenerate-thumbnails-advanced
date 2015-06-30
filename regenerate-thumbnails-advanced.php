@@ -37,7 +37,13 @@ class cc {
             while ($the_query->have_posts()) {
 
                 $the_query->the_post();
-                echo $the_query->post->ID;
+                $image_id = $the_query->post->ID;
+                $fullsizepath = get_attached_file($image_id);
+                $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
+                wp_update_attachment_metadata($image->ID, $metadata);
+
+
+                echo "ok";
             }
         } else {
             // no posts found

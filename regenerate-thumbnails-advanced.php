@@ -39,8 +39,16 @@ class cc {
                 $the_query->the_post();
                 $image_id = $the_query->post->ID;
                 $fullsizepath = get_attached_file($image_id);
+                if (false === $fullsizepath || !file_exists($fullsizepath))
+                    $this->die_json_error_msg($image_id, sprintf(__('The originally uploaded image file cannot be found at %s', 'regenerate-thumbnails'), '<code>' . esc_html($fullsizepath) . '</code>'));
+
+                @set_time_limit(900); // 5 minutes per image should be PLENTY
                 $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
-                wp_update_attachment_metadata($image->ID, $metadata);
+                if (is_wp_error($metadata))
+                    $this->die_json_error_msg($image_id, $metadata->get_error_message());
+                if (empty($metadata))
+                    $this->die_json_error_msg($image_id, __('Unknown failure reason.', 'regenerate-thumbnails'));
+                wp_update_attachment_metadata($image_id, $metadata);
 
 
                 echo "ok";

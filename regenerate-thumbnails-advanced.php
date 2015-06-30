@@ -20,8 +20,10 @@ class cc {
         //create admin menu page and content
         add_action('admin_menu', array($this, 'create_menu'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin'));
-        //ajax callback
+        //ajax callback for button click
         add_action('wp_ajax_rta_rt', array($this, 'ajax_callback'));
+        //ajax callback for returning general data (total)
+        add_action('wp_ajax_rta_rt_options', array($this, 'ajax_options_callback'));
     }
 
     public function ajax_callback() {
@@ -49,15 +51,18 @@ class cc {
                 if (empty($metadata))
                     $this->die_json_error_msg($image_id, __('Unknown failure reason.', 'regenerate-thumbnails'));
                 wp_update_attachment_metadata($image_id, $metadata);
-
-
                 echo "ok";
             }
         } else {
-            // no posts found
+            echo "empty?";
         }
         /* Restore original Post Data */
         wp_reset_postdata();
+        wp_die();
+    }
+    //ajax request to return total nr of images for the main script to use when button is clicked
+    public function ajax_options_callback(){
+        echo "???";
         wp_die();
     }
 
@@ -107,9 +112,9 @@ class cc {
         $content .= sprintf('<option value="2">past Month</option>');
         $content .= sprintf('</select>');
         //store the total number of media items
-        $content .= sprintf('<input type="hidden" name="total" value="%s"/>', $total);
+        $content .= sprintf('<input type="hidden" name="total" id="RTA_total" value="%s"/>', $total);
         //store the offset to get the next media item by
-        $content .= sprintf('<input type="hidden" name="offset" value="%s"/>', $offset);
+        $content .= sprintf('<input type="hidden" name="offset" id="RTA_offset" value="%s"/>', $offset);
         //
         $content .= sprintf('<p class="submit">'
                 . '<button class="button button-primary RTA">Regenerate Thumbnails</button>'

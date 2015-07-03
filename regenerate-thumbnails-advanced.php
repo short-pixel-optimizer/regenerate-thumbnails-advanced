@@ -22,10 +22,19 @@ class cc {
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin'));
         //ajax callback for button click
         add_action('wp_ajax_rta_rt', array($this, 'ajax_callback'));
+        add_action('wp_ajax_rta_count', array($this, 'ajax_count_callback'));
         //ajax callback for returning general data (total)
         add_action('wp_ajax_rta_rt_options', array($this, 'ajax_options_callback'));
     }
-
+    public function ajax_count_callback(){
+        $args = array(
+            'post_type' => 'attachment',
+            'post_status' => 'any',
+            'posts_per_page' => -1,
+        );
+        $the_query = new WP_Query($args);
+        echo $the_query->found_posts;
+    }
     public function ajax_callback() {
         $offset = 0;
         $args = array(
@@ -44,7 +53,7 @@ class cc {
                 if (false === $fullsizepath || !file_exists($fullsizepath))
                     $this->die_json_error_msg($image_id, sprintf(__('The originally uploaded image file cannot be found at %s', 'regenerate-thumbnails'), '<code>' . esc_html($fullsizepath) . '</code>'));
 
-                @set_time_limit(900); // 5 minutes per image should be PLENTY
+                @set_time_limit(1200);
                 $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
                 if (is_wp_error($metadata))
                     $this->die_json_error_msg($image_id, $metadata->get_error_message());
@@ -71,7 +80,7 @@ class cc {
         global $cc_args;
         $args = $cc_args;
 //         Add a new submenu under Tools:
-        add_options_page(__('Generate Thumbnails Advanced', 'rta_id'), __('GT Adv', 'rta_id'), 'administrator', 'generate_thumbnails_advanced', array($this, 'create_page_callback'));
+        add_options_page(__('reGenerate Thumbnails Advanced', 'rta_id'), __('rGT Adv', 'rta_id'), 'administrator', 'regenerate_thumbnails_advanced', array($this, 'create_page_callback'));
         //call register settings function
         add_action('admin_init', array($this, 'rapc'));
         return true;
@@ -79,7 +88,7 @@ class cc {
 
     function enqueue_admin($hook) {
         if (isset($_GET['page']) && isset($hook)) {
-            if ($_GET['page'] != 'generate_thumbnails_advanced' && $hook != 'options-general.php ') {
+            if ($_GET['page'] != 'regenerate_thumbnails_advanced' && $hook != 'options-general.php ') {
                 return;
             }
         }
@@ -96,7 +105,7 @@ class cc {
 
         $content .= sprintf('<!--GTA wrap START -->'
                 . '<div id="rta">');
-        $content .= sprintf("<h2>%s</h2>", 'Generate Thumbnails Advanced');
+        $content .= sprintf("<h2>%s</h2>", 'reGenerate Thumbnails Advanced');
 //        Progress bar
         $content .= sprintf('<div id="progressbar">'
                 . '<div class="progress-label">0&#37;</div>'

@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
     if (pbar[0]) {
 //        set the initial value to 0
         pbar.progressbar({
-            value: 50
+            value: 0
         });
     }
     var rta_butt = $('.button.RTA');
@@ -14,7 +14,7 @@ jQuery(document).ready(function ($) {
         function submit_ajax_call() {
             //tha ajax data
             var data = {
-                'action': 'rta_rt',
+                'action': 'rta_count',
                 'whatever': 1234
             };
             // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php

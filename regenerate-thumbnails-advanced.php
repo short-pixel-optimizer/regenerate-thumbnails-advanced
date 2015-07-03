@@ -21,7 +21,7 @@ class cc {
         add_action('admin_menu', array($this, 'create_menu'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin'));
         //ajax callback for button click
-        add_action('wp_ajax_rta_rt', array($this, 'ajax_callback'));
+        add_action('wp_ajax_rta_ajax', array($this, 'ajax_callback'));
         //ajax callback for returning general data (total)
         add_action('wp_ajax_rta_rt_options', array($this, 'ajax_options_callback'));
     }

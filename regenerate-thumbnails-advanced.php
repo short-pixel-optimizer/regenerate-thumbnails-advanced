@@ -22,19 +22,8 @@ class cc {
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin'));
         //ajax callback for button click
         add_action('wp_ajax_rta_rt', array($this, 'ajax_callback'));
-        add_action('wp_ajax_rta_count', array($this, 'ajax_count_callback'));
         //ajax callback for returning general data (total)
         add_action('wp_ajax_rta_rt_options', array($this, 'ajax_options_callback'));
-    }
-
-    public function ajax_count_callback() {
-        $args = array(
-            'post_type' => 'attachment',
-            'post_status' => 'any',
-            'posts_per_page' => -1,
-        );
-        $the_query = new WP_Query($args);
-        echo $the_query->found_posts;
     }
 
     public function ajax_callback() {

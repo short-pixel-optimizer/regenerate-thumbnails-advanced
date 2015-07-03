@@ -26,7 +26,8 @@ class cc {
         //ajax callback for returning general data (total)
         add_action('wp_ajax_rta_rt_options', array($this, 'ajax_options_callback'));
     }
-    public function ajax_count_callback(){
+
+    public function ajax_count_callback() {
         $args = array(
             'post_type' => 'attachment',
             'post_status' => 'any',
@@ -35,6 +36,7 @@ class cc {
         $the_query = new WP_Query($args);
         echo $the_query->found_posts;
     }
+
     public function ajax_callback() {
         $offset = 0;
         $args = array(
@@ -69,8 +71,9 @@ class cc {
         wp_reset_postdata();
         wp_die();
     }
+
     //ajax request to return total nr of images for the main script to use when button is clicked
-    public function ajax_options_callback(){
+    public function ajax_options_callback() {
         echo "???";
         wp_die();
     }
@@ -109,6 +112,11 @@ class cc {
 //        Progress bar
         $content .= sprintf('<div id="progressbar">'
                 . '<div class="progress-label">0&#37;</div>'
+                . '</div>');
+//        Information section
+        $content .= sprintf('<div class="info">'
+                . 'Total number of images: <span class="total">0</span><br/>'
+                . 'Could not process: <span class="total">0</span> Images<br/>'
                 . '</div>');
 //        Dropdown
         $content .= sprintf('<h3>Select a period</h3>');

@@ -90,8 +90,8 @@ class cc {
     }
 
     function enqueue_admin($hook) {
-        if (isset($_GET['page']) && isset($hook)) {
-            if ($_GET['page'] != 'regenerate_thumbnails_advanced' && $hook != 'options-general.php ') {
+        if (!isset($_GET['page']) && isset($hook)) {
+            if ($_GET['page'] !== 'regenerate_thumbnails_advanced' && $hook != 'options-general.php ') {
                 return;
             }
         }

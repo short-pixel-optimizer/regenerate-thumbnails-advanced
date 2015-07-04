@@ -27,35 +27,60 @@ class cc {
     }
 
     public function ajax_callback() {
-        $offset = 0;
-        $args = array(
-            'post_type' => 'attachment',
-            'post_status' => 'any',
-            'posts_per_page' => 1,
-            'offset' => $offset
-        );
-        $the_query = new WP_Query($args);
-        if ($the_query->have_posts()) {
-            while ($the_query->have_posts()) {
-
-                $the_query->the_post();
-                $image_id = $the_query->post->ID;
-                $fullsizepath = get_attached_file($image_id);
-                if (false === $fullsizepath || !file_exists($fullsizepath))
-                    $this->die_json_error_msg($image_id, sprintf(__('The originally uploaded image file cannot be found at %s', 'regenerate-thumbnails'), '<code>' . esc_html($fullsizepath) . '</code>'));
-
-                @set_time_limit(1200);
-                $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
-                if (is_wp_error($metadata))
-                    $this->die_json_error_msg($image_id, $metadata->get_error_message());
-                if (empty($metadata))
-                    $this->die_json_error_msg($image_id, __('Unknown failure reason.', 'regenerate-thumbnails'));
-                wp_update_attachment_metadata($image_id, $metadata);
-                echo "ok";
-            }
-        } else {
-            echo "empty?";
+        if (isset($_POST['type'])) {
+            $type = $_POST['type'];
         }
+        $offset = 0;
+
+        switch ($type) {
+            case 'general':
+                $args = array(
+                    'post_type' => 'attachment',
+                    'posts_per_page' => -1,
+                    'post_status' => 'any',
+                    'offset' => $offset
+                );
+                $the_query = new WP_Query($args);
+                if ($the_query->have_posts()) {
+                    echo $the_query->post_count;
+                }
+                break;
+            case 'submit':
+                if (isset($_POST['offset'])) {
+                    $offset = $_POST['offset'];
+                }
+                $args = array(
+                    'post_type' => 'attachment',
+                    'post_status' => 'any',
+                    'posts_per_page' => 1,
+                    'offset' => $offset
+                );
+                $the_query = new WP_Query($args);
+                if ($the_query->have_posts()) {
+                    while ($the_query->have_posts()) {
+
+                        $the_query->the_post();
+                        $image_id = $the_query->post->ID;
+                        $fullsizepath = get_attached_file($image_id);
+                        if (false === $fullsizepath || !file_exists($fullsizepath))
+                            $this->die_json_error_msg($image_id, sprintf(__('The originally uploaded image file cannot be found at %s', 'regenerate-thumbnails'), '<code>' . esc_html($fullsizepath) . '</code>'));
+
+                        @set_time_limit(1200);
+                        $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
+                        if (is_wp_error($metadata))
+                            $this->die_json_error_msg($image_id, $metadata->get_error_message());
+                        if (empty($metadata))
+                            $this->die_json_error_msg($image_id, __('Unknown failure reason.', 'regenerate-thumbnails'));
+                        wp_update_attachment_metadata($image_id, $metadata);
+                        echo "ok";
+                    }
+                } else {
+                    echo "empty?";
+                }
+                break;
+        }
+        $offset = 0;
+
         /* Restore original Post Data */
         wp_reset_postdata();
         wp_die();
@@ -73,8 +98,6 @@ class cc {
         $args = $cc_args;
 //         Add a new submenu under Tools:
         add_options_page(__('reGenerate Thumbnails Advanced', 'rta_id'), __('rGT Adv', 'rta_id'), 'administrator', 'regenerate_thumbnails_advanced', array($this, 'create_page_callback'));
-        //call register settings function
-        add_action('admin_init', array($this, 'rapc'));
         return true;
     }
 
@@ -125,11 +148,6 @@ class cc {
                 . '<!--GTA wrap END -->');
 
         echo $content;
-    }
-
-//    callback function for the add_menu_page - this is where the settings are registered
-    public function rapc() {
-        // 
     }
 
 }

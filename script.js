@@ -12,7 +12,9 @@ jQuery(document).ready(function ($) {
     var rta_butt = $('.button.RTA');
     if (rta_butt[0]) {
         rta_butt.click(submit_ajax_call);
+        //
         //ajax request to call when the button is pressed
+        //
         function submit_ajax_call() {
             //tha ajax data
             var data = {
@@ -24,7 +26,9 @@ jQuery(document).ready(function ($) {
                 alert('Got this from the server: ' + response);
             });
         }
+        //
         //ajax request to call to return the total and offset values ----- when some options are changed, when page is first loaded
+        //
         function first_load_ajax() {
 //            set the dropdown box as a object variable
             var rta_period = $('#rta_period');

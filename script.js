@@ -18,11 +18,24 @@ jQuery(document).ready(function ($) {
         function submit_ajax_call() {
             var offset = 0;
             var period = $('#rta_period');
+            var rta_total = $('#rta .info .total');
+            var tCount = 0;
+            if (rta_total[0]) {
+                tCount = rta_total.html();
+            }
+            loop_ajax_request(offset, tCount, period.val());
+        }
+        //
+        //
+        // Main ajax call
+        //
+        //
+        function loop_ajax_request(offset, tCount, period) {
             //tha ajax data
             var data = {
                 'action': 'rta_ajax',
-                'type': 'general',
-                'period': period.val(),
+                'type': 'submit',
+                'period': period,
                 'offset': offset
             };
             // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php

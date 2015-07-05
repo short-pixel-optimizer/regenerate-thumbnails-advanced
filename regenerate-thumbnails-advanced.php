@@ -37,6 +37,8 @@ class cc {
                     'post_type' => 'attachment',
                     'posts_per_page' => -1,
                     'post_status' => 'any',
+                    'orderby' => 'ID',
+                    'order' => 'DESC',
                     'offset' => 0
                 );
 

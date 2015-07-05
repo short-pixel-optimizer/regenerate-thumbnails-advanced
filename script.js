@@ -51,8 +51,15 @@ jQuery(document).ready(function ($) {
                         break;
                     case 'submit':
                         if (tCount > response) {
-                            alert('Got this from the server: ' + response);
                             offset = response;
+                            
+                            var lPercentage = offset / tCount * 100;
+                            if (pbar[0]) {
+//        set the initial value to 0
+                                pbar.progressbar({
+                                    value: lPercentage
+                                });
+                            }
                             //call function again
                             loop_ajax_request(type, offset, tCount, period);
                         }

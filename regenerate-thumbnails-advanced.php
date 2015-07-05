@@ -41,28 +41,32 @@ class cc {
                 );
                 if (isset($_POST['period'])) {
                     $period = $_POST['period'];
-
-
                     switch ($period) {
                         case '0':
                             break;
                         case '1':
-
                             $date = date('Y-m-d', mktime('+1 day'));
-                            $date_arr = explode($date, '-');
-                            $period_arr = array('date_query' => array(
-                                    array(
-                                        'year' => $date_arr[0],
-                                        'month' => $date_arr[1],
-                                        'day' => $date_arr[2],
-                                        'compare' => '<=',
-                                    )
-                            ));
-                            $args = array_push($args, $period_arr);
+                            break;
+                        case '2':
+                            $date = date('Y-m-d', mktime('+1 week'));
+                            break;
+                        case '3':
+                            $date = date('Y-m-d', mktime('+1 month'));
                             break;
                     }
+                    if ($period !== 0 && isset($date)) {
+                        $date_arr = explode($date, '-');
+                        $period_arr = array('date_query' => array(
+                                array(
+                                    'year' => $date_arr[0],
+                                    'month' => $date_arr[1],
+                                    'day' => $date_arr[2],
+                                    'compare' => '>=',
+                                )
+                        ));
+                        $args = array_push($args, $period_arr);
+                    }
                 }
-
                 $the_query = new WP_Query($args);
                 if ($the_query->have_posts()) {
                     $post_count = $the_query->found_posts;
@@ -195,7 +199,7 @@ class cc {
         $content .= sprintf('<div class="info">'
                 . 'Total number of images: <span class="total">0</span><br/>'
                 . 'Images processed: <span class="processed">0</span><br/>'
-                . 'Could not process: <span class="errors">0</span> Images<br/>'
+//                . 'Could not process: <span class="errors">0</span> Images<br/>'
                 . '</div>');
 //        Dropdown
         $content .= sprintf('<h3>Select a period</h3>');

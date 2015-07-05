@@ -129,7 +129,7 @@ class cc {
 //        Information section
         $content .= sprintf('<div class="info">'
                 . 'Total number of images: <span class="total">0</span><br/>'
-                . 'Could not process: <span class="total">0</span> Images<br/>'
+                . 'Could not process: <span class="errors">0</span> Images<br/>'
                 . '</div>');
 //        Dropdown
         $content .= sprintf('<h3>Select a period</h3>');

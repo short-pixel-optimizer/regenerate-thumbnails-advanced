@@ -40,11 +40,18 @@ jQuery(document).ready(function ($) {
                     'action': 'rta_ajax',
                     'type': 'general'
                 };
+                var rta_total = $('#rta .info .total');
+
                 // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
                 $.post(ajaxurl, data, function (response) {
                     var json = JSON.parse(response);
-                    alert(json.pCount);
+//                    Store the data as a cookie
+                    var rta_total = $('#rta .info .total');
+                    if (rta_total[0]) {
+                        rta_total.html(json.pCount); 
+                   }
                 });
+
             }
         }
     }

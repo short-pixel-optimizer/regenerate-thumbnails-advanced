@@ -37,25 +37,27 @@ class cc {
                     'post_type' => 'attachment',
                     'posts_per_page' => -1,
                     'post_status' => 'any',
-                    'offset' => 10
+                    'offset' => 0
                 );
+
                 if (isset($_POST['period'])) {
                     $period = $_POST['period'];
+
                     switch ($period) {
                         case '0':
                             break;
                         case '1':
-                            $date = date('Y-m-d', mktime('+1 day'));
+                            $date = date('Y-m-d', strtotime('+1 day'));
                             break;
                         case '2':
-                            $date = date('Y-m-d', mktime('+1 week'));
+                            $date = date('Y-m-d', strtotime('+1 week'));
                             break;
                         case '3':
-                            $date = date('Y-m-d', mktime('+1 month'));
+                            $date = date('Y-m-d', strtotime('+1 month'));
                             break;
                     }
                     if ($period !== 0 && isset($date)) {
-                        $date_arr = explode($date, '-');
+                        $date_arr = explode('-', $date);
                         $period_arr = array('date_query' => array(
                                 array(
                                     'year' => $date_arr[0],
@@ -64,7 +66,9 @@ class cc {
                                     'compare' => '>=',
                                 )
                         ));
-                        $args = array_push($args, $period_arr);
+//                        print_r($date_arr);
+                        $args = array_merge($args, $period_arr);
+//                        print_r($args);
                     }
                 }
                 $the_query = new WP_Query($args);
@@ -96,21 +100,30 @@ class cc {
                             break;
                         case '1':
                             $date = date('Y-m-d', mktime('+1 day'));
-                            $date_arr = explode($date, '-');
-                            $period_arr = array('date_query' => array(
-                                    array(
-                                        'year' => $date_arr[0],
-                                        'month' => $date_arr[1],
-                                        'day' => $date_arr[2],
-                                        'compare' => '<=',
-                                    )
-                            ));
-                            $args = array_push($args, $period_arr);
+
                             break;
                         case '2':
+                            $date = date('Y-m-d', mktime('+1 week'));
+
                             break;
                         case '3':
+                            $date = date('Y-m-d', mktime('+1 month'));
+
                             break;
+                    }
+                    if ($period !== 0 && isset($date)) {
+                        $date_arr = explode('-', $date);
+                        $period_arr = array('date_query' => array(
+                                array(
+                                    'year' => $date_arr[0],
+                                    'month' => $date_arr[1],
+                                    'day' => $date_arr[2],
+                                    'compare' => '>=',
+                                )
+                        ));
+//                        print_r($date_arr);
+                        $args = array_merge($args, $period_arr);
+//                        print_r($args);
                     }
                 }
 

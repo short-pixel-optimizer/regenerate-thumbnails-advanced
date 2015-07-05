@@ -68,26 +68,29 @@ class cc {
                         $image_id = $the_query->post->ID;
                         $fullsizepath = get_attached_file($image_id);
                         if (false === $fullsizepath || !file_exists($fullsizepath))
-                            $this->die_json_error_msg($image_id, sprintf(__('The originally uploaded image file cannot be found at %s', 'regenerate-thumbnails'), '<code>' . esc_html($fullsizepath) . '</code>'));
+                            echo '<code>' . esc_html($fullsizepath) . '</code>';
 
-                        @set_time_limit(1200);
+                        @set_time_limit(900);
                         $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
-                        if (is_wp_error($metadata))
-                            $this->die_json_error_msg($image_id, $metadata->get_error_message());
-                        if (empty($metadata))
-                            $this->die_json_error_msg($image_id, __('Unknown failure reason.', 'regenerate-thumbnails'));
+                        if (is_wp_error($metadata)) {
+                            echo $metadata->get_error_message();
+                        }
+                        if (empty($metadata)) {
+//                            $this->die_json_error_msg($image_id, __('Unknown failure reason.', 'regenerate-thumbnails'));
+                            echo 'Unknown failure reason. regenerate-thumbnails ' . $image_id . '';
+                        }
                         wp_update_attachment_metadata($image_id, $metadata);
-                        echo $offset + 1;
                     }
                 } else {
                     echo "empty?";
                 }
+                //increment offset
+                echo $offset + 1;
                 break;
         }
-        $offset = 0;
-
         /* Restore original Post Data */
         wp_reset_postdata();
+
         wp_die();
     }
 

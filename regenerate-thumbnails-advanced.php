@@ -37,8 +37,6 @@ class cc {
                     'post_type' => 'attachment',
                     'posts_per_page' => -1,
                     'post_status' => 'any',
-                    'orderby' => 'ID',
-                    'order' => 'DESC',
                     'offset' => 0
                 );
 
@@ -49,23 +47,21 @@ class cc {
                         case '0':
                             break;
                         case '1':
-                            $date = date('Y-m-d', strtotime('+1 day'));
+                            $date = '-1 day';
                             break;
                         case '2':
-                            $date = date('Y-m-d', strtotime('+1 week'));
+                            $date = '-1 week';
+//                            echo $date;
                             break;
                         case '3':
-                            $date = date('Y-m-d', strtotime('+1 month'));
+                            $date = '-1 month';
                             break;
                     }
                     if ($period !== 0 && isset($date)) {
-                        $date_arr = explode('-', $date);
-                        $period_arr = array('date_query' => array(
+                        $period_arr = array(
+                            'date_query' => array(
                                 array(
-                                    'year' => $date_arr[0],
-                                    'month' => $date_arr[1],
-                                    'day' => $date_arr[2],
-                                    'compare' => '>=',
+                                    'after' => $date,
                                 )
                         ));
 //                        print_r($date_arr);
@@ -74,8 +70,9 @@ class cc {
                     }
                 }
                 $the_query = new WP_Query($args);
+                $post_count = 0;
                 if ($the_query->have_posts()) {
-                    $post_count = $the_query->found_posts;
+                    $post_count = $the_query->post_count;
                 }
                 $return_arr = array('pCount' => $post_count);
 //                return the total number of results
@@ -101,26 +98,23 @@ class cc {
                         case '0':
                             break;
                         case '1':
-                            $date = date('Y-m-d', mktime('+1 day'));
+                            $date = '-1 day';
 
                             break;
                         case '2':
-                            $date = date('Y-m-d', mktime('+1 week'));
+                            $date = '-1 week';
 
                             break;
                         case '3':
-                            $date = date('Y-m-d', mktime('+1 month'));
+                            $date = '-1 month';
 
                             break;
                     }
                     if ($period !== 0 && isset($date)) {
-                        $date_arr = explode('-', $date);
-                        $period_arr = array('date_query' => array(
+                        $period_arr = array(
+                            'date_query' => array(
                                 array(
-                                    'year' => $date_arr[0],
-                                    'month' => $date_arr[1],
-                                    'day' => $date_arr[2],
-                                    'compare' => '>=',
+                                    'after' => $date,
                                 )
                         ));
 //                        print_r($date_arr);
@@ -224,7 +218,7 @@ class cc {
         //
         $content .= sprintf('<option value="1">past day</option>');
         $content .= sprintf('<option value="2">past week</option>');
-        $content .= sprintf('<option value="2">past Month</option>');
+        $content .= sprintf('<option value="3">past Month</option>');
         $content .= sprintf('</select>');
         $content .= sprintf('<p class="submit">'
                 . '<button class="button button-primary RTA">Regenerate Thumbnails</button>'

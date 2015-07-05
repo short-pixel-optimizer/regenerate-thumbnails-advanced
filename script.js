@@ -67,10 +67,10 @@ jQuery(document).ready(function ($) {
                         }
                         tCount = parseInt(tCount);
                         response = parseInt(response);
-                        if (tCount > response) {
+                        if (tCount >= response) {
                             offset = response;
 
-                            var lPercentage = (offset + 1) / tCount * 100;
+                            var lPercentage = offset / tCount * 100;
                             if (pbar[0]) {
                                 if (progressbar_percentage[0]) {
                                 }
@@ -78,11 +78,13 @@ jQuery(document).ready(function ($) {
                                 pbar.progressbar({
                                     value: lPercentage
                                 });
-                                lPercentage = Math.round(lPercentage) + '%';
+                                lPercentage = Math.floor(lPercentage) + '%';
                                 progressbar_percentage.html(lPercentage);
                             }
                             //call function again
-                            loop_ajax_request(type, offset, tCount, period);
+                            if (tCount > response) {
+                                loop_ajax_request(type, offset, tCount, period);
+                            }
                         }
                         break;
                 }

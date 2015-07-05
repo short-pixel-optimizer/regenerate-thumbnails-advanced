@@ -50,9 +50,13 @@ jQuery(document).ready(function ($) {
                         }
                         break;
                     case 'submit':
+                        var processed = $('#rta .info .processed');
+                        if (processed[0]) {
+                            processed.html(response);
+                        }
                         if (tCount > response) {
                             offset = response;
-                            
+
                             var lPercentage = offset / tCount * 100;
                             if (pbar[0]) {
 //        set the initial value to 0

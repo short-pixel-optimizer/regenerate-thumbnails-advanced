@@ -51,6 +51,7 @@ jQuery(document).ready(function ($) {
                         break;
                     case 'submit':
                         var processed = $('#rta .info .processed');
+                        var progressbar_percentage = $('#progressbar .progress-label');
                         if (processed[0]) {
                             processed.html(response);
                         }
@@ -58,8 +59,12 @@ jQuery(document).ready(function ($) {
                             offset = response;
 
                             var lPercentage = offset / tCount * 100;
+                            lPercentage = Math.round(lPercentage)+'%';
                             if (pbar[0]) {
-//        set the initial value to 0
+                                if(progressbar_percentage[0]){
+                                    progressbar_percentage.html(lPercentage);
+                                }
+//                                set the initial value to 0
                                 pbar.progressbar({
                                     value: lPercentage
                                 });

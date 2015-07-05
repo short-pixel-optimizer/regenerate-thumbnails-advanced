@@ -59,15 +59,15 @@ jQuery(document).ready(function ($) {
                             offset = response;
 
                             var lPercentage = offset / tCount * 100;
-                            lPercentage = Math.round(lPercentage)+'%';
                             if (pbar[0]) {
-                                if(progressbar_percentage[0]){
-                                    progressbar_percentage.html(lPercentage);
+                                if (progressbar_percentage[0]) {
                                 }
 //                                set the initial value to 0
                                 pbar.progressbar({
                                     value: lPercentage
                                 });
+                                lPercentage = Math.round(lPercentage) + '%';
+                                progressbar_percentage.html(lPercentage);
                             }
                             //call function again
                             loop_ajax_request(type, offset, tCount, period);

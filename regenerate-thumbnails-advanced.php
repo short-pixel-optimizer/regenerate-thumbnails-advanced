@@ -50,6 +50,10 @@ class cc {
                 if (isset($_POST['offset'])) {
                     $offset = $_POST['offset'];
                 }
+                if (isset($_POST['period'])) {
+                    $period = $_POST['period'];
+                }
+
                 $args = array(
                     'post_type' => 'attachment',
                     'post_status' => 'any',
@@ -73,7 +77,7 @@ class cc {
                         if (empty($metadata))
                             $this->die_json_error_msg($image_id, __('Unknown failure reason.', 'regenerate-thumbnails'));
                         wp_update_attachment_metadata($image_id, $metadata);
-                        echo "ok";
+                        echo $offset + 1;
                     }
                 } else {
                     echo "empty?";

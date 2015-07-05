@@ -50,7 +50,12 @@ jQuery(document).ready(function ($) {
                         }
                         break;
                     case 'submit':
-                        alert('Got this from the server: ' + response);
+                        if (tCount > response) {
+                            alert('Got this from the server: ' + response);
+                            offset = response;
+                            //call function again
+                            loop_ajax_request(type, offset, tCount, period);
+                        }
                         break;
                 }
             });

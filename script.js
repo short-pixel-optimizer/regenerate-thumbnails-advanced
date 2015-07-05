@@ -19,7 +19,8 @@ jQuery(document).ready(function ($) {
             //tha ajax data
             var data = {
                 'action': 'rta_ajax',
-                'whatever': 1234
+                'type': 'general',
+                'offset': offset
             };
             // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
             $.post(ajaxurl, data, function (response) {
@@ -48,8 +49,8 @@ jQuery(document).ready(function ($) {
 //                    Store the data as a cookie
                     var rta_total = $('#rta .info .total');
                     if (rta_total[0]) {
-                        rta_total.html(json.pCount); 
-                   }
+                        rta_total.html(json.pCount);
+                    }
                 });
 
             }

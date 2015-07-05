@@ -17,9 +17,9 @@ jQuery(document).ready(function ($) {
         //
         function submit_ajax_call() {
             var offset = 0;
+            var tCount = 0;
             var period = $('#rta_period');
             var rta_total = $('#rta .info .total');
-            var tCount = 0;
             if (rta_total[0]) {
                 tCount = rta_total.html();
             }
@@ -40,7 +40,6 @@ jQuery(document).ready(function ($) {
             };
             // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
             $.post(ajaxurl, data, function (response) {
-
                 switch (type) {
                     case 'general':
                         var rta_total = $('#rta .info .total');
@@ -55,10 +54,12 @@ jQuery(document).ready(function ($) {
                         if (processed[0]) {
                             processed.html(response);
                         }
+                        tCount = parseInt(tCount);
+                        response = parseInt(response);
                         if (tCount > response) {
                             offset = response;
 
-                            var lPercentage = offset / tCount * 100;
+                            var lPercentage = (offset+1) / tCount * 100;
                             if (pbar[0]) {
                                 if (progressbar_percentage[0]) {
                                 }

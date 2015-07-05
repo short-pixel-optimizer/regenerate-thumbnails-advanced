@@ -31,7 +31,6 @@ class cc {
             $type = $_POST['type'];
         }
         $offset = 0;
-
         switch ($type) {
             case 'general':
                 $args = array(
@@ -42,8 +41,10 @@ class cc {
                 );
                 $the_query = new WP_Query($args);
                 if ($the_query->have_posts()) {
-                    echo $the_query->post_count;
+                    $post_count = $the_query->post_count;
                 }
+                $return_arr = array('pCount' => $post_count);
+                echo json_encode($return_arr);
                 break;
             case 'submit':
                 if (isset($_POST['offset'])) {

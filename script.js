@@ -16,10 +16,13 @@ jQuery(document).ready(function ($) {
         //ajax request to call when the button is pressed
         //
         function submit_ajax_call() {
+            var offset = 0;
+            var period = $('#rta_period');
             //tha ajax data
             var data = {
                 'action': 'rta_ajax',
                 'type': 'general',
+                'period': period.val(),
                 'offset': offset
             };
             // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php

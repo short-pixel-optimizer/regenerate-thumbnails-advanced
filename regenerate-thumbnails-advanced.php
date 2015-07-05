@@ -37,13 +37,38 @@ class cc {
                     'post_type' => 'attachment',
                     'posts_per_page' => -1,
                     'post_status' => 'any',
-                    'offset' => $offset
+                    'offset' => 10
                 );
+                if (isset($_POST['period'])) {
+                    $period = $_POST['period'];
+
+
+                    switch ($period) {
+                        case '0':
+                            break;
+                        case '1':
+
+                            $date = date('Y-m-d', mktime('+1 day'));
+                            $date_arr = explode($date, '-');
+                            $period_arr = array('date_query' => array(
+                                    array(
+                                        'year' => $date_arr[0],
+                                        'month' => $date_arr[1],
+                                        'day' => $date_arr[2],
+                                        'compare' => '<=',
+                                    )
+                            ));
+                            $args = array_push($args, $period_arr);
+                            break;
+                    }
+                }
+
                 $the_query = new WP_Query($args);
                 if ($the_query->have_posts()) {
-                    $post_count = $the_query->post_count;
+                    $post_count = $the_query->found_posts;
                 }
                 $return_arr = array('pCount' => $post_count);
+//                return the total number of results
                 echo json_encode($return_arr);
                 break;
             case 'submit':
@@ -52,13 +77,46 @@ class cc {
                 }
                 if (isset($_POST['period'])) {
                     $period = $_POST['period'];
+
+                    $args = array(
+                        'post_type' => 'attachment',
+                        'post_status' => 'any',
+                        'posts_per_page' => 1,
+                        'offset' => $offset,
+                        'orderby' => 'ID',
+                        'order' => 'DESC'
+                    );
+
+                    switch ($period) {
+                        case '0':
+                            break;
+                        case '1':
+                            $date = date('Y-m-d', mktime('+1 day'));
+                            $date_arr = explode($date, '-');
+                            $period_arr = array('date_query' => array(
+                                    array(
+                                        'year' => $date_arr[0],
+                                        'month' => $date_arr[1],
+                                        'day' => $date_arr[2],
+                                        'compare' => '<=',
+                                    )
+                            ));
+                            $args = array_push($args, $period_arr);
+                            break;
+                        case '2':
+                            break;
+                        case '3':
+                            break;
+                    }
                 }
 
                 $args = array(
                     'post_type' => 'attachment',
                     'post_status' => 'any',
                     'posts_per_page' => 1,
-                    'offset' => $offset
+                    'offset' => $offset,
+                    'orderby' => 'ID',
+                    'order' => 'DESC'
                 );
                 $the_query = new WP_Query($args);
                 if ($the_query->have_posts()) {

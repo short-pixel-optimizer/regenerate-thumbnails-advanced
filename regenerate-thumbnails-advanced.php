@@ -139,7 +139,7 @@ class cc {
                         $image_id = $the_query->post->ID;
                         $fullsizepath = get_attached_file($image_id);
                         if (false === $fullsizepath || !file_exists($fullsizepath))
-                            echo '<code>' . esc_html($fullsizepath) . '</code>';
+                            echo '<code>' . esc_html($fullsizepath) . '</code>'; 
 
                         @set_time_limit(900);
                         $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
@@ -153,7 +153,7 @@ class cc {
                         wp_update_attachment_metadata($image_id, $metadata);
                     }
                 } else {
-                    echo "empty?";
+                    $error = "empty?";
                 }
                 //increment offset
                 echo $offset + 1;

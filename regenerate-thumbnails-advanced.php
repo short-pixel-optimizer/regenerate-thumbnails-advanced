@@ -76,6 +76,7 @@ class cc {
                 echo json_encode($return_arr);
                 break;
             case 'submit':
+                $error = array();
                 if (isset($_POST['offset'])) {
                     $offset = $_POST['offset'];
                 }
@@ -136,16 +137,16 @@ class cc {
                         $image_id = $the_query->post->ID;
                         $fullsizepath = get_attached_file($image_id);
                         if (false === $fullsizepath || !file_exists($fullsizepath))
-                            echo '<code>' . esc_html($fullsizepath) . '</code>'; 
+                            $error[] = '<code>' . esc_html($fullsizepath) . '</code>'; 
 
                         @set_time_limit(900);
                         $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
                         if (is_wp_error($metadata)) {
-                            echo $metadata->get_error_message();
+                            $error[] = print_f("%s Image ID:%d",$metadata->get_error_message(),$image_id);
                         }
                         if (empty($metadata)) {
 //                            $this->die_json_error_msg($image_id, __('Unknown failure reason.', 'regenerate-thumbnails'));
-                            echo 'Unknown failure reason. regenerate-thumbnails ' . $image_id . '';
+                        $error[] = sprint_f('Unknown failure reason. regenerate-thumbnails %d', $image_id);
                         }
                         wp_update_attachment_metadata($image_id, $metadata);
                     }
@@ -159,9 +160,10 @@ class cc {
                    $error[]= "PHP GD library is not installed on your web server. Please install in order to have the ability to resize and crop images";
                 }
                 //increment offset
-                echo $offset + 1;
+                $result = $offset + 1;
                 break;
         }
+        echo echo json_encode(array('offset':$offset,'error':$error));
         /* Restore original Post Data */
         wp_reset_postdata();
 

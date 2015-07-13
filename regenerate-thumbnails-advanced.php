@@ -21,8 +21,6 @@ class cc {
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin'));
         //ajax callback for button click
         add_action('wp_ajax_rta_ajax', array($this, 'ajax_callback'));
-        //ajax callback for returning general data (total)
-        add_action('wp_ajax_rta_rt_options', array($this, 'ajax_options_callback'));
     }
 
     public function ajax_callback() {
@@ -169,13 +167,6 @@ class cc {
 
         wp_die();
     }
-
-    //ajax request to return total nr of images for the main script to use when button is clicked
-    public function ajax_options_callback() {
-        echo "???";
-        wp_die();
-    }
-
 //    Admin menu calback
     public function create_menu() {
         global $cc_args;

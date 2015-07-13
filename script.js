@@ -35,19 +35,24 @@ jQuery(document).ready(function ($) {
             };
             // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
             $.post(ajaxurl, data, function (response) {
+                var err_arr = new Array();
+                //json response
+                var json = JSON.parse(response);
+                var offset = 0;
+                var tCount = 0;
+                var rta_total = $('#rta .info .total');
+                
                 // console.log(response);
                 switch (type) {
                     case 'general':
-                                        console.log(response);
+                        console.log(response);
                         var period = $('#rta_period');
-                        var rta_total = $('#rta .info .total');
+                        var rta_total = $('#rta .info .total')
                         if (rta_total[0]) {
                             var json = JSON.parse(response);
                             rta_total.html(json.pCount);
                         }
-                        var offset = 0;
-                        var tCount = 0;
-                        var rta_total = $('#rta .info .total');
+                        
                         if (rta_total[0]) {
                             tCount = rta_total.html();
                         }
@@ -55,11 +60,7 @@ jQuery(document).ready(function ($) {
 
                         break;
                     case 'submit':
-                                        console.log(response);
-                        var json = JSON.parse(response);
-                        var offset = 0;
-                        var tCount = 0;
-                        var rta_total = $('#rta .info .total');
+                        console.log(response);
                         if (rta_total[0]) {
                             tCount = rta_total.html();
                         }
@@ -86,12 +87,28 @@ jQuery(document).ready(function ($) {
                             }
                             //call function again
                             if (tCount > response) {
+                                //append unique errors
+                                err_arr = unique_arr_append(json.error);
+                                //make a new request to the ajax call
                                 loop_ajax_request(type, offset, tCount, period);
                             }
                         }
                         break;
                 }
             });
+        }
+        // Append only unique array values
+        function unique_arr_append(err_arr,app_str){
+            unique = true;
+            foreach(err_arr as key){
+                if(key==app_str){
+                    unique = false;
+                }
+            }
+            if(unique===true){
+                err_arr.append(app_str);
+            }
+            
         }
     }
 });

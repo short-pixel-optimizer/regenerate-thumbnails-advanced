@@ -3,7 +3,7 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://turcuciprian.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 0.7.1
+  Version: 0.7.2
   Author: turcuciprian
   Author URI: http://turcuciprian.com
   License: GPLv2 or later

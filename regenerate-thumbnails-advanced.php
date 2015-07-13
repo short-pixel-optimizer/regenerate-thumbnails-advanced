@@ -1,10 +1,9 @@
 <?php
-
 /*
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://turcuciprian.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 0.1
+  Version: 0.7.1
   Author: turcuciprian
   Author URI: http://turcuciprian.com
   License: GPLv2 or later
@@ -153,7 +152,13 @@ class cc {
                         wp_update_attachment_metadata($image_id, $metadata);
                     }
                 } else {
-                    $error = "empty?";
+                    $error[] = "No results?";
+                }
+                
+                
+                //
+                if (!extension_loaded('gd') && !function_exists('gd_info')) {
+                   $error[]= "PHP GD library is not installed on your web server. Please install in order to have the ability to resize and crop images";
                 }
                 //increment offset
                 echo $offset + 1;
@@ -222,6 +227,10 @@ class cc {
         $content .= sprintf('</select>');
         $content .= sprintf('<p class="submit">'
                 . '<button class="button button-primary RTA">Regenerate Thumbnails</button>'
+                . '<h3>Errors</h3>'
+                . '<div class="errors">'
+                . 'No errors to display yet.'
+                . '</div>'//where the errors show
                 . '</p>');
 
         $content .= sprintf('</div>'

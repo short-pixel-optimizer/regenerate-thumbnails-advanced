@@ -161,9 +161,9 @@ class cc {
                 }
                 //increment offset
                 $result = $offset + 1;
+                echo json_encode(array('offset'=>($offset+1),'error'=>$error));
                 break;
         }
-        echo echo json_encode(array('offset':$offset,'error':$error));
         /* Restore original Post Data */
         wp_reset_postdata();
 

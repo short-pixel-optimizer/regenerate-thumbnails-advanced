@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) {
+    var err_arr = [];
     var pbar = $("#rta #progressbar");
 
 //    if the progressbar id exists
@@ -18,6 +19,8 @@ jQuery(document).ready(function ($) {
             var period = $('#rta_period');
             //    First Time Request
             loop_ajax_request('general', 0, -1, period.val());
+            
+            
         }
         //
         //
@@ -35,7 +38,7 @@ jQuery(document).ready(function ($) {
             };
             // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
             $.post(ajaxurl, data, function (response) {
-                var err_arr = new Array();
+                //var err_arr = new Array();
                 //json response
                 var json = JSON.parse(response);
                 var offset = 0;
@@ -45,7 +48,7 @@ jQuery(document).ready(function ($) {
                 // console.log(response);
                 switch (type) {
                     case 'general':
-                        console.log(response);
+                        //console.log(response);
                         var period = $('#rta_period');
                         var rta_total = $('#rta .info .total')
                         if (rta_total[0]) {
@@ -60,7 +63,7 @@ jQuery(document).ready(function ($) {
 
                         break;
                     case 'submit':
-                        console.log(response);
+                        //console.log(response);
                         if (rta_total[0]) {
                             tCount = rta_total.html();
                         }
@@ -88,9 +91,11 @@ jQuery(document).ready(function ($) {
                             //call function again
                             if (tCount > response) {
                                 //append unique errors
-                                err_arr = unique_arr_append(json.error);
+                                unique_arr_append(err_arr,json.error);
                                 //make a new request to the ajax call
                                 loop_ajax_request(type, offset, tCount, period);
+                            }else{
+                                console.log(err_arr);
                             }
                         }
                         break;
@@ -99,15 +104,24 @@ jQuery(document).ready(function ($) {
         }
         // Append only unique array values
         function unique_arr_append(err_arr,app_str){
-            unique = true;
+            var unique = true;
+            var i = 0;
+            $.each(err_arr,function( index, value ){
+                console.log(index);
+                if(value==app_str){
+                    //console.log(index);
+                    unique = false;
+                }
+            });
             /*foreach(err_arr as key){
                 if(key==app_str){
                     unique = false;
                 }
             }*/
             if(unique===true){
-                //err_arr.append(app_str);
+                err_arr.push(app_str);
             }
+            
             
         }
     }

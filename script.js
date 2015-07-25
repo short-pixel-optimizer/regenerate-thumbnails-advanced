@@ -100,13 +100,13 @@ jQuery(document).ready(function ($) {
         // Append only unique array values
         function unique_arr_append(err_arr,app_str){
             unique = true;
-            foreach(err_arr as key){
+            /*foreach(err_arr as key){
                 if(key==app_str){
                     unique = false;
                 }
-            }
+            }*/
             if(unique===true){
-                err_arr.append(app_str);
+                //err_arr.append(app_str);
             }
             
         }

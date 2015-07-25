@@ -12,7 +12,7 @@
 
 //Global variables for arguments
 
-class cc {
+class cc { 
 
 //    create basic page in the admin panel, with menu settings too
     public function start() {
@@ -185,7 +185,7 @@ class cc {
             }
         }
         wp_enqueue_script('jquery-ui-progressbar');
-        wp_enqueue_style('rta-jquery-ui', plugin_dir_url(__FILE__) . 'jquery-ui.css');
+        wp_enqueue_style('rta-jquery-ui', plugin_dir_url(__FILE__) . 'jquery-ui.min.css');
         wp_enqueue_style('rta', plugin_dir_url(__FILE__) . 'style.css');
         wp_enqueue_script('rta', plugin_dir_url(__FILE__) . 'script.js');
     }

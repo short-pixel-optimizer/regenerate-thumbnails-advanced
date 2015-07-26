@@ -33,7 +33,7 @@
     margin:10px;
     padding:5px 0 5px 10px;
 }
-#rta .errors div strong{
+#rta .errors div b{
     font-size: 16px;
 }
 #rta .errors div.ui-state-error{

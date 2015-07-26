@@ -167,7 +167,7 @@ class cc {
                 
                 //
                 if (!extension_loaded('gd') && !function_exists('gd_info')) {
-                   $error[]= "<strong>PHP GD library is not installed</strong> on your web server. Please install in order to have the ability to resize and crop images";
+                   $error[]= "<b>PHP GD library is not installed</b> on your web server. Please install in order to have the ability to resize and crop images";
                 }
                 //increment offset
                 $result = $offset + 1;

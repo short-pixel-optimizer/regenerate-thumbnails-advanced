@@ -3,7 +3,7 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://turcuciprian.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 0.7.3
+  Version: 0.8
   Author: turcuciprian
   Author URI: http://turcuciprian.com
   License: GPLv2 or later
@@ -135,9 +135,7 @@ class cc {
                         $is_image = true;
                         $fullsizepath = get_attached_file($image_id);
                         //is image:
-                        if(is_array(getimagesize($fullsizepath))){
-                            $is_image = true;
-                        } else {
+                        if(!is_array(getimagesize($fullsizepath))){
                             $is_image = false;
                             
                         }
@@ -149,8 +147,6 @@ class cc {
                             $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
                             //get the attachment name
                             $filename_only = basename( get_attached_file( $image_id ) );
-                            
-                            $error[]=sprintf('Attachment (ID:%d - %s) is not an image',$image_id,$filename_only);
                             if (is_wp_error($metadata)) {
                                 $error[] = sprint_f("%s Image ID:%d",$metadata->get_error_message(),$image_id);
                             }
@@ -161,6 +157,10 @@ class cc {
                             }else{
                                 wp_update_attachment_metadata($image_id, $metadata);
                             }
+                        }else{
+                            $filename_only = basename( get_attached_file( $image_id ) );
+                            
+                            $error[]=sprintf('Attachment (<b>%s</b> - ID:%d) is not an image. Skipping',$filename_only,$image_id);
                         }
                     }
                     

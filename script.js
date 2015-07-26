@@ -66,7 +66,7 @@ jQuery(document).ready(function ($) {
 
                         break;
                     case 'submit':
-                        //console.log(response);
+                        console.log(response);
                         if (rta_total[0]) {
                             tCount = rta_total.html();
                         }

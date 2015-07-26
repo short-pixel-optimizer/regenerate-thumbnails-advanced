@@ -1,5 +1,6 @@
 jQuery(document).ready(function ($) {
     var err_arr = [];
+    var errors_obj = $('#rta .errors');
     var pbar = $("#rta #progressbar");
 
 //    if the progressbar id exists
@@ -17,6 +18,7 @@ jQuery(document).ready(function ($) {
         //
         function submit_ajax_call() {
             err_arr=[];
+            errors_obj.html('');
             var period = $('#rta_period');
             //    First Time Request
             loop_ajax_request('general', 0, -1, period.val());
@@ -97,10 +99,9 @@ jQuery(document).ready(function ($) {
                                 loop_ajax_request(type, offset, tCount, period);
                             }else{
                                 //the loop ended show errors and messages
-                                var errors_obj = $('#rta .errors');
                                 $.each(err_arr,function( index, value ){
-                                    var final_val = '<div class="ui-state-error ui-state-error-text">'+value+'</div>';
-                                errors_obj.html(final_val);    
+                                    var final_val = '<div class="ui-state-error">'+value+'</div>';
+                                errors_obj.html(errors_obj.html()+final_val);    
                                 });
                                 
                             }

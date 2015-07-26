@@ -91,7 +91,6 @@ class cc {
                         'orderby' => 'ID',
                         'order' => 'DESC'
                     );
-
                     switch ($period) {
                         case '0':
                             break;
@@ -115,9 +114,7 @@ class cc {
                                     'after' => $date,
                                 )
                         ));
-//                        print_r($date_arr);
                         $args = array_merge($args, $period_arr);
-//                        print_r($args);
                     }
                 }
 
@@ -135,23 +132,37 @@ class cc {
 
                         $the_query->the_post();
                         $image_id = $the_query->post->ID;
-                        $fullsizepath = get_attached_file($image_id);
-                        if (false === $fullsizepath || !file_exists($fullsizepath))
-                            $error[] = '<code>' . esc_html($fullsizepath) . '</code>'; 
-
-                        @set_time_limit(900);
-                        $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
-                        if (is_wp_error($metadata)) {
-                            $error[] = print_f("%s Image ID:%d",$metadata->get_error_message(),$image_id);
+                        $is_image = true;
+                        //is image:
+                        if(@!is_array(getimagesize($mediapath))){
+                            $is_image = true;
+                            $error[]=sprintf('ok');
+                        } else {
+                            $is_image = false;
+                            $error[]=sprintf('Attachment (ID:%d) is not an image',$image_id);
                         }
-                        if (empty($metadata)) {
-//                            $this->die_json_error_msg($image_id, __('Unknown failure reason.', 'regenerate-thumbnails'));
-                        $error[] = sprint_f('Unknown failure reason. regenerate-thumbnails %d', $image_id);
+                        if(!$is_image){
+                            $fullsizepath = get_attached_file($image_id);
+                            if (false === $fullsizepath || !file_exists($fullsizepath))
+                                $error[] = '<code>' . esc_html($fullsizepath) . '</code>'; 
+    
+                            @set_time_limit(900);
+                            $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
+                            if (is_wp_error($metadata)) {
+                                $error[] = sprint_f("%s Image ID:%d",$metadata->get_error_message(),$image_id);
+                            }
+                            if (empty($metadata)) {
+                                //$this->die_json_error_msg($image_id, __('Unknown failure reason.', 'regenerate-thumbnails'));
+                            $error[] = sprint_f('Unknown failure reason. regenerate-thumbnails %d', $image_id);
+                            
+                            }else{
+                                wp_update_attachment_metadata($image_id, $metadata);
+                            }
                         }
-                        wp_update_attachment_metadata($image_id, $metadata);
                     }
+                    
                 } else {
-                    $error[] = "No results?";
+                    $error[] = "No pictures uploaded";
                 }
                 
                 

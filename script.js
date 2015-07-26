@@ -16,6 +16,7 @@ jQuery(document).ready(function ($) {
         //LOOP REQUEST ... ajax request to call when the button is pressed
         //
         function submit_ajax_call() {
+            err_arr=[];
             var period = $('#rta_period');
             //    First Time Request
             loop_ajax_request('general', 0, -1, period.val());
@@ -95,7 +96,13 @@ jQuery(document).ready(function ($) {
                                 //make a new request to the ajax call
                                 loop_ajax_request(type, offset, tCount, period);
                             }else{
-                                console.log(err_arr);
+                                //the loop ended show errors and messages
+                                var errors_obj = $('#rta .errors');
+                                $.each(err_arr,function( index, value ){
+                                    var final_val = '<div class="ui-state-error ui-state-error-text">'+value+'</div>';
+                                errors_obj.html(final_val);    
+                                });
+                                
                             }
                         }
                         break;
@@ -109,15 +116,9 @@ jQuery(document).ready(function ($) {
             $.each(err_arr,function( index, value ){
                 console.log(index);
                 if(value==app_str){
-                    //console.log(index);
                     unique = false;
                 }
             });
-            /*foreach(err_arr as key){
-                if(key==app_str){
-                    unique = false;
-                }
-            }*/
             if(unique===true){
                 err_arr.push(app_str);
             }

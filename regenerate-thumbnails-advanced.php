@@ -135,18 +135,22 @@ class cc {
                         $is_image = true;
                         $fullsizepath = get_attached_file($image_id);
                         //is image:
-                        if(!getimagesize($fullsizepath)){
+                        if(is_array(getimagesize($fullsizepath))){
                             $is_image = true;
                         } else {
                             $is_image = false;
-                            $error[]=sprintf('Attachment (ID:%d - <a href="%s">%s</a>) is not an image',$image_id,$fullsizepath,$fullsizepath);
+                            
                         }
-                        if(!$is_image){
+                        if($is_image){
                             if (false === $fullsizepath || !file_exists($fullsizepath))
                                 $error[] = '<code>' . esc_html($fullsizepath) . '</code>'; 
     
                             @set_time_limit(900);
                             $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
+                            //get the attachment name
+                            $filename_only = basename( get_attached_file( $image_id ) );
+                            
+                            $error[]=sprintf('Attachment (ID:%d - %s) is not an image',$image_id,$filename_only);
                             if (is_wp_error($metadata)) {
                                 $error[] = sprint_f("%s Image ID:%d",$metadata->get_error_message(),$image_id);
                             }

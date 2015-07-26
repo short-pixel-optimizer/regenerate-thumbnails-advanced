@@ -105,6 +105,13 @@ jQuery(document).ready(function ($) {
                                 });
                                 
                             }
+                        }else{
+                            unique_arr_append(json.error);
+                            //the loop ended show errors and messages
+                                $.each(err_arr,function( index, value ){
+                                    var final_val = '<div class="ui-state-error">'+value+'</div>';
+                                errors_obj.html(errors_obj.html()+final_val);    
+                                });
                         }
                         break;
                 }

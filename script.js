@@ -94,7 +94,7 @@ jQuery(document).ready(function ($) {
                             //call function again
                             if (tCount > response) {
                                 //append unique errors
-                                unique_arr_append(err_arr,json.error);
+                                unique_arr_append(json.error);
                                 //make a new request to the ajax call
                                 loop_ajax_request(type, offset, tCount, period);
                             }else{
@@ -111,19 +111,26 @@ jQuery(document).ready(function ($) {
             });
         }
         // Append only unique array values
-        function unique_arr_append(err_arr,app_str){
+        function unique_arr_append(val){
             var unique = true;
             var i = 0;
-            $.each(err_arr,function( index, value ){
-                console.log(index);
-                if(value==app_str){
-                    unique = false;
+            var y = 0;
+            while(val[i]){
+                unique = true;
+                y=0;
+                while(err_arr[y]){
+                    if(err_arr[y]==val[i]){
+                        console.log(err_arr[i]);
+                        unique = false;
+                        break;
+                    }
+                    y++;
                 }
-            });
-            if(unique===true){
-                err_arr.push(app_str);
+                if(unique){
+                err_arr.push(val[i]);
             }
-            
+                i++;
+            }
             
         }
     }

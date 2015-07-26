@@ -133,16 +133,15 @@ class cc {
                         $the_query->the_post();
                         $image_id = $the_query->post->ID;
                         $is_image = true;
+                        $fullsizepath = get_attached_file($image_id);
                         //is image:
-                        if(@!is_array(getimagesize($mediapath))){
+                        if(!getimagesize($fullsizepath)){
                             $is_image = true;
-                            $error[]=sprintf('ok');
                         } else {
                             $is_image = false;
                             $error[]=sprintf('Attachment (ID:%d) is not an image',$image_id);
                         }
                         if(!$is_image){
-                            $fullsizepath = get_attached_file($image_id);
                             if (false === $fullsizepath || !file_exists($fullsizepath))
                                 $error[] = '<code>' . esc_html($fullsizepath) . '</code>'; 
     
@@ -168,7 +167,7 @@ class cc {
                 
                 //
                 if (!extension_loaded('gd') && !function_exists('gd_info')) {
-                   $error[]= "PHP GD library is not installed on your web server. Please install in order to have the ability to resize and crop images";
+                   $error[]= "<strong>PHP GD library is not installed</strong> on your web server. Please install in order to have the ability to resize and crop images";
                 }
                 //increment offset
                 $result = $offset + 1;

@@ -139,7 +139,7 @@ class cc {
                             $is_image = true;
                         } else {
                             $is_image = false;
-                            $error[]=sprintf('Attachment (ID:%d) is not an image',$image_id);
+                            $error[]=sprintf('Attachment (ID:%d - <a href="%s">%s</a>) is not an image',$image_id,$fullsizepath,$fullsizepath);
                         }
                         if(!$is_image){
                             if (false === $fullsizepath || !file_exists($fullsizepath))

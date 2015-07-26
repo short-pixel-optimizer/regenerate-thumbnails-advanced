@@ -72,7 +72,7 @@ jQuery(document).ready(function ($) {
                         }
                         var processed = $('#rta .info .processed');
                         var progressbar_percentage = $('#progressbar .progress-label');
-                        if (processed[0]) {
+                        if (processed[0] && rta_total.html()!=0) {
                             processed.html(json.offset);
                         }
                         tCount = parseInt(tCount);

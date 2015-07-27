@@ -24,9 +24,12 @@
     font-size: 18px;
 }
 /*Errors style*/
-#rta .errors{
+#rta .errors,
+#rta .processed{
+    float:left;
+    width:46%;
     padding:10px;
-    margin:10px;
+    margin:0px 1% 0 0;
     text-align: left;
 }
 #rta .errors div{

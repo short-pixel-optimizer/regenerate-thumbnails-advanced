@@ -2,7 +2,7 @@
 Contributors: turcuciprian
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
 Tags: regenerate, thumbnails, advanced, easy, day, weeek, month
-Requires at least: 4.0
+Requires at least: 4.0 
 Tested up to: 4.2.3
 Stable tag: 0.8.1
 License: GPLv2 or later

@@ -8,7 +8,7 @@
   Author URI: http://turcuciprian.com
   License: GPLv2 or later
   Text Domain: RTA
- */
+ */  
 
 //Global variables for arguments
 

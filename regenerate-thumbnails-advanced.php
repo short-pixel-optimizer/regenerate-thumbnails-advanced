@@ -33,7 +33,7 @@ class cc {
                 $args = array(
                     'post_type' => 'attachment',
                     'posts_per_page' => -1,
-                    'post_status' => 'any', 
+                    'post_status' => 'any',
                     'offset' => 0
                 );
 

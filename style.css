@@ -25,7 +25,7 @@
 }
 /*Errors style*/
 #rta .errors,
-#rta .processed{
+#rta .logstatus{
     float:left;
     width:46%;
     padding:10px;

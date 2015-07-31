@@ -12,11 +12,14 @@ jQuery(document).ready(function ($) {
     }
     var rta_butt = $('.button.RTA');
     if (rta_butt[0]) {
+        var logstatus = $('#rta .logstatus');
+        
         rta_butt.click(submit_ajax_call);
         //
         //LOOP REQUEST ... ajax request to call when the button is pressed
         //
         function submit_ajax_call() {
+            logstatus.html('Processing...');
             err_arr=[];
             errors_obj.html('');
             var period = $('#rta_period');
@@ -66,11 +69,12 @@ jQuery(document).ready(function ($) {
 
                         break;
                     case 'submit':
-                        console.log(response);
+//                        console.log(response);
                         if (rta_total[0]) {
                             tCount = rta_total.html();
                         }
                         var processed = $('#rta .info .processed');
+                        
                         var progressbar_percentage = $('#progressbar .progress-label');
                         if (processed[0] && rta_total.html()!=0) {
                             processed.html(json.offset);
@@ -91,6 +95,8 @@ jQuery(document).ready(function ($) {
                                 lPercentage = Math.floor(lPercentage) + '%';
                                 progressbar_percentage.html(lPercentage);
                             }
+                            //Add to log
+                            logstatus.html(logstatus.html()+json.logstatus);
                             //call function again
                             if (tCount > response) {
                                 //append unique errors

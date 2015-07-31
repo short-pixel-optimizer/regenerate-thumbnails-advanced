@@ -76,6 +76,7 @@ class cc {
                 echo json_encode($return_arr);
                 break;
             case 'submit':
+                $logstatus='';
                 $error = array();
                 if (isset($_POST['offset'])) {
                     $offset = $_POST['offset'];
@@ -157,6 +158,7 @@ class cc {
                             }else{
                                 wp_update_attachment_metadata($image_id, $metadata);
                             }
+                            $logstatus = "<br/>".$filename_only." - <b>Processed</b>";
                         }else{
                             $filename_only = basename( get_attached_file( $image_id ) );
                             
@@ -175,7 +177,7 @@ class cc {
                 }
                 //increment offset
                 $result = $offset + 1;
-                echo json_encode(array('offset'=>($offset+1),'error'=>$error));
+                echo json_encode(array('offset'=>($offset+1),'error'=>$error,'logstatus'=>$logstatus));
                 break;
         }
         /* Restore original Post Data */
@@ -235,7 +237,7 @@ class cc {
         $content .= sprintf('<p class="submit">'
                 . '<button class="button button-primary RTA">Regenerate Thumbnails</button>'
                 . '<h3>Progress & Errors</h3>'
-                . '<div class="processed ui-widget-content">'
+                . '<div class="logstatus ui-widget-content">'
                 . 'Nothing processed yet'
                 . '</div>'//where the errors show
                 . '<div class="errors ui-widget-content">'

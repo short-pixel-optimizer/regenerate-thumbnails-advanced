@@ -56,10 +56,12 @@ jQuery(document).ready(function ($) {
                     case 'general':
                         //console.log(response);
                         var period = $('#rta_period');
-                        var rta_total = $('#rta .info .total')
+                        var rta_total = $('#rta .info .total');
+                        var rta_processed = $('#rta .info .processed');
                         if (rta_total[0]) {
                             var json = JSON.parse(response);
                             rta_total.html(json.pCount);
+                            rta_processed.html("0");
                         }
                         
                         if (rta_total[0]) {

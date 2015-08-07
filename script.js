@@ -1,4 +1,9 @@
 jQuery(document).ready(function ($) {
+    //no js error
+    $('#no-js').addClass('hidden');
+    $('#js-works').removeClass('hidden');
+    
+    //the main script
     var err_arr = [];
     var errors_obj = $('#rta .errors');
     var pbar = $("#rta #progressbar");

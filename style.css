@@ -42,3 +42,11 @@
 #rta .errors div.ui-state-error{
     background:#cd0a0a;
 }
+#rta .hidden{
+    display:none;
+}
+#rta #no-js h1{
+    color:red;
+    text-align: center;
+    margin:140px 0 100px 0;
+}

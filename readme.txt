@@ -3,8 +3,8 @@ Contributors: turcuciprian
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
 Tags: regenerate, thumbnails, advanced, easy, day, weeek, month
 Requires at least: 4.0 
-Tested up to: 4.2.3
-Stable tag: 0.8.2.1
+Tested up to: 4.2.4
+Stable tag: 0.8.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,8 @@ The script stops, it does not run in the background
 == Screenshots ==
 
 1. The plugin page where it all happens
+2. View of the dropdown options
+3. Where you find everything
 
 == Changelog ==
 
@@ -69,6 +71,9 @@ The script stops, it does not run in the background
 *Images processed gets updated on regenerate request (it was frozen before if no images where available to be processed)
 *Added a extra image
 
+= 0.8.2.1 =
+*Added a "no js or js error" message to the page if it's the case
+
 == Upgrade Notice ==
 
 = 0.7 =
@@ -84,5 +89,7 @@ This is a very minor change . Practically fixing the previous change incomplete 
 No issuse with this version that require attention
 
 = 0.8.2.1 =
-
 No issuse with this version that require attention. Small update change
+
+= 0.8.2.2 =
+No issuse with this version that require attention. Small update change. It's basically a feature, so unless you want it, the older version works great.

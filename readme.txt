@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: regenerate, thumbnails, advanced, easy, day, weeek, month
 Requires at least: 4.0 
 Tested up to: 4.2.4
-Stable tag: 0.8.2.2
+Stable tag: 0.8.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,8 +71,12 @@ The script stops, it does not run in the background
 *Images processed gets updated on regenerate request (it was frozen before if no images where available to be processed)
 *Added a extra image
 
-= 0.8.2.1 =
+= 0.8.2.2 =
 *Added a "no js or js error" message to the page if it's the case
+
+= 0.8.2.3 =
+*Progress and errors aligned with containers
+*javascript changed so that it shows processing for errors when processing starts
 
 == Upgrade Notice ==
 
@@ -92,4 +96,7 @@ No issuse with this version that require attention
 No issuse with this version that require attention. Small update change
 
 = 0.8.2.2 =
+No issuse with this version that require attention. Small update change. It's basically a feature, so unless you want it, the older version works great.
+
+= 0.8.2.3 =
 No issuse with this version that require attention. Small update change. It's basically a feature, so unless you want it, the older version works great.

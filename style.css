@@ -27,7 +27,7 @@
 #rta .errors,
 #rta .logstatus{
     float:left;
-    width:46%;
+    width:96%;
     padding:10px;
     margin:0px 1% 0 0;
     text-align: left;
@@ -49,4 +49,7 @@
     color:red;
     text-align: center;
     margin:140px 0 100px 0;
+}#rta .wrap{
+    float:left;
+    width:46%;
 }

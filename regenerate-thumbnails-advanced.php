@@ -3,7 +3,7 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://turcuciprian.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 0.8.2.2
+  Version: 0.8.2.3
   Author: turcuciprian
   Author URI: http://turcuciprian.com
   License: GPLv2 or later
@@ -241,16 +241,21 @@ class cc {
         $content .= sprintf('</select>');
         $content .= sprintf('<p class="submit">'
                 . '<button class="button button-primary RTA">Regenerate Thumbnails</button>'
-                . '<h3>Progress & Errors</h3>'
+                . '<div class="wrap">'
+                . '<h3>Progress</h3>'
                 . '<div class="logstatus ui-widget-content">'
                 . 'Nothing processed yet'
+                . '</div>'
                 . '</div>'//where the errors show
+                . '<div class="wrap">'
+                . '<h3> Errors</h3>'
                 . '<div class="errors ui-widget-content">'
                 . 'No errors to display yet.'
                 . '</div>'//where the errors show
                 . '</p>');
 
         $content .= sprintf('</div>'
+                . '</div>'
                 . '</div>'
                 . '<!-- Js Works End -->'
                 . '<!--GTA wrap END -->');

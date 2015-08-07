@@ -18,6 +18,7 @@ jQuery(document).ready(function ($) {
     var rta_butt = $('.button.RTA');
     if (rta_butt[0]) {
         var logstatus = $('#rta .logstatus');
+        var errstatus = $('#rta .errors');
         
         rta_butt.click(submit_ajax_call);
         //
@@ -25,8 +26,8 @@ jQuery(document).ready(function ($) {
         //
         function submit_ajax_call() {
             logstatus.html('Processing...');
+            errstatus.html('Processing...');
             err_arr=[];
-            errors_obj.html('');
             var period = $('#rta_period');
             //    First Time Request
             loop_ajax_request('general', 0, -1, period.val());

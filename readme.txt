@@ -80,6 +80,7 @@ The script stops, it does not run in the background
 
 = 0.8.2.4 =
 *Added time (in seconds) to each processed image - You can see how long each image took
+*Error log status changes at the end from Processing to "No errors" if there are no errors.
 
 == Upgrade Notice ==
 

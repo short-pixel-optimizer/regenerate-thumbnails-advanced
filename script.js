@@ -119,7 +119,11 @@ jQuery(document).ready(function ($) {
                                 var startTime = new Date().getTime();
                                 loop_ajax_request(type, offset, tCount, period, startTime);
                             } else {
-                                console.log('Done');
+                                console.log('Processing Completed!');
+                                var errStatus = $('#rta .errors');
+                                if(errStatus.html()=="Processing..."){
+                                    errStatus.html('No Errors.');
+                                }
                                 //the loop ended show errors and messages
                                 $.each(err_arr, function (index, value) {
                                     var final_val = '<div class="ui-state-error">' + value + '</div>';

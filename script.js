@@ -2,7 +2,7 @@ jQuery(document).ready(function ($) {
     //no js error
     $('#no-js').addClass('hidden');
     $('#js-works').removeClass('hidden');
-    
+
     //the main script
     var err_arr = [];
     var errors_obj = $('#rta .errors');
@@ -19,7 +19,7 @@ jQuery(document).ready(function ($) {
     if (rta_butt[0]) {
         var logstatus = $('#rta .logstatus');
         var errstatus = $('#rta .errors');
-        
+
         rta_butt.click(submit_ajax_call);
         //
         //LOOP REQUEST ... ajax request to call when the button is pressed
@@ -27,40 +27,44 @@ jQuery(document).ready(function ($) {
         function submit_ajax_call() {
             logstatus.html('Processing...');
             errstatus.html('Processing...');
-            err_arr=[];
+            err_arr = [];
             var period = $('#rta_period');
+            var startTime = new Date().getTime();
+
             //    First Time Request
-            loop_ajax_request('general', 0, -1, period.val());
-            
-            
+            loop_ajax_request('general', 0, -1, period.val(), startTime);
+
+
         }
         //
         //
         // Main ajax call
         //
         //
-        function loop_ajax_request(type, offset, tCount, period) {
+        function loop_ajax_request(type, offset, tCount, period, startTime) {
 
             //tha ajax data
             var data = {
                 'action': 'rta_ajax',
                 'type': type,
+                'startTime': startTime,
                 'period': period,
                 'offset': offset
             };
             // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
             $.post(ajaxurl, data, function (response) {
+
                 //var err_arr = new Array();
                 //json response
                 var json = JSON.parse(response);
+                var startTime = json.startTime;
                 var offset = 0;
                 var tCount = 0;
                 var rta_total = $('#rta .info .total');
-                
+
                 // console.log(response);
                 switch (type) {
                     case 'general':
-                        //console.log(response);
                         var period = $('#rta_period');
                         var rta_total = $('#rta .info .total');
                         var rta_processed = $('#rta .info .processed');
@@ -69,22 +73,22 @@ jQuery(document).ready(function ($) {
                             rta_total.html(json.pCount);
                             rta_processed.html("0");
                         }
-                        
+
                         if (rta_total[0]) {
                             tCount = rta_total.html();
                         }
-                        loop_ajax_request('submit', offset, tCount, period.val(), false);
+                        var startTime = new Date().getTime();
+                        loop_ajax_request('submit', offset, tCount, period.val(), startTime);
 
                         break;
                     case 'submit':
-//                        console.log(response);
                         if (rta_total[0]) {
                             tCount = rta_total.html();
                         }
                         var processed = $('#rta .info .processed');
-                        
+
                         var progressbar_percentage = $('#progressbar .progress-label');
-                        if (processed[0] && rta_total.html()!=0) {
+                        if (processed[0] && rta_total.html() != 0) {
                             processed.html(json.offset);
                         }
                         tCount = parseInt(tCount);
@@ -103,56 +107,60 @@ jQuery(document).ready(function ($) {
                                 lPercentage = Math.floor(lPercentage) + '%';
                                 progressbar_percentage.html(lPercentage);
                             }
+                            var processTime = new Date().getTime() - startTime;
+                            processTime = processTime / 1000;
                             //Add to log
-                            logstatus.html(logstatus.html()+json.logstatus);
+                            logstatus.html(logstatus.html() + json.logstatus + '- in ' + processTime + ' seconds');
                             //call function again
                             if (tCount > response) {
                                 //append unique errors
                                 unique_arr_append(json.error);
                                 //make a new request to the ajax call
-                                loop_ajax_request(type, offset, tCount, period);
-                            }else{
+                                var startTime = new Date().getTime();
+                                loop_ajax_request(type, offset, tCount, period, startTime);
+                            } else {
+                                console.log('Done');
                                 //the loop ended show errors and messages
-                                $.each(err_arr,function( index, value ){
-                                    var final_val = '<div class="ui-state-error">'+value+'</div>';
-                                errors_obj.html(errors_obj.html()+final_val);    
+                                $.each(err_arr, function (index, value) {
+                                    var final_val = '<div class="ui-state-error">' + value + '</div>';
+                                    errors_obj.html(errors_obj.html() + final_val);
                                 });
-                                
+
                             }
-                        }else{
+                        } else {
                             unique_arr_append(json.error);
                             //the loop ended show errors and messages
-                                $.each(err_arr,function( index, value ){
-                                    var final_val = '<div class="ui-state-error">'+value+'</div>';
-                                errors_obj.html(errors_obj.html()+final_val);    
-                                });
+                            $.each(err_arr, function (index, value) {
+                                var final_val = '<div class="ui-state-error">' + value + '</div>';
+                                errors_obj.html(errors_obj.html() + final_val);
+                            });
                         }
                         break;
                 }
             });
         }
         // Append only unique array values
-        function unique_arr_append(val){
+        function unique_arr_append(val) {
             var unique = true;
             var i = 0;
             var y = 0;
-            while(val[i]){
+            while (val[i]) {
                 unique = true;
-                y=0;
-                while(err_arr[y]){
-                    if(err_arr[y]==val[i]){
-                        console.log(err_arr[i]);
+                y = 0;
+                while (err_arr[y]) {
+                    if (err_arr[y] == val[i]) {
+//                        console.log(err_arr[i]);
                         unique = false;
                         break;
                     }
                     y++;
                 }
-                if(unique){
-                err_arr.push(val[i]);
-            }
+                if (unique) {
+                    err_arr.push(val[i]);
+                }
                 i++;
             }
-            
+
         }
     }
 });

@@ -3,8 +3,8 @@ Contributors: turcuciprian
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
 Tags: regenerate, thumbnails, advanced, easy, day, weeek, month
 Requires at least: 4.0 
-Tested up to: 4.2.4
-Stable tag: 0.8.2.3
+Tested up to: 4.3
+Stable tag: 0.8.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,6 +78,9 @@ The script stops, it does not run in the background
 *Progress and errors aligned with containers
 *javascript changed so that it shows processing for errors when processing starts
 
+= 0.8.2.4 =
+*Added time (in seconds) to each processed image - You can see how long each image took
+
 == Upgrade Notice ==
 
 = 0.7 =
@@ -99,4 +102,7 @@ No issuse with this version that require attention. Small update change
 No issuse with this version that require attention. Small update change. It's basically a feature, so unless you want it, the older version works great.
 
 = 0.8.2.3 =
+No issuse with this version that require attention. Small update change. It's basically a feature, so unless you want it, the older version works great.
+
+= 0.8.2.4 =
 No issuse with this version that require attention. Small update change. It's basically a feature, so unless you want it, the older version works great.

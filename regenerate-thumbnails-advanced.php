@@ -1,9 +1,10 @@
 <?php
+
 /*
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://turcuciprian.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 0.8.2.3
+  Version: 0.8.2.4
   Author: turcuciprian
   Author URI: http://turcuciprian.com
   License: GPLv2 or later
@@ -12,7 +13,7 @@
 
 //Global variables for arguments
 
-class cc { 
+class cc {
 
 //    create basic page in the admin panel, with menu settings too
     public function start() {
@@ -33,7 +34,7 @@ class cc {
                 $args = array(
                     'post_type' => 'attachment',
                     'posts_per_page' => -1,
-                    'post_status' => 'any', 
+                    'post_status' => 'any',
                     'offset' => 0
                 );
 
@@ -76,7 +77,7 @@ class cc {
                 echo json_encode($return_arr);
                 break;
             case 'submit':
-                $logstatus='';
+                $logstatus = '';
                 $error = array();
                 if (isset($_POST['offset'])) {
                     $offset = $_POST['offset'];
@@ -136,48 +137,45 @@ class cc {
                         $is_image = true;
                         $fullsizepath = get_attached_file($image_id);
                         //is image:
-                        if(!is_array(getimagesize($fullsizepath))){
+                        if (!is_array(getimagesize($fullsizepath))) {
                             $is_image = false;
-                            
                         }
-                        if($is_image){
+                        if ($is_image) {
                             if (false === $fullsizepath || !file_exists($fullsizepath))
-                                $error[] = '<code>' . esc_html($fullsizepath) . '</code>'; 
-    
+                                $error[] = '<code>' . esc_html($fullsizepath) . '</code>';
+
                             @set_time_limit(900);
                             $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
                             //get the attachment name
-                            $filename_only = basename( get_attached_file( $image_id ) );
+                            $filename_only = basename(get_attached_file($image_id));
                             if (is_wp_error($metadata)) {
-                                $error[] = sprint_f("%s Image ID:%d",$metadata->get_error_message(),$image_id);
+                                $error[] = sprint_f("%s Image ID:%d", $metadata->get_error_message(), $image_id);
                             }
                             if (empty($metadata)) {
                                 //$this->die_json_error_msg($image_id, __('Unknown failure reason.', 'regenerate-thumbnails'));
-                            $error[] = sprint_f('Unknown failure reason. regenerate-thumbnails %d', $image_id);
-                            
-                            }else{
+                                $error[] = sprint_f('Unknown failure reason. regenerate-thumbnails %d', $image_id);
+                            } else {
                                 wp_update_attachment_metadata($image_id, $metadata);
                             }
-                            $logstatus = "<br/>".$filename_only." - <b>Processed</b>";
-                        }else{
-                            $filename_only = basename( get_attached_file( $image_id ) );
-                            
-                            $error[]=sprintf('Attachment (<b>%s</b> - ID:%d) is not an image. Skipping',$filename_only,$image_id);
+                            $logstatus = "<br/>" . $filename_only . " - <b>Processed</b>";
+                        } else {
+                            $filename_only = basename(get_attached_file($image_id));
+
+                            $error[] = sprintf('Attachment (<b>%s</b> - ID:%d) is not an image. Skipping', $filename_only, $image_id);
                         }
                     }
-                    
                 } else {
                     $error[] = "No pictures uploaded";
                 }
-                
-                
+
+
                 //
                 if (!extension_loaded('gd') && !function_exists('gd_info')) {
-                   $error[]= "<b>PHP GD library is not installed</b> on your web server. Please install in order to have the ability to resize and crop images";
+                    $error[] = "<b>PHP GD library is not installed</b> on your web server. Please install in order to have the ability to resize and crop images";
                 }
                 //increment offset
                 $result = $offset + 1;
-                echo json_encode(array('offset'=>($offset+1),'error'=>$error,'logstatus'=>$logstatus));
+                echo json_encode(array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'startTime' => $_POST['startTime']));
                 break;
         }
         /* Restore original Post Data */
@@ -185,6 +183,7 @@ class cc {
 
         wp_die();
     }
+
 //    Admin menu calback
     public function create_menu() {
         global $cc_args;

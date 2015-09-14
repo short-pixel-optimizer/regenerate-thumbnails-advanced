@@ -4,7 +4,7 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://turcuciprian.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 0.8.2.4
+  Version: 0.8.2.5
   Author: turcuciprian
   Author URI: http://turcuciprian.com
   License: GPLv2 or later
@@ -19,6 +19,7 @@ class cc {
     public function start() {
         //create admin menu page and content
         add_action('admin_menu', array($this, 'create_menu'));
+        add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array($this,'add_settings_link') );
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin'));
         //ajax callback for button click
         add_action('wp_ajax_rta_ajax', array($this, 'ajax_callback'));
@@ -189,7 +190,7 @@ class cc {
         global $cc_args;
         $args = $cc_args;
 //         Add a new submenu under Tools:
-        add_options_page(__('reGenerate Thumbnails Advanced', 'rta_id'), __('rGT Adv', 'rta_id'), 'administrator', 'regenerate_thumbnails_advanced', array($this, 'create_page_callback'));
+        add_options_page(__('reGenerate Thumbnails Advanced', 'rta_id'), __('Regenerate Thumbnails', 'rta_id'), 'administrator', 'regenerate_thumbnails_advanced', array($this, 'create_page_callback'));
         return true;
     }
 
@@ -261,6 +262,14 @@ class cc {
 
         echo $content;
     }
+    
+
+public function add_settings_link ( $links ) {
+ $mylinks = array(
+ '<a href="' . admin_url( 'options-general.php?page=regenerate_thumbnails_advanced' ) . '">Settings</a>',
+ );
+return array_merge( $links, $mylinks );
+}
 
 }
 

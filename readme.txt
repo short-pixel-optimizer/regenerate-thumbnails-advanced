@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: regenerate, thumbnails, advanced, easy, day, weeek, month
 Requires at least: 4.0 
 Tested up to: 4.3
-Stable tag: 0.8.2.4
+Stable tag: 0.8.2.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,6 +82,10 @@ The script stops, it does not run in the background
 *Added time (in seconds) to each processed image - You can see how long each image took
 *Error log status changes at the end from Processing to "No errors" if there are no errors.
 
+= 0.8.2.5 =
+*Added Settings link in plugins info page
+*Renamed submenu page to Regenerate Thumbnails under Settings
+
 == Upgrade Notice ==
 
 = 0.7 =
@@ -103,6 +107,9 @@ No issuse with this version that require attention. Small update change
 No issuse with this version that require attention. Small update change. It's basically a feature, so unless you want it, the older version works great.
 
 = 0.8.2.3 =
+No issuse with this version that require attention. Small update change. It's basically a feature, so unless you want it, the older version works great.
+
+= 0.8.2.4 =
 No issuse with this version that require attention. Small update change. It's basically a feature, so unless you want it, the older version works great.
 
 = 0.8.2.4 =

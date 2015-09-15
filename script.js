@@ -98,8 +98,8 @@ jQuery(document).ready(function ($) {
                 var offset = 0;
                 var tCount = 0;
                 var rta_total = $('#rta .info .total');
+                var type = json.type;
 
-                // console.log(response);
                 switch (type) {
                     case 'general':
                         var period = $('#rta_period');
@@ -115,6 +115,7 @@ jQuery(document).ready(function ($) {
                             tCount = rta_total.html();
                         }
                         var startTime = new Date().getTime();
+                        fromTo = json.fromTo;
                         loop_ajax_request('submit', offset, tCount, period.val(), startTime, fromTo);
 
                         break;
@@ -146,7 +147,7 @@ jQuery(document).ready(function ($) {
                             var processTime = new Date().getTime() - startTime;
                             processTime = processTime / 1000;
                             //Add to log
-                            logstatus.html(logstatus.html() + json.logstatus + '- in ' + processTime + ' seconds');
+                            logstatus.html(logstatus.html() + json.logstatus + ' - in ' + processTime + ' seconds');
                             //call function again
                             if (tCount > response) {
                                 //append unique errors

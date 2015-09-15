@@ -59,17 +59,37 @@ class cc {
                             break;
                     }
                 }
+                if (!empty($date)) {
+                    $fromTo = explode('-', $date);
+                    $startDate = strtotime($fromTo[0]);
+                    $endDate = strtotime($fromTo[1]);
+                    $period_arr = array(
+                        'date_query' => array()
+                    );
+
+
+                    if (!empty($startDate) && empty($endDate)) {
+                        array_push($period_arr['date_query'], array('after' => $startDate));
+                    } elseif (!empty($endDate) && empty($startDate)) {
+                        array_push($period_arr['date_query'], array('before' => $endDate));
+                    } elseif (!empty($startDate) && !empty($endDate)) {
+                        array_push($period_arr['date_query'], array('after' => $startDate, 'before' => $endDate));
+                    }
+                }
                 $the_query = new WP_Query($args);
                 $post_count = 0;
                 if ($the_query->have_posts()) {
                     $post_count = $the_query->post_count;
                 }
-                $return_arr = array('pCount' => $post_count, 'fromTo' => $date);
+                $logstatus .= "<pre>" . print_r($args, true) . "</pre>";
+                $return_arr = array('pCount' => $post_count, 'fromTo' => $date, 'type' => $_POST['type']);
 //                return the total number of results
+
+
                 echo json_encode($return_arr);
                 break;
             case 'submit':
-                $logstatus = '';
+//                $logstatus = '';
                 $error = array();
                 if (isset($_POST['offset'])) {
                     $offset = $_POST['offset'];
@@ -112,7 +132,9 @@ class cc {
                     'orderby' => 'ID',
                     'order' => 'DESC'
                 );
-                if ($period !== 0 && isset($date)) {
+
+                if ($period != 0 && isset($date)) {
+
                     if (!empty($date)) {
                         $fromTo = explode('-', $date);
                         $startDate = strtotime($fromTo[0]);
@@ -120,6 +142,8 @@ class cc {
                         $period_arr = array(
                             'date_query' => array()
                         );
+
+
                         if (!empty($startDate) && empty($endDate)) {
                             array_push($period_arr['date_query'], array('after' => $startDate));
                         } elseif (!empty($endDate) && empty($startDate)) {
@@ -178,7 +202,7 @@ class cc {
                 //increment offset
                 $result = $offset + 1;
                 $logstatus .= "<pre>" . print_r($args, true) . "</pre>";
-                echo json_encode(array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'startTime' => $_POST['startTime'], 'fromTo' => $_POST['fromTo']));
+                echo json_encode(array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'startTime' => $_POST['startTime'], 'fromTo' => $_POST['fromTo'], 'type' => $_POST['type']));
                 break;
         }
         /* Restore original Post Data */

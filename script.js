@@ -93,6 +93,7 @@ jQuery(document).ready(function ($) {
                 //var err_arr = new Array();
                 //json response
                 var json = JSON.parse(response);
+                console.log(json);
                 var startTime = json.startTime;
                 var offset = 0;
                 var tCount = 0;
@@ -131,7 +132,6 @@ jQuery(document).ready(function ($) {
                         response = parseInt(json.offset);
                         if (tCount >= response) {
                             offset = response;
-
                             var lPercentage = offset / tCount * 100;
                             if (pbar[0]) {
                                 if (progressbar_percentage[0]) {
@@ -153,7 +153,7 @@ jQuery(document).ready(function ($) {
                                 unique_arr_append(json.error);
                                 //make a new request to the ajax call
                                 var startTime = new Date().getTime();
-                                var fromTo = json.fromTo;
+                                fromTo = json.fromTo;
                                 loop_ajax_request(type, offset, tCount, period, startTime, fromTo);
                             } else {
                                 console.log('Processing Completed!');

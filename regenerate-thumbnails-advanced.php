@@ -54,9 +54,9 @@ class cc {
                         case '3':
                             $date = '-1 month';
                             break;
-                    }
-                    if ($period !== 0 && isset($date)) {
-                        $args = array_merge($args, $period_arr);
+                        case '4':
+                            $date = $_POST['fromTo'];
+                            break;
                     }
                 }
                 $the_query = new WP_Query($args);
@@ -64,7 +64,7 @@ class cc {
                 if ($the_query->have_posts()) {
                     $post_count = $the_query->post_count;
                 }
-                $return_arr = array('pCount' => $post_count);
+                $return_arr = array('pCount' => $post_count, 'fromTo' => $date);
 //                return the total number of results
                 echo json_encode($return_arr);
                 break;
@@ -94,10 +94,10 @@ class cc {
                             break;
                         case '2':
                             $date = '-1 week';
-
                             break;
                         case '3':
                             $date = '-1 month';
+                            break;
                         case '4':
                             $date = $_POST['fromTo'];
                             break;
@@ -124,7 +124,7 @@ class cc {
                             array_push($period_arr['date_query'], array('after' => $startDate));
                         } elseif (!empty($endDate) && empty($startDate)) {
                             array_push($period_arr['date_query'], array('before' => $endDate));
-                        } else {
+                        } elseif (!empty($startDate) && !empty($endDate)) {
                             array_push($period_arr['date_query'], array('after' => $startDate, 'before' => $endDate));
                         }
                     }

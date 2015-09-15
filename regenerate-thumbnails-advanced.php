@@ -1,10 +1,9 @@
 <?php
-
 /*
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://turcuciprian.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 0.8.2.5
+  Version: 0.8.2.6
   Author: turcuciprian
   Author URI: http://turcuciprian.com
   License: GPLv2 or later
@@ -19,7 +18,7 @@ class cc {
     public function start() {
         //create admin menu page and content
         add_action('admin_menu', array($this, 'create_menu'));
-        add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array($this,'add_settings_link') );
+        add_filter('plugin_action_links_' . plugin_basename(__FILE__), array($this, 'add_settings_link'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin'));
         //ajax callback for button click
         add_action('wp_ajax_rta_ajax', array($this, 'ajax_callback'));
@@ -210,66 +209,67 @@ class cc {
     public function create_page_callback() {
         $total = 1;
         $offset = 0;
-
-        $content .= sprintf('<!--GTA wrap START -->'
-                . '<div id="rta">'
-                . '<div id="no-js">'
-                . '<h1>Javascript is not enabled or it has a error!</h1>'
-                . '<p>If there is a error in the page (most likely caused by another plugin or even the theme, the regenerate thumbnails advanced plugin will not work properly. Please fix this issue and come back here. YOU WILL NOT SEE THIS WARNING IF EVERYTHING IS WORKING FINE</p>'
-                . '</div>'
-                . '<div id="js-works" class="hidden">');
-        $content .= sprintf("<h2>%s</h2>", 'reGenerate Thumbnails Advanced');
-//        Progress bar
-        $content .= sprintf('<div id="progressbar">'
-                . '<div class="progress-label">0&#37;</div>'
-                . '</div>');
-//        Information section
-        $content .= sprintf('<div class="info">'
-                . 'Total number of images: <span class="total">0</span><br/>'
-                . 'Images processed: <span class="processed">0</span><br/>'
-//                . 'Could not process: <span class="errors">0</span> Images<br/>'
-                . '</div>');
-//        Dropdown
-        $content .= sprintf('<h3>Select a period</h3>');
-        $content .= sprintf('<select name="period" id="rta_period">');
-        //get all the images in the database
-        $content .= sprintf('<option value="0">All</option>');
-        //
-        $content .= sprintf('<option value="1">past day</option>');
-        $content .= sprintf('<option value="2">past week</option>');
-        $content .= sprintf('<option value="3">past Month</option>');
-        $content .= sprintf('</select>');
-        $content .= sprintf('<p class="submit">'
-                . '<button class="button button-primary RTA">Regenerate Thumbnails</button>'
-                . '<div class="wrap">'
-                . '<h3>Progress</h3>'
-                . '<div class="logstatus ui-widget-content">'
-                . 'Nothing processed yet'
-                . '</div>'
-                . '</div>'//where the errors show
-                . '<div class="wrap">'
-                . '<h3> Errors</h3>'
-                . '<div class="errors ui-widget-content">'
-                . 'No errors to display yet.'
-                . '</div>'//where the errors show
-                . '</p>');
-
-        $content .= sprintf('</div>'
-                . '</div>'
-                . '</div>'
-                . '<!-- Js Works End -->'
-                . '<!--GTA wrap END -->');
-
-        echo $content;
+        ?>
+        <!--GTA wrap START -->
+        <div id="rta">
+            <div id="no-js">
+                <h1>Javascript is not enabled or it has a error!</h1>
+                <p>If there is a error in the page (most likely caused by another plugin or even the theme, the regenerate thumbnails advanced plugin will not work properly. Please fix this issue and come back here. YOU WILL NOT SEE THIS WARNING IF EVERYTHING IS WORKING FINE</p>
+            </div>
+            <div id="js-works" class="hidden">
+                <h2>reGenerate Thumbnails Advanced</h2>
+                <!--Progress bar-->
+                <div id="progressbar">
+                    <div class="progress-label">0&#37;</div>
+                </div>
+                <!--Information section-->
+                <div class="info">
+                    Total number of images: <span class="total">0</span><br/>
+                    Images processed: <span class="processed">0</span><br/>
+                                   <!--Could not process: <span class="errors">0</span> Images<br/>-->
+                </div>
+                <!--Dropdown-->
+                <h3>Select a period</h3>
+                <select name="period" id="rta_period">
+                    <!--get all the images in the database-->
+                    <option value="0">All</option>
+                    <option value="1">Past Day</option>
+                    <option value="2">Past Week</option>
+                    <option value="3">Past Month</option>
+                    <option value="4">Between Dates</option>
+                </select>
+                <div class="fromTo hidden">
+                    <p><span>Start Date:<br/><input type="text" class="datepicker start" readonly /></span></p>
+                    <p><span>End Date:<br/><input type="text" class="datepicker end"  readonly /></span></p>
+                </div>
+                <p class="submit">
+                    <button class="button button-primary RTA">Regenerate Thumbnails</button>
+                <div class="wrap">
+                    <h3>Progress</h3>
+                    <div class="logstatus ui-widget-content">
+                        Nothing processed yet
+                    </div>
+                </div><!--where the errors show -->
+                <div class="wrap">
+                    <h3> Errors</h3>
+                    <div class="errors ui-widget-content">
+                        No errors to display yet
+                    </div><!-- where the errors show -->
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Js Works End -->
+        <!--GTA wrap END -->
+        <?php
     }
-    
 
-public function add_settings_link ( $links ) {
- $mylinks = array(
- '<a href="' . admin_url( 'options-general.php?page=regenerate_thumbnails_advanced' ) . '">Settings</a>',
- );
-return array_merge( $links, $mylinks );
-}
+    public function add_settings_link($links) {
+        $mylinks = array(
+            '<a href="' . admin_url('options-general.php?page=regenerate_thumbnails_advanced') . '">Settings</a>',
+        );
+        return array_merge($links, $mylinks);
+    }
 
 }
 

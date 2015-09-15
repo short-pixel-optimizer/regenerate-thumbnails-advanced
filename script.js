@@ -16,6 +16,21 @@ jQuery(document).ready(function ($) {
         });
     }
     var rta_butt = $('.button.RTA');
+
+    var period = $('#rta_period');
+    var fromTo = $('.fromTo');
+    if (period[0] && fromTo[0]) {
+        period.change(function (value) {
+
+            if (parseInt($(this).val()) === 4) {
+                console.log($(this).val());
+                fromTo.removeClass('hidden');
+            } else {
+                fromTo.addClass('hidden');
+            }
+        });
+    }
+
     if (rta_butt[0]) {
         var logstatus = $('#rta .logstatus');
         var errstatus = $('#rta .errors');
@@ -121,7 +136,7 @@ jQuery(document).ready(function ($) {
                             } else {
                                 console.log('Processing Completed!');
                                 var errStatus = $('#rta .errors');
-                                if(errStatus.html()=="Processing..."){
+                                if (errStatus.html() == "Processing...") {
                                     errStatus.html('No Errors.');
                                 }
                                 //the loop ended show errors and messages

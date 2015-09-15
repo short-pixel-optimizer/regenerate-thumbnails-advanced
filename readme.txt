@@ -88,6 +88,8 @@ The script stops, it does not run in the background
 
 = 0.8.2.6 =
 *Added the possibility to choose a start and end date from where to regenerate the thumbnails from
+* Added new style
+* Added datepickers
 
 == Upgrade Notice ==
 
@@ -119,4 +121,4 @@ No issuse with this version that require attention. Small update change. It's ba
 No issuse with this version that require attention. Small update change. It's basically a feature, so unless you want it, the older version works great.
 
 = 0.8.2.6 =
-No issuse with this version that require attention. Small update change. It's basically a feature, so unless you want it, the older version works great.
+This version changes the style and adds a bit of functionality to the general settings (a date start-end option to choose from)

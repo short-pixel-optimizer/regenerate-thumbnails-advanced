@@ -20,13 +20,26 @@ jQuery(document).ready(function ($) {
     var period = $('#rta_period');
     var fromTo = $('.fromTo');
     if (period[0] && fromTo[0]) {
+        var datepickerInputs = $('.datepicker');
+        if (datepickerInputs[0]) {
+            datepickerInputs.datepicker({
+                onSelect: function (valTo) {//min/max dates set
+                    var dateStart = $('.datepicker.start');
+                    var dateEnd = $('.datepicker.end');
+                    if ($(this).hasClass('start')) {
+                        dateEnd.datepicker("change", {minDate: valTo});
+                    } else {
+                        dateStart.datepicker("change", {maxDate: valTo});
+                    }
+                }
+            });
+        }
         period.change(function (value) {
-
+            //if the date from-to option is selected
             if (parseInt($(this).val()) === 4) {
-                console.log($(this).val());
-                fromTo.removeClass('hidden');
+                fromTo.removeClass('hidden');//show the fields
             } else {
-                fromTo.addClass('hidden');
+                fromTo.addClass('hidden');//Hide fields / keep the fields hidden
             }
         });
     }
@@ -46,8 +59,15 @@ jQuery(document).ready(function ($) {
             var period = $('#rta_period');
             var startTime = new Date().getTime();
 
+            var dateStart = $('.datepicker.start');
+            var dateEnd = $('.datepicker.end');
+            var fromTo = '';
+            if (dateStart.val() != '' || dateEnd.val() != '') {
+                fromTo = dateStart.val() + '-' + dateEnd.val();
+            }
+
             //    First Time Request
-            loop_ajax_request('general', 0, -1, period.val(), startTime);
+            loop_ajax_request('general', 0, -1, period.val(), startTime, fromTo);
 
 
         }
@@ -56,7 +76,7 @@ jQuery(document).ready(function ($) {
         // Main ajax call
         //
         //
-        function loop_ajax_request(type, offset, tCount, period, startTime) {
+        function loop_ajax_request(type, offset, tCount, period, startTime, fromTo) {
 
             //tha ajax data
             var data = {
@@ -64,7 +84,8 @@ jQuery(document).ready(function ($) {
                 'type': type,
                 'startTime': startTime,
                 'period': period,
-                'offset': offset
+                'offset': offset,
+                'fromTo': fromTo
             };
             // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
             $.post(ajaxurl, data, function (response) {
@@ -93,7 +114,7 @@ jQuery(document).ready(function ($) {
                             tCount = rta_total.html();
                         }
                         var startTime = new Date().getTime();
-                        loop_ajax_request('submit', offset, tCount, period.val(), startTime);
+                        loop_ajax_request('submit', offset, tCount, period.val(), startTime, fromTo);
 
                         break;
                     case 'submit':
@@ -132,7 +153,8 @@ jQuery(document).ready(function ($) {
                                 unique_arr_append(json.error);
                                 //make a new request to the ajax call
                                 var startTime = new Date().getTime();
-                                loop_ajax_request(type, offset, tCount, period, startTime);
+                                var fromTo = json.fromTo;
+                                loop_ajax_request(type, offset, tCount, period, startTime, fromTo);
                             } else {
                                 console.log('Processing Completed!');
                                 var errStatus = $('#rta .errors');

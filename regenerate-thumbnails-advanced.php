@@ -56,15 +56,7 @@ class cc {
                             break;
                     }
                     if ($period !== 0 && isset($date)) {
-                        $period_arr = array(
-                            'date_query' => array(
-                                array(
-                                    'after' => $date,
-                                )
-                        ));
-//                        print_r($date_arr);
                         $args = array_merge($args, $period_arr);
-//                        print_r($args);
                     }
                 }
                 $the_query = new WP_Query($args);
@@ -106,17 +98,9 @@ class cc {
                             break;
                         case '3':
                             $date = '-1 month';
-
+                        case '4':
+                            $date = $_POST['fromTo'];
                             break;
-                    }
-                    if ($period !== 0 && isset($date)) {
-                        $period_arr = array(
-                            'date_query' => array(
-                                array(
-                                    'after' => $date,
-                                )
-                        ));
-                        $args = array_merge($args, $period_arr);
                     }
                 }
 
@@ -128,6 +112,24 @@ class cc {
                     'orderby' => 'ID',
                     'order' => 'DESC'
                 );
+                if ($period !== 0 && isset($date)) {
+                    if (!empty($date)) {
+                        $fromTo = explode('-', $date);
+                        $startDate = strtotime($fromTo[0]);
+                        $endDate = strtotime($fromTo[1]);
+                        $period_arr = array(
+                            'date_query' => array()
+                        );
+                        if (!empty($startDate) && empty($endDate)) {
+                            array_push($period_arr['date_query'], array('after' => $startDate));
+                        } elseif (!empty($endDate) && empty($startDate)) {
+                            array_push($period_arr['date_query'], array('before' => $endDate));
+                        } else {
+                            array_push($period_arr['date_query'], array('after' => $startDate, 'before' => $endDate));
+                        }
+                    }
+                    $args = array_merge($args, $period_arr);
+                }
                 $the_query = new WP_Query($args);
                 if ($the_query->have_posts()) {
                     while ($the_query->have_posts()) {
@@ -175,7 +177,8 @@ class cc {
                 }
                 //increment offset
                 $result = $offset + 1;
-                echo json_encode(array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'startTime' => $_POST['startTime']));
+                $logstatus .= "<pre>" . print_r($args, true) . "</pre>";
+                echo json_encode(array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'startTime' => $_POST['startTime'], 'fromTo' => $_POST['fromTo']));
                 break;
         }
         /* Restore original Post Data */
@@ -200,6 +203,7 @@ class cc {
             }
         }
         wp_enqueue_script('jquery-ui-progressbar');
+        wp_enqueue_script('jquery-ui-datepicker');
         wp_enqueue_style('rta-jquery-ui', plugin_dir_url(__FILE__) . 'jquery-ui.min.css');
         wp_enqueue_style('rta', plugin_dir_url(__FILE__) . 'style.css');
         wp_enqueue_script('rta', plugin_dir_url(__FILE__) . 'script.js');

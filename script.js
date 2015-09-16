@@ -161,6 +161,8 @@ jQuery(document).ready(function ($) {
                             } else {
                                 console.log('Processing Completed!');
                                 var errStatus = $('#rta .errors');
+                                var logstatus = $('#rta .logstatus');
+                                logstatus.append('<br/>Completed !')
                                 if (errStatus.html() == "Processing...") {
                                     errStatus.html('No Errors.');
                                 }

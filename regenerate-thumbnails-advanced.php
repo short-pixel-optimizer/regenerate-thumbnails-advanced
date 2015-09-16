@@ -69,9 +69,9 @@ class cc {
 
 
                     if (!empty($startDate) && empty($endDate)) {
-                        array_push($period_arr['date_query'], array('after' => $startDate));
+                        array_push($period_arr['date_query'], array('after' => $startDate,'inclusive'=>true));
                     } elseif (!empty($endDate) && empty($startDate)) {
-                        array_push($period_arr['date_query'], array('before' => $endDate));
+                        array_push($period_arr['date_query'], array('before' => $endDate,'inclusive'=>true));
                     } elseif (!empty($startDate) && !empty($endDate)) {
                         array_push($period_arr['date_query'], array('after' => $startDate, 'before' => $endDate,'inclusive'=>true));
                     }

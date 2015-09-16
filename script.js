@@ -147,8 +147,9 @@ jQuery(document).ready(function ($) {
                             var processTime = new Date().getTime() - startTime;
                             processTime = processTime / 1000;
                             //Add to log
-                            if (json.logstatus!==null) {
-                                logstatus.html(logstatus.html() + json.logstatus + ' - in ' + processTime + ' seconds');
+                            var logstatus = $('#rta .logstatus');
+                            if (json.logstatus !== null && logstatus[0]) {
+                                logstatus.append(json.logstatus + ' - in ' + processTime + ' seconds');
                             }
                             //call function again
                             if (tCount > response) {

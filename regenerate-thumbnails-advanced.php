@@ -61,19 +61,17 @@ class cc {
                 }
                 if (!empty($date)) {
                     $fromTo = explode('-', $date);
-                    $startDate = strtotime($fromTo[0]);
-                    $endDate = strtotime($fromTo[1]);
-                    $period_arr = array(
-                        'date_query' => array()
-                    );
+                    $startDate = date("m/d/Y", strtotime($fromTo[0] . " -1 day"));
+                    $endDate = date("m/d/Y", strtotime($fromTo[1] . " +1 day"));
+
 
 
                     if (!empty($startDate) && empty($endDate)) {
-                        array_push($period_arr['date_query'], array('after' => $startDate,'inclusive'=>true));
+                        $args['date_query'] = array('after' => $startDate);
                     } elseif (!empty($endDate) && empty($startDate)) {
-                        array_push($period_arr['date_query'], array('before' => $endDate,'inclusive'=>true));
+                        $args['date_query'] = array('before' => $endDate);
                     } elseif (!empty($startDate) && !empty($endDate)) {
-                        array_push($period_arr['date_query'], array('after' => $startDate, 'before' => $endDate,'inclusive'=>true));
+                        $args['date_query'] = array('after' => $startDate, 'before' => $endDate);
                     }
                 }
                 $the_query = new WP_Query($args);
@@ -81,7 +79,9 @@ class cc {
                 if ($the_query->have_posts()) {
                     $post_count = $the_query->post_count;
                 }
-//                $logstatus .= "<pre>" . print_r($args, true) . "</pre>";
+                wp_reset_query();
+                wp_reset_postdata();
+//                $logstatus .= "<pre>" . print_r($the_query, true) . "</pre>";
                 $return_arr = array('pCount' => $post_count, 'fromTo' => $date, 'type' => $_POST['type'], 'period' => $period);
 //                return the total number of results
 
@@ -131,30 +131,26 @@ class cc {
                     'post_status' => 'any',
                     'posts_per_page' => 1,
                     'offset' => $offset,
-                    'orderby' => 'ID',
-                    'order' => 'DESC'
                 );
 
                 if ($period != 0 && isset($date)) {
 
                     if (!empty($date)) {
                         $fromTo = explode('-', $date);
-                        $startDate = $fromTo[0];
-                        $endDate = $fromTo[1];
-                        $period_arr = array(
-                            'date_query' => array()
-                        );
+                        $startDate = date("m/d/Y", strtotime($fromTo[0] . " -1 day"));
+                        $endDate = date("m/d/Y", strtotime($fromTo[1] . " +1 day"));
+
 
 
                         if (!empty($startDate) && empty($endDate)) {
-                            array_push($period_arr['date_query'], array('after' => $startDate, 'inclusive' => true));
+                            $args['date_query'] = array('after' => $startDate);
                         } elseif (!empty($endDate) && empty($startDate)) {
-                            array_push($period_arr['date_query'], array('before' => $endDate, 'inclusive' => true));
+                            $args['date_query'] = array('before' => $endDate);
                         } elseif (!empty($startDate) && !empty($endDate)) {
-                            array_push($period_arr['date_query'], array('after' => $startDate, 'before' => $endDatem, 'inclusive' => true));
+                            $args['date_query'] = array('after' => $startDate, 'before' => $endDate);
                         }
                     }
-                    $args = array_merge($args, $period_arr);
+//                    $args = array_merge($args, $period_arr);
                 }
                 $the_query = new WP_Query($args);
                 if ($the_query->have_posts()) {
@@ -195,20 +191,20 @@ class cc {
                 } else {
                     $error[] = "No pictures uploaded";
                 }
-
-
-                //
                 if (!extension_loaded('gd') && !function_exists('gd_info')) {
                     $error[] = "<b>PHP GD library is not installed</b> on your web server. Please install in order to have the ability to resize and crop images";
                 }
                 //increment offset
                 $result = $offset + 1;
-//                $logstatus .= "<br/>xxxxxxxxxxxx<pre>" . print_r($args, true) . "</pre>";
+//                $logstatus .= "<br/>".$the_query->post->ID;
+//                $logstatus .= "<br/><pre>" . print_r($args, true) . "</pre>";
                 echo json_encode(array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'startTime' => $_POST['startTime'], 'fromTo' => $_POST['fromTo'], 'type' => $_POST['type'], 'period' => $period));
                 break;
         }
         /* Restore original Post Data */
+        wp_reset_query();
         wp_reset_postdata();
+
 
         wp_die();
     }
@@ -269,8 +265,8 @@ class cc {
                     <option value="4">Between Dates</option>
                 </select>
                 <div class="fromTo hidden">
-                    <p><span>Start Date:<br/><input type="text" class="datepicker start" readonly /></span></p>
-                    <p><span>End Date:<br/><input type="text" class="datepicker end"  readonly /></span></p>
+                    <p><span>Start Date(including):<br/><input type="text" class="datepicker start" readonly /></span></p>
+                    <p><span>End Date(including):<br/><input type="text" class="datepicker end"  readonly /></span></p>
                 </div>
                 <p class="submit">
                     <button class="button button-primary RTA">Regenerate Thumbnails</button>

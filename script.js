@@ -62,7 +62,7 @@ jQuery(document).ready(function ($) {
             var dateStart = $('.datepicker.start');
             var dateEnd = $('.datepicker.end');
             var fromTo = '';
-            if (dateStart.val() != '' || dateEnd.val() != '') {
+            if (dateStart.val() !== '' || dateEnd.val() !== '') {
                 fromTo = dateStart.val() + '-' + dateEnd.val();
             }
 
@@ -93,7 +93,7 @@ jQuery(document).ready(function ($) {
                 //var err_arr = new Array();
                 //json response
                 var json = JSON.parse(response);
-                console.log(json);
+//                console.log(json);
                 var startTime = json.startTime;
                 var offset = 0;
                 var tCount = 0;
@@ -115,8 +115,8 @@ jQuery(document).ready(function ($) {
                             tCount = rta_total.html();
                         }
                         var startTime = new Date().getTime();
-                        fromTo = json.fromTo;
-                        loop_ajax_request('submit', offset, tCount, period.val(), startTime, fromTo);
+                        var fromTo = json.fromTo;
+                        loop_ajax_request('submit', offset, tCount, json.period, startTime, fromTo);
 
                         break;
                     case 'submit':
@@ -147,7 +147,9 @@ jQuery(document).ready(function ($) {
                             var processTime = new Date().getTime() - startTime;
                             processTime = processTime / 1000;
                             //Add to log
-                            logstatus.html(logstatus.html() + json.logstatus + ' - in ' + processTime + ' seconds');
+                            if (json.logstatus!==null) {
+                                logstatus.html(logstatus.html() + json.logstatus + ' - in ' + processTime + ' seconds');
+                            }
                             //call function again
                             if (tCount > response) {
                                 //append unique errors
@@ -155,7 +157,7 @@ jQuery(document).ready(function ($) {
                                 //make a new request to the ajax call
                                 var startTime = new Date().getTime();
                                 fromTo = json.fromTo;
-                                loop_ajax_request(type, offset, tCount, period, startTime, fromTo);
+                                loop_ajax_request(type, offset, tCount, json.period, startTime, fromTo);
                             } else {
                                 console.log('Processing Completed!');
                                 var errStatus = $('#rta .errors');

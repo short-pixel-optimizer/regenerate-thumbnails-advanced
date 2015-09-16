@@ -81,8 +81,8 @@ class cc {
                 if ($the_query->have_posts()) {
                     $post_count = $the_query->post_count;
                 }
-                $logstatus .= "<pre>" . print_r($args, true) . "</pre>";
-                $return_arr = array('pCount' => $post_count, 'fromTo' => $date, 'type' => $_POST['type']);
+//                $logstatus .= "<pre>" . print_r($args, true) . "</pre>";
+                $return_arr = array('pCount' => $post_count, 'fromTo' => $date, 'type' => $_POST['type'], 'period' => $period);
 //                return the total number of results
 
 
@@ -105,6 +105,7 @@ class cc {
                         'orderby' => 'ID',
                         'order' => 'DESC'
                     );
+
                     switch ($period) {
                         case '0':
                             break;
@@ -119,6 +120,7 @@ class cc {
                             $date = '-1 month';
                             break;
                         case '4':
+
                             $date = $_POST['fromTo'];
                             break;
                     }
@@ -137,8 +139,8 @@ class cc {
 
                     if (!empty($date)) {
                         $fromTo = explode('-', $date);
-                        $startDate = strtotime($fromTo[0]);
-                        $endDate = strtotime($fromTo[1]);
+                        $startDate = $fromTo[0];
+                        $endDate = $fromTo[1];
                         $period_arr = array(
                             'date_query' => array()
                         );
@@ -201,8 +203,8 @@ class cc {
                 }
                 //increment offset
                 $result = $offset + 1;
-                $logstatus .= "<pre>" . print_r($args, true) . "</pre>";
-                echo json_encode(array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'startTime' => $_POST['startTime'], 'fromTo' => $_POST['fromTo'], 'type' => $_POST['type']));
+//                $logstatus .= "<br/>xxxxxxxxxxxx<pre>" . print_r($args, true) . "</pre>";
+                echo json_encode(array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'startTime' => $_POST['startTime'], 'fromTo' => $_POST['fromTo'], 'type' => $_POST['type'], 'period' => $period));
                 break;
         }
         /* Restore original Post Data */

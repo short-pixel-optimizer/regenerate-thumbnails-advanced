@@ -48,6 +48,7 @@ The script stops, it does not run in the background
 1. The plugin page where it all happens
 2. View of the dropdown options
 3. Where you find everything
+4. From - To (between dates) Option
 
 == Changelog ==
 

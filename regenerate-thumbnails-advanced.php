@@ -137,7 +137,7 @@ class cc {
 
                     if (!empty($date)) {
                         $fromTo = explode('-', $date);
-                        $startDate = date("m/d/Y", strtotime($fromTo[0] . " -1 day"));
+                        $startDate = date("m/d/Y", strtotime($fromTo[0]));
                         $endDate = date("m/d/Y", strtotime($fromTo[1] . " +1 day"));
 
 

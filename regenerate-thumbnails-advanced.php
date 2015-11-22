@@ -3,7 +3,7 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://turcuciprian.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 0.8.2.6
+  Version: 0.9
   Author: turcuciprian
   Author URI: http://turcuciprian.com
   License: GPLv2 or later
@@ -302,3 +302,22 @@ class cc {
 /* var @cc cc */
 $cc = new cc();
 $cc->start();
+  add_filter('image_downsize','test_image_downsize',true, 10,2);
+function test_image_downsize($bool,$imgid,$size){
+  $meta = wp_get_attachment_metadata($imgid);
+  $upload_dir = wp_upload_dir()['path'].$meta['file'];
+  echo "<pre>";
+  // print_r($meta);
+  // echo($meta['sizes']['rtatest']['file']);
+  $file_url = wp_get_attachment_url($imgid);
+
+  $upload_dir = str_replace($meta['file'],$meta['sizes']['rtatest']['file'],$upload_dir);
+  if(!file_exists($file_url)){
+    echo "does not exist";
+  }
+  // echo $file_url;
+  echo "</pre>";
+  // exit;
+  return $imgid;
+
+}

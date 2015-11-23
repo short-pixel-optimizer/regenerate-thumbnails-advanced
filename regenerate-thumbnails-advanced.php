@@ -302,22 +302,43 @@ class cc {
 /* var @cc cc */
 $cc = new cc();
 $cc->start();
+//regenerate images on the fly (when they don't exist and it's needed)
+
+//add a filter for image_downsize
   add_filter('image_downsize','test_image_downsize',true, 10,2);
+
+//where all the on the fly magic happens
 function test_image_downsize($bool,$imgid,$size){
+  // Get the current image metadata
   $meta = wp_get_attachment_metadata($imgid);
-  $upload_dir = wp_upload_dir()['path'].$meta['file'];
-  echo "<pre>";
+  //get the path to the image
+  $fullsizepath = wp_upload_dir()['path'].$meta['file'];
+
+
+  // replace the main image with the thumb image name
+  $upload_dir = str_replace($meta['file'],$meta['sizes']['rtatest']['file'],$upload_dir);
+
+  // echo "<pre>";
   // print_r($meta);
   // echo($meta['sizes']['rtatest']['file']);
   $file_url = wp_get_attachment_url($imgid);
+  // echo "<pre>";
+  // print_r($meta['sizes'][$size]);
 
-  $upload_dir = str_replace($meta['file'],$meta['sizes']['rtatest']['file'],$upload_dir);
+if(!empty($meta['sizes'][$size])){
   if(!file_exists($file_url)){
-    echo "does not exist";
+    // print_r($meta);
+    @set_time_limit(900);
+    // $metadata = wp_generate_attachment_metadata($imgid, $fullsizepath);
+    // print_r($metadata);
   }
+}
+  // if(!file_exists($file_url)){
+    // echo "does not exist";
+  // }
   // echo $file_url;
-  echo "</pre>";
+  // echo "</pre>";
   // exit;
-  return $imgid;
+  return array($file_url,$meta['sizes'][$size]['width'],$meta['sizes'][$size]['height']);
 
 }

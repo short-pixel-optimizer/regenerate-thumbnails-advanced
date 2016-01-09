@@ -284,6 +284,17 @@ class cc {
                     </p>
                 </div>
             </div>
+            <?php
+            $rotf = get_option( $option, $default );
+            ?>
+            <div class="otf">
+              <h3> When needed</h3>
+              <input type="checkbox" name="rotf" value="" <?php checked('on',$rotf);?> /> Regenerate on the fly
+              <p>
+                When needed, when user loads a page that does not have the thumbnail generated previously, it is automatically regenerated. WARNING, this may slow down server load
+              </p>
+
+            </div>
         </div>
         <!-- Js Works End -->
         <!--GTA wrap END -->
@@ -305,18 +316,19 @@ $cc->start();
 //regenerate images on the fly (when they don't exist and it's needed)
 
 //add a filter for image_downsize
-  add_filter('image_downsize','test_image_downsize',true, 10,2);
+  // add_filter('image_downsize','test_image_downsize',true, 10,2);
 
 //where all the on the fly magic happens
 function test_image_downsize($bool,$imgid,$size){
+
   // Get the current image metadata
   $meta = wp_get_attachment_metadata($imgid);
   //get the path to the image
-  $fullsizepath = wp_upload_dir()['path'].$meta['file'];
-
-
+  if(isset($meta['file']) && !empty($meta['file'])){
+    $fullsizepath = wp_upload_dir()['path'].$meta['file'];
+  }
   // replace the main image with the thumb image name
-  $upload_dir = str_replace($meta['file'],$meta['sizes']['rtatest']['file'],$upload_dir);
+  // $upload_dir = str_replace($meta['file'],$meta['sizes']['rtatest']['file'],$upload_dir);
 
   // echo "<pre>";
   // print_r($meta);
@@ -325,8 +337,9 @@ function test_image_downsize($bool,$imgid,$size){
   // echo "<pre>";
   // print_r($meta['sizes'][$size]);
 
-if(!empty($meta['sizes'][$size])){
+if(!isset($meta['sizes'][$size]) && !empty($meta['sizes'][$size])){
   if(!file_exists($file_url)){
+    exit;
     // print_r($meta);
     @set_time_limit(900);
     // $metadata = wp_generate_attachment_metadata($imgid, $fullsizepath);
@@ -337,8 +350,10 @@ if(!empty($meta['sizes'][$size])){
     // echo "does not exist";
   // }
   // echo $file_url;
-  // echo "</pre>";
-  // exit;
+  echo "<pre>";
+  // print_r(array($file_url,$meta['sizes'][$size['width'],$meta['sizes'][$size]['height']));
+  echo "</pre>";
+  exit;
   return array($file_url,$meta['sizes'][$size]['width'],$meta['sizes'][$size]['height']);
 
 }

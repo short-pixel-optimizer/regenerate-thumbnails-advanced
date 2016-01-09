@@ -53,3 +53,7 @@
     float:left;
     width:46%;
 }
+#rta .otf{
+  display: inline-block;
+  margin:20px 0 0 0;
+}

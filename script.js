@@ -16,6 +16,7 @@ jQuery(document).ready(function ($) {
         });
     }
     var rta_butt = $('.button.RTA');
+    var rtaOtf = $('.rtaOtf');
 
     var period = $('#rta_period');
     var fromTo = $('.fromTo');

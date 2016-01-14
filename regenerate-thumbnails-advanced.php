@@ -3,7 +3,7 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://turcuciprian.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 0.9
+  Version: 1.0
   Author: turcuciprian
   Author URI: http://turcuciprian.com
   License: GPLv2 or later
@@ -22,6 +22,20 @@ class cc {
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin'));
         //ajax callback for button click
         add_action('wp_ajax_rta_ajax', array($this, 'ajax_callback'));
+        add_action('wp_ajax_rtaOtfAjax', array($this, 'ajaxOtfCallback'));
+    }
+
+    public function ajaxOtfCallback() {
+        if (isset($_POST['tempValue'])) {
+            $tempValue = $_POST['tempValue'];
+            return $tempValue."x";
+            if(empty($tempValue)){
+                $tempValue = 1;
+            }
+            update_option('rtaOTF', $tempValue);
+            return $tempValue."x";
+            
+        }
     }
 
     public function ajax_callback() {
@@ -288,7 +302,7 @@ class cc {
                 ?>
                 <div class="otf">
                   <h3> When needed</h3>
-                  <input type="checkbox" name="rotf" value="" <?php checked('on',$rotf);?> /> Regenerate on the fly
+                  <input type="checkbox" class="rtaOtf" name="rtaOtf" value="" <?php checked('checked',$rotf);?> /> Regenerate on the fly
                   <p>
                     When needed, when user loads a page that does not have the thumbnail generated previously, it is automatically regenerated. WARNING, this may slow down server load
                   </p>

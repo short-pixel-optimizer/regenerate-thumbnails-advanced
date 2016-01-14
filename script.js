@@ -7,7 +7,12 @@ jQuery(document).ready(function ($) {
     var err_arr = [];
     var errors_obj = $('#rta .errors');
     var pbar = $("#rta #progressbar");
-
+    var rtaOtf = $('.rtaOtf');
+    if(rtaOtf[0]){
+     rtaOtf.click(function(){
+       otfAjaxRequest($(this).attr('checked'));  
+     });   
+    }
 //    if the progressbar id exists
     if (pbar[0]) {
 //        set the initial value to 0
@@ -185,6 +190,20 @@ jQuery(document).ready(function ($) {
                         }
                         break;
                 }
+            });
+        }
+        //OTF ajax call
+        function otfAjaxRequest(tempValue) {
+
+            //tha ajax data
+            var data = {
+                'action': 'rtaOtfAjax',
+                'tempValue': tempValue
+            };
+            // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+            $.post(ajaxurl, data, function (response) {
+                console.log(response);
+                
             });
         }
         // Append only unique array values

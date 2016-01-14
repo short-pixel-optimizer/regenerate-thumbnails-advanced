@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: regenerate, thumbnails, advanced, easy, day, weeek, month
 Requires at least: 4.0 
 Tested up to: 4.3.1
-Stable tag: 0.8.2.6
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,7 @@ Features:
 *   The period is last day, last week, last month or all
 *   Clean simple interface where you have a progress bar showing you the percentage of images regenerated
 *   You get to see the total number of images affected by your period, as well as the images afected so far when processing
+*   Regenerate thubnails on the fly
 
 == Installation ==
 
@@ -92,6 +93,9 @@ The script stops, it does not run in the background
 * Added new style
 * Added datepickers
 
+= 1.0 =
+*Regenerate on the fly
+
 == Upgrade Notice ==
 
 = 0.7 =
@@ -123,3 +127,6 @@ No issuse with this version that require attention. Small update change. It's ba
 
 = 0.8.2.6 =
 This version changes the style and adds a bit of functionality to the general settings (a date start-end option to choose from)
+
+= 1.0 =
+This version 

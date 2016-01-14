@@ -26,15 +26,9 @@ class cc {
     }
 
     public function ajaxOtfCallback() {
-        if (isset($_POST['tempValue'])) {
+        if (isset($_POST['otfVal'])) {
             $tempValue = $_POST['tempValue'];
-            return $tempValue."x";
-            if(empty($tempValue)){
-                $tempValue = 1;
-            }
-            update_option('rtaOTF', $tempValue);
-            return $tempValue."x";
-            
+            update_option('rtaOTF', $tempValue);    
         }
     }
 
@@ -376,6 +370,7 @@ if(!isset($meta['sizes'][$size]) && !empty($meta['sizes'][$size])){
 add_action('init','rtaInit');
 function rtaInit(){
   $rotf = get_option( 'rtaOTF');
+  echo $rotf;
   if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) && $rotf=='on') {
 
   	add_filter( 'image_downsize', 'gambit_otf_regen_thumbs_media_downsize', 10, 3 );

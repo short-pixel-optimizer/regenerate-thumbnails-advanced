@@ -198,7 +198,8 @@ jQuery(document).ready(function ($) {
             //tha ajax data
             var data = {
                 'action': 'rtaOtfAjax',
-                'tempValue': tempValue
+                'tempValue': tempValue,
+                'otfVal': 1
             };
             // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
             $.post(ajaxurl, data, function (response) {

@@ -27,8 +27,13 @@ class cc {
 
     public function ajaxOtfCallback() {
         if (isset($_POST['otfVal'])) {
+          $tempValue = '';
+          if(!empty($_POST['tempValue'])){
             $tempValue = $_POST['tempValue'];
-            update_option('rtaOTF', $tempValue);
+          }
+
+              update_option('rtaOTF', $tempValue);
+              echo "updated!";
         }
     }
 
@@ -227,7 +232,7 @@ class cc {
     }
 
     function enqueue_admin($hook) {
-        if (!isset($_GET['page']) && isset($hook)) {
+        if (isset($_GET['page']) && isset($hook)) {
             if ($_GET['page'] !== 'regenerate_thumbnails_advanced' && $hook != 'options-general.php ') {
                 return;
             }
@@ -251,46 +256,7 @@ class cc {
                 <p>If there is a error in the page (most likely caused by another plugin or even the theme, the regenerate thumbnails advanced plugin will not work properly. Please fix this issue and come back here. YOU WILL NOT SEE THIS WARNING IF EVERYTHING IS WORKING FINE</p>
             </div>
             <div id="js-works" class="hidden">
-                <h2>reGenerate Thumbnails Advanced</h2>
-                <!--Progress bar-->
-                <div id="progressbar">
-                    <div class="progress-label">0&#37;</div>
-                </div>
-                <!--Information section-->
-                <div class="info">
-                    Total number of images: <span class="total">0</span><br/>
-                    Images processed: <span class="processed">0</span><br/>
-                                   <!--Could not process: <span class="errors">0</span> Images<br/>-->
-                </div>
-                <!--Dropdown-->
-                <h3>Select a period</h3>
-                <select name="period" id="rta_period">
-                    <!--get all the images in the database-->
-                    <option value="0">All</option>
-                    <option value="1">Past Day</option>
-                    <option value="2">Past Week</option>
-                    <option value="3">Past Month</option>
-                    <option value="4">Between Dates</option>
-                </select>
-                <div class="fromTo hidden">
-                    <p><span>Start Date(including):<br/><input type="text" class="datepicker start" readonly /></span></p>
-                    <p><span>End Date(including):<br/><input type="text" class="datepicker end"  readonly /></span></p>
-                </div>
-                <p class="submit">
-                    <button class="button button-primary RTA">Regenerate Thumbnails</button>
-                <div class="wrap">
-                    <h3>Progress</h3>
-                    <div class="logstatus ui-widget-content">
-                        Nothing processed yet
-                    </div>
-                </div><!--where the errors show -->
-                <div class="wrap">
-                    <h3> Errors</h3>
-                    <div class="errors ui-widget-content">
-                        No errors to display yet
-                    </div><!-- where the errors show -->
-                    </p>
-                </div>
+
                 <?php
                 $rotf = get_option( 'rtaOTF');
                 ?>
@@ -334,7 +300,7 @@ function test_image_downsize($bool,$imgid,$size){
   $meta = wp_get_attachment_metadata($imgid);
   //get the path to the image
   if(isset($meta['file']) && !empty($meta['file'])){
-    $fullsizepath = wp_upload_dir()['path'].$meta['file'];
+    $fullsizepath = wp_upload_dir().$meta['path'].$meta['file'];
   }
   // replace the main image with the thumb image name
   // $upload_dir = str_replace($meta['file'],$meta['sizes']['rtatest']['file'],$upload_dir);
@@ -371,7 +337,6 @@ add_action('init','rtaInit');
 function rtaInit(){
   $rotf = get_option( 'rtaOTF');
   if ( ! function_exists( 'gambit_otf_regen_thumbs_media_downsize' ) && $rotf=='checked') {
-
   	add_filter( 'image_downsize', 'gambit_otf_regen_thumbs_media_downsize', 10, 3 );
 
   	/**
@@ -515,5 +480,4 @@ function rtaInit(){
   		return false;
   	}
   }
-
 }

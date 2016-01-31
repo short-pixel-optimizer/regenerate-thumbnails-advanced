@@ -3,14 +3,12 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://turcuciprian.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 1.0.2
+  Version: 1.0.3
   Author: turcuciprian
   Author URI: http://turcuciprian.com
   License: GPLv2 or later
   Text Domain: RTA
  */
-
-//Global variables for arguments
 
 class cc {
 
@@ -261,6 +259,30 @@ class cc {
                 $rotf = get_option( 'rtaOTF');
                 ?>
                 <div class="otf">
+If you like this plugin and would like to show your appreciation, don't hesitate to donate something:
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+<!-- Identify your business so that you can collect the payments. -->
+<input type="hidden" name="business"
+value="turcuciprian1@gmail.com">
+
+<!-- Specify a Donate button. -->
+<input type="hidden" name="cmd" value="_donations">
+
+<!-- Specify details about the contribution -->
+<input type="hidden" name="item_name" value="Plugin Developer">
+<input type="hidden" name="item_number" value="Support Development">
+<input type="hidden" name="currency_code" value="USD">
+
+<!-- Display the payment button. -->
+<input type="image" name="submit" border="0"
+src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+alt="PayPal - The safer, easier way to pay online">
+<img alt="" border="0" width="1" height="1"
+src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+
+</form>
+
                   <h3> When needed</h3>
                   <input type="checkbox" class="rtaOtf" name="rtaOtf" value="" <?php checked('checked',$rotf);?> /> Regenerate on the fly
                   <p>

@@ -2,9 +2,9 @@
 Contributors: turcuciprian
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
 Tags: regenerate, thumbnails, advanced, easy, day, weeek, month
-Requires at least: 4.0 
-Tested up to: 4.3.1
-Stable tag: 1.0
+Requires at least: 4.0
+Tested up to: 4.4.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,8 +13,8 @@ Description: A plugin that makes regenerating thumbnails even easier than before
 == Description ==
 
 A plugin that makes regenerating thumbnails even easier than before and more flexible.
-If you install a new theme, it might have different image sizes it wants to use. those image sizes are cropped and resized into thumbnails only when you upload new images. So what happens with your old images? 
-the ones you already uploaded? They need to be regenerated, this is what this plugin does. It takes each image and generates the thumbnails for each and every one of them. 
+If you install a new theme, it might have different image sizes it wants to use. those image sizes are cropped and resized into thumbnails only when you upload new images. So what happens with your old images?
+the ones you already uploaded? They need to be regenerated, this is what this plugin does. It takes each image and generates the thumbnails for each and every one of them.
 
 
 Features:
@@ -47,9 +47,7 @@ The script stops, it does not run in the background
 == Screenshots ==
 
 1. The plugin page where it all happens
-2. View of the dropdown options
-3. Where you find everything
-4. From - To (between dates) Option
+
 
 == Changelog ==
 
@@ -96,6 +94,12 @@ The script stops, it does not run in the background
 = 1.0 =
 *Regenerate on the fly
 
+= 1.0.1 =
+Removed unnecesary functionality. Just the checkbox for OTF is now available.
+
+= 1.0.2 =
+Fixes a critical bug from the previous version
+
 == Upgrade Notice ==
 
 = 0.7 =
@@ -129,4 +133,10 @@ No issuse with this version that require attention. Small update change. It's ba
 This version changes the style and adds a bit of functionality to the general settings (a date start-end option to choose from)
 
 = 1.0 =
-This version 
+This version changes the style and adds a bit of functionality to the general settings (a date start-end option to choose from)
+
+= 1.0.1 =
+nothing that affect the previous data is changed. Update is save
+
+= 1.0.2 =
+nothing that affect the previous data is changed. Update is save

@@ -2,9 +2,9 @@
 Contributors: turcuciprian
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
 Tags: regenerate, thumbnails, advanced, easy, day, weeek, month
-Requires at least: 4.0
+Requires at least: 3.1
 Tested up to: 4.4.1
-Stable tag: 1.0.2
+Stable tag: 1.1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,37 @@ Removed unnecesary functionality. Just the checkbox for OTF is now available.
 = 1.0.2 =
 Fixes a critical bug from the previous version
 
+= 1.0.3 =
+Added donate button
+
+= 1.1 =
+Added Admin builder plugin dependency and functionality.
+
+=1.1.2=
+Important bugfixes
+
+=1.1.3=
+Important bugfixes
+
+=1.1.4=
+Extra bugfixes
+
+=1.1.5=
+admin-builder.php turned to admin_builder.php on admin builder verification check
+
+=1.1.6=
+Admin builder export functionality update
+
+=1.1.7=
+Admin builder export functionality update (again) Fixed a issue in the notice admin message
+
+=1.1.8=
+Admin builder export file update
+
+=1.1.9=
+Admin builder export file update
+
+
 == Upgrade Notice ==
 
 = 0.7 =
@@ -140,3 +171,33 @@ nothing that affect the previous data is changed. Update is save
 
 = 1.0.2 =
 nothing that affect the previous data is changed. Update is save
+
+= 1.0.3 =
+nothing that affect the previous data is changed. Update is save
+
+= 1.1 =
+Database field is saved someplace else now. It needs to be configured again. Basically just go into settings, click to activate and click save.
+
+=1.1.2=
+Important bugfixes
+
+=1.1.3=
+Important bugfixes
+
+=1.1.4=
+Extra bugfixes
+
+=1.1.5=
+nothing effected in db
+
+=1.1.6=
+nothing effected in db
+
+=1.1.7=
+nothing effected in db
+
+=1.1.8=
+nothing effected in db
+
+=1.1.9=
+nothing effected in db

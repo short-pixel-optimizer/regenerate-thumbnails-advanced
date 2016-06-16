@@ -4,13 +4,16 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: regenerate, thumbnails, advanced, easy, day, weeek, month
 Requires at least: 3.1
 Tested up to: 4.4.1
-Stable tag: 1.1.9
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
 
 == Description ==
+
+Built with : http://admin-builder.com
+
 
 A plugin that makes regenerating thumbnails even easier than before and more flexible.
 If you install a new theme, it might have different image sizes it wants to use. those image sizes are cropped and resized into thumbnails only when you upload new images. So what happens with your old images?
@@ -129,6 +132,9 @@ Admin builder export file update
 
 =1.1.9=
 Admin builder export file update
+
+= 1.2 =
+Removed admin_builder dependency and included the plugin inside the Scroll To Top core, so you are no longer required to install an extra plugin.
 
 
 == Upgrade Notice ==

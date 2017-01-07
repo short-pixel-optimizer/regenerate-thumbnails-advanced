@@ -2,9 +2,9 @@
 Contributors: turcuciprian
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
 Tags: regenerate, thumbnails, advanced, easy, day, weeek, month
-Requires at least: 3.1
-Tested up to: 4.4.1
-Stable tag: 1.2
+Requires at least: 4.5
+Tested up to: 4.7
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -136,6 +136,26 @@ Admin builder export file update
 = 1.2 =
 Removed admin_builder dependency and included the plugin inside the Scroll To Top core, so you are no longer required to install an extra plugin.
 
+= 1.2.1 =
+Plugin now dependent on Admin Builder Plugin
+
+= 1.2.3 =
+Add image size, dinamically - Functionality
+
+= 1.2.4 =
+Fixed a bug where a function might or might not exist
+
+= 1.2.5 =
+Notice added to the functionality, in case admin builder does not have a neccessary function. (getField)
+
+= 1.2.6 =
+Fixed a priority bug, added a condition for a loop.
+
+= 1.3 =
+Made it functional, independent of extra admin builder plugin.
+
+= 1.3.1 =
+Changed the select to a dropdown
 
 == Upgrade Notice ==
 
@@ -206,4 +226,12 @@ nothing effected in db
 nothing effected in db
 
 =1.1.9=
+nothing effected in db
+
+= 1.2.3 =
+Added functionality
+
+= 1.3 =
+Added functionality
+
 nothing effected in db

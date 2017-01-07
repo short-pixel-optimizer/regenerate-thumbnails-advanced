@@ -93,5 +93,13 @@ if(!function_exists('rtaRoutesInit')){
   }
 }
 function gaboRestCallback(){
+  if(isset($_POST['key'])){
+    $key = $_POST['key'];
+    if($key===MD5('rta'.AUTH_KEY)){
+      //everything is ok, going on...
+      
+
+    }
+  }
   return $returnArr;
 }

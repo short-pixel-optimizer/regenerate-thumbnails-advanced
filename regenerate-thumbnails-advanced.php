@@ -10,9 +10,9 @@
   Text Domain: RTA
  */
 
-add_action('admin_enqueue_scripts', 'enqueue_admin');
+add_action('admin_enqueue_scripts', 'rta_enqueue_admin');
 
-function enqueue_admin($hook)
+function rta_enqueue_admin($hook)
 {
     if (isset($_GET['page']) && isset($hook)) {
         if ($_GET['page'] !== 'rta_page' && $hook != 'options-general.php ') {
@@ -29,6 +29,12 @@ function enqueue_admin($hook)
     wp_enqueue_script('jquery-ui-custom');
     wp_register_script('mainScript', $plugin_root.'js/script.js');
     wp_enqueue_script('mainScript');
+
+    $inlineScript ="
+    var rtaKey = '".MD5('rta'.AUTH_KEY)."';
+    var siteUrl = '".site_url()."';
+    ";
+    wp_add_inline_script( 'mainScript', $inlineScript);
 }
 
 
@@ -54,7 +60,7 @@ function rta_page_callback(){
     </p>
     <p>
       <b>Perioud:</b><br/>
-      <select class="perioud" name="">
+      <select class="rtaType" name="period">
         <option value="day">Past 24 hours</option>
         <option value="days">Past 3 days</option>
         <option value="week">The past week</option>
@@ -83,7 +89,7 @@ function rta_page_callback(){
 if(!function_exists('rtaRoutesInit')){
   add_action('rest_api_init', 'rtaRoutesInit');
   function rtaRoutesInit($generalArr){
-    register_rest_route('rta', '/regenerate',array('methods' => 'POST','callback' => 'rtaRestCallback','args' => array()));
+    register_rest_route('rta', '/run',array('methods' => 'POST','callback' => 'rtaRestCallback','args' => array()));
   }
 }
 function gaboRestCallback(){

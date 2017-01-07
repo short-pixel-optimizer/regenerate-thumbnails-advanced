@@ -61,19 +61,31 @@ function rta_page_callback(){
         <option value="month">The past month</option>
         <option value="year">The past year</option>
         <option value="all">From the beginning of time (all)</option>
-
       </select>
     </p>
     <p>
     Select a perioud of regeneration and click the "regenerate" button.</p>
     <p>
-      <input type="submit" class="button button-primary" name="" value="Regenerate NOW!">
+      <input type="button" class="button button-primary rtaButt" name="" value="Regenerate NOW!">
     </p>
-
     <?php
   }
   ?>
   </form>
 </div>
   <?php
+}
+//
+//
+// REST
+//
+//
+if(!function_exists('rtaRoutesInit')){
+  add_action('rest_api_init', 'rtaRoutesInit');
+  function rtaRoutesInit($generalArr){
+    register_rest_route('rta', '/regenerate',array('methods' => 'POST','callback' => 'rtaRestCallback','args' => array()));
+  }
+}
+function gaboRestCallback(){
+  return $returnArr;
 }

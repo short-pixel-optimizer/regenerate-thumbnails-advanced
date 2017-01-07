@@ -45,8 +45,31 @@ function rta_page_callback(){
   if ($_GET['page'] === 'rta_page') {
     ?>
     <h2>Regenerate Thumbnails Advanced Settings</h2>
-    <p class="pageDescription">The main settings page where you get to configure all the options of the plugin.</p>
-    <div id="progressbar"></div>
+    <p class="pageDescription">
+      The main settings page where you get to configure all the options of the plugin.
+    </p>
+    <p>
+      <b>Progress:</b><br/>
+      <div id="progressbar"></div>
+    </p>
+    <p>
+      <b>Perioud:</b><br/>
+      <select class="perioud" name="">
+        <option value="day">Past 24 hours</option>
+        <option value="days">Past 3 days</option>
+        <option value="week">The past week</option>
+        <option value="month">The past month</option>
+        <option value="year">The past year</option>
+        <option value="all">From the beginning of time (all)</option>
+
+      </select>
+    </p>
+    <p>
+    Select a perioud of regeneration and click the "regenerate" button.</p>
+    <p>
+      <input type="submit" class="button button-primary" name="" value="Regenerate NOW!">
+    </p>
+
     <?php
   }
   ?>

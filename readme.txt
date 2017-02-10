@@ -2,18 +2,15 @@
 Contributors: turcuciprian
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
 Tags: regenerate, thumbnails, advanced, easy, day, weeek, month
-Requires at least: 4.5
+Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 2.0
+Stable tag: 1.3.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
 
 == Description ==
-
-Built with : http://admin-builder.com
-
 
 A plugin that makes regenerating thumbnails even easier than before and more flexible.
 If you install a new theme, it might have different image sizes it wants to use. those image sizes are cropped and resized into thumbnails only when you upload new images. So what happens with your old images?
@@ -26,7 +23,6 @@ Features:
 *   The period is last day, last week, last month or all
 *   Clean simple interface where you have a progress bar showing you the percentage of images regenerated
 *   You get to see the total number of images affected by your period, as well as the images afected so far when processing
-*   Regenerate thubnails on the fly
 
 == Installation ==
 
@@ -50,7 +46,9 @@ The script stops, it does not run in the background
 == Screenshots ==
 
 1. The plugin page where it all happens
-
+2. View of the dropdown options
+3. Where you find everything
+4. From - To (between dates) Option
 
 == Changelog ==
 
@@ -94,20 +92,24 @@ The script stops, it does not run in the background
 * Added new style
 * Added datepickers
 
+= 0.8.2.7 =
+* Fixed a wp_debug notice bug
+* Fixed a js issue
+
 = 1.0 =
-*Regenerate on the fly
+This version changes the style and adds a bit of functionality to the general settings (a date start-end option to choose from)
 
 = 1.0.1 =
-Removed unnecesary functionality. Just the checkbox for OTF is now available.
+nothing that affect the previous data is changed. Update is save
 
 = 1.0.2 =
-Fixes a critical bug from the previous version
+nothing that affect the previous data is changed. Update is save
 
 = 1.0.3 =
-Added donate button
+nothing that affect the previous data is changed. Update is save
 
 = 1.1 =
-Added Admin builder plugin dependency and functionality.
+Database field is saved someplace else now. It needs to be configured again. Basically just go into settings, click to activate and click save.
 
 =1.1.2=
 Important bugfixes
@@ -115,47 +117,12 @@ Important bugfixes
 =1.1.3=
 Important bugfixes
 
-=1.1.4=
-Extra bugfixes
+= 1.3.2 =
+Reverted back to manual regeneration version. No more on the fly stuff
 
-=1.1.5=
-admin-builder.php turned to admin_builder.php on admin builder verification check
+= 1.3.2.2 =
+Removed donate button
 
-=1.1.6=
-Admin builder export functionality update
-
-=1.1.7=
-Admin builder export functionality update (again) Fixed a issue in the notice admin message
-
-=1.1.8=
-Admin builder export file update
-
-=1.1.9=
-Admin builder export file update
-
-= 1.2 =
-Removed admin_builder dependency and included the plugin inside the Scroll To Top core, so you are no longer required to install an extra plugin.
-
-= 1.2.1 =
-Plugin now dependent on Admin Builder Plugin
-
-= 1.2.3 =
-Add image size, dinamically - Functionality
-
-= 1.2.4 =
-Fixed a bug where a function might or might not exist
-
-= 1.2.5 =
-Notice added to the functionality, in case admin builder does not have a neccessary function. (getField)
-
-= 1.2.6 =
-Fixed a priority bug, added a condition for a loop.
-
-= 1.3 =
-Made it functional, independent of extra admin builder plugin.
-
-= 1.3.1 =
-Changed the select to a dropdown
 
 == Upgrade Notice ==
 
@@ -188,6 +155,10 @@ No issuse with this version that require attention. Small update change. It's ba
 
 = 0.8.2.6 =
 This version changes the style and adds a bit of functionality to the general settings (a date start-end option to choose from)
+
+= 0.8.2.7 =
+No issuse with this version that require attention. Small update change. It's basically a feature, so unless you want it, the older version works great.
+fixes some js issues and ajax issues. it's recommended to update
 
 = 1.0 =
 This version changes the style and adds a bit of functionality to the general settings (a date start-end option to choose from)
@@ -234,4 +205,8 @@ Added functionality
 = 1.3 =
 Added functionality
 
-nothing effected in db
+= 1.3.2 =
+ Database value from the previous version, irrelevant.
+
+ = 1.3.2.2 =
+ Does not impact functionality

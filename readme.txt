@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: regenerate, thumbnails, advanced, easy, day, weeek, month
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 1.3.2.2
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,8 @@ Reverted back to manual regeneration version. No more on the fly stuff
 = 1.3.2.2 =
 Removed donate button
 
+= 1.3.3 =
+Requests are being done trough REST API's now
 
 == Upgrade Notice ==
 
@@ -210,3 +212,6 @@ Added functionality
 
  = 1.3.2.2 =
  Does not impact functionality
+
+ = 1.3.3 =
+ Requests are being done trough REST API's now

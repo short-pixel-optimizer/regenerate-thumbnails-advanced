@@ -18,7 +18,7 @@ class mediaPageRTA{
     if ( 'image/' != substr( $post->post_mime_type, 0, 6 ) || ! current_user_can( $this->capability ) ){
       return $actions;
     }
-    $actions['regenerate_thumbnails'] = '<button type="button" imgID="'.$post->ID.'">'.__( 'Regenerate Thumbnails', 'rta' ).'</button>';
+    $actions['regenerate_thumbnails'] = '<button type="button" class="rtaMediaRow" imgID="'.$post->ID.'">'.__( 'Regenerate Thumbnails', 'rta' ).'</button>';
     return $actions;
   }
 

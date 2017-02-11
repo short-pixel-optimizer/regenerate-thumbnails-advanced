@@ -149,7 +149,9 @@ class rtaREST
                   while ($the_query->have_posts()) {
                       $the_query->the_post();
                       $image_id = $the_query->post->ID;
-                      $is_image = true;
+                      $is_image = true;if (isset($_POST['mediaID'])){
+                        $image_id = $_POST['mediaID'];
+                      }
                       $fullsizepath = get_attached_file($image_id);
 
                       //is image:

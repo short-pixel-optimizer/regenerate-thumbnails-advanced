@@ -10,6 +10,31 @@ jQuery(document).ready(function($) {
     var errors_obj = $('#rta .errors');
     var pbar = $("#rta #progressbar");
 
+    // Append only unique array values
+    var unique_arr_append = function(val) {
+        var unique = true;
+        var i = 0;
+        var y = 0;
+        while (val[i]) {
+            unique = true;
+            y = 0;
+            while (err_arr[y]) {
+                if (err_arr[y] == val[i]) {
+                    //                        console.log(err_arr[i]);
+                    unique = false;
+                    break;
+                }
+                y++;
+            }
+            if (unique) {
+                err_arr.push(val[i]);
+            }
+            i++;
+        }
+
+    };
+    
+
     //
     //
     // Main ajax call
@@ -207,29 +232,7 @@ jQuery(document).ready(function($) {
         rta_butt.click(submit_ajax_call);
 
 
-        // Append only unique array values
-        var unique_arr_append = function(val) {
-            var unique = true;
-            var i = 0;
-            var y = 0;
-            while (val[i]) {
-                unique = true;
-                y = 0;
-                while (err_arr[y]) {
-                    if (err_arr[y] == val[i]) {
-                        //                        console.log(err_arr[i]);
-                        unique = false;
-                        break;
-                    }
-                    y++;
-                }
-                if (unique) {
-                    err_arr.push(val[i]);
-                }
-                i++;
-            }
 
-        };
     }
     if(rtaMediaRow[0]){
       rtaMediaRow.click(function(){

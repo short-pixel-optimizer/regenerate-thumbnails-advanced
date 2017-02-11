@@ -3,7 +3,7 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://turcuciprian.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 1.3.3
+  Version: 1.3.4
   Author: turcuciprian
   Author URI: http://turcuciprian.com
   License: GPLv2 or later
@@ -12,6 +12,7 @@
 
 //Global variables for arguments
 require_once("rest.php");
+require_once("mediaRows.php");
 class cc {
 
 //    create basic page in the admin panel, with menu settings too
@@ -25,7 +26,7 @@ class cc {
     }
 
     public function ajax_callback() {
-      
+
     }
 
 //    Admin menu calback

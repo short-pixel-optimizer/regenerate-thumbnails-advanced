@@ -3,7 +3,7 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://ciprianturcu.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 1.4
+  Version: 1.4.1
   Author: turcuciprian
   Author URI: http://ciprianturcu.com
   License: GPLv2 or later
@@ -66,6 +66,8 @@ class cc {
             </div>
             <div id="js-works" class="hidden">
                 <h2>reGenerate Thumbnails Advanced</h2>
+                <h3>Tutorial:</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/a5F5OsWZC28" frameborder="0" allowfullscreen></iframe>
                 <!--Progress bar-->
                 <div id="progressbar">
                     <div class="progress-label">0&#37;</div>

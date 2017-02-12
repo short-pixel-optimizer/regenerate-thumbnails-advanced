@@ -33,7 +33,7 @@ jQuery(document).ready(function($) {
         }
 
     };
-    
+
 
     //
     //
@@ -61,6 +61,12 @@ jQuery(document).ready(function($) {
 
         // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
         $.post(rtaRestURL, data, function(response) {
+          if(mediaID!== null){
+            var rtaPopup = $('.rtaPopup');
+            if(rtaPopup[0]){
+              rtaPopup.addClass('hidden');
+            }
+          }
           // console.log('after post request returned response');
             // var err_arr = new Array();
             //json response
@@ -238,6 +244,10 @@ jQuery(document).ready(function($) {
       rtaMediaRow.click(function(){
         var imgID = $(this).attr('imgID');
         if(imgID){
+          var rtaPopup = $('.rtaPopup');
+          if(rtaPopup[0]){
+            rtaPopup.removeClass('hidden');
+          }
           loop_ajax_request('submit', 0, 0, 0, 0, 0,imgID);
         }
       });

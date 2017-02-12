@@ -1,11 +1,11 @@
 <?php
 /*
   Plugin Name: reGenerate Thumbnails - advanced
-  Plugin URI: http://turcuciprian.com
+  Plugin URI: http://ciprianturcu.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 1.3.4
+  Version: 1.4
   Author: turcuciprian
-  Author URI: http://turcuciprian.com
+  Author URI: http://ciprianturcu.com
   License: GPLv2 or later
   Text Domain: rta
  */

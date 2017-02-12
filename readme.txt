@@ -4,13 +4,16 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: regenerate, thumbnails, advanced, easy, day, weeek, month
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 1.3.4
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
 
 == Description ==
+
+High Level Tutorial:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/a5F5OsWZC28" frameborder="0" allowfullscreen></iframe>
 
 A plugin that makes regenerating thumbnails even easier than before and more flexible.
 If you install a new theme, it might have different image sizes it wants to use. those image sizes are cropped and resized into thumbnails only when you upload new images. So what happens with your old images?
@@ -126,7 +129,7 @@ Removed donate button
 = 1.3.3 =
 Requests are being done trough REST API's now
 
-= 1.3.3 =
+= 1.4 =
 Added regenerate Thumbnails button to regenerate individual thumbnail
 
 == Upgrade Notice ==

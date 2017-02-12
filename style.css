@@ -113,3 +113,7 @@ body #rta .ui-progressbar .ui-progressbar-value.ui-widget-header {
   -ms-flex-item-align: auto;
   align-self: auto;
 }
+#rta .tutorial{
+  margin:20px 0 0 0;
+  float:left;
+}

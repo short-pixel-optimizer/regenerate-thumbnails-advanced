@@ -66,8 +66,6 @@ class cc {
             </div>
             <div id="js-works" class="hidden">
                 <h2>reGenerate Thumbnails Advanced</h2>
-                <h3>Tutorial:</h3>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/a5F5OsWZC28" frameborder="0" allowfullscreen></iframe>
                 <!--Progress bar-->
                 <div id="progressbar">
                     <div class="progress-label">0&#37;</div>
@@ -107,8 +105,15 @@ class cc {
                     </div><!-- where the errors show -->
                     </p>
                 </div>
+                <div class="tutorial">
+                  <h1>Tutorial:</h1>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/a5F5OsWZC28" frameborder="0" allowfullscreen></iframe>
+                </div>
+
             </div>
         </div>
+
+
         <!-- Js Works End -->
         <!--GTA wrap END -->
         <?php

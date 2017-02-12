@@ -71,7 +71,7 @@ jQuery(document).ready(function($) {
             // var err_arr = new Array();
             //json response
             var json = response;
-            console.log(json);
+            // console.log(json);
 
                 var startTime = json.startTime;
                 var offset = 0;
@@ -98,7 +98,7 @@ jQuery(document).ready(function($) {
                         loop_ajax_request('submit', offset, tCount, json.period, startTime, fromTo);
                         break;
                     case 'submit':
-                    console.log(type+'-inside submit');
+                    // console.log(type+'-inside submit');
                         if (rta_total[0]) {
                             tCount = rta_total.html();
                         }

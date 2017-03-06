@@ -96,7 +96,7 @@ class cc {
                 <div class="wrap">
                     <h3><?php echo __('Progress','rta');?></h3>
                     <div class="logstatus ui-widget-content">
-                        <?php echo __('Nothing processed yet','rta');?>
+                        <?php echo __('Nothing processed yet','r ta');?>
                     </div>
                 </div><!--where the errors show -->
                 <div class="wrap">
@@ -107,8 +107,7 @@ class cc {
                     </p>
                 </div>
                 <div class="tutorial">
-                  <h1><?php echo __('Tutorial:','rta');?></h1>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/a5F5OsWZC28" frameborder="0" allowfullscreen></iframe>
+                  <h2><a href="https://youtu.be/a5F5OsWZC28" target="_blank"><?php echo __('- Tutorial -','rta');?></a></h2>
                 </div>
 
             </div>

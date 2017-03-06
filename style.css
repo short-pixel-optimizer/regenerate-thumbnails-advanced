@@ -116,4 +116,5 @@ body #rta .ui-progressbar .ui-progressbar-value.ui-widget-header {
 #rta .tutorial{
   margin:20px 0 0 0;
   float:left;
+  width:100%;
 }

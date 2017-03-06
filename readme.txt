@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: thumbnail, thumbnails, regenerate , easy, day, week, month, advanced, easy, intuitive, media, oneclick, singleclick, image, images, pdf
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 1.4.2.3
+Stable tag: 1.4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,7 @@ Features:
 *   Clean simple interface where you have a progress bar showing you the percentage of images regenerated
 *   You get to see the total number of images affected by your period, as well as the images affected so far when processing
 * You can regenerate individual image withouth navigating away from the page, everything happening on the media page with 1 click of the image you want to modify
+* plugin is available for translation in any language with the rta text domain.
 
 == Installation ==
 
@@ -145,6 +146,9 @@ Updated some tags, no functionality changed
 
 = 1.4.2.1 =
 Changed tags again, testing.
+
+= 1.4.3 =
+Made the plugin translate ready
 
 = 0.7 =
 No issues have been detected since this is the first version that's out there. Please report any issues

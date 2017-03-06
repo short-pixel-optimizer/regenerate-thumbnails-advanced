@@ -3,7 +3,7 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://ciprianturcu.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 1.4.2.3
+  Version: 1.4.3
   Author: turcuciprian
   Author URI: http://ciprianturcu.com
   License: GPLv2 or later
@@ -11,8 +11,9 @@
  */
 
 //Global variables for arguments
-require_once("rest.php");
+require_once("inc/rest.php");
 require_once("mediaRows.php");
+
 class cc {
 
 //    create basic page in the admin panel, with menu settings too
@@ -34,7 +35,7 @@ class cc {
         global $cc_args;
         $args = $cc_args;
 //         Add a new submenu under Tools:
-        add_options_page(__('reGenerate Thumbnails Advanced', 'rta_id'), __('Regenerate Thumbnails', 'rta_id'), 'administrator', 'regenerate_thumbnails_advanced', array($this, 'create_page_callback'));
+        add_options_page(__('reGenerate Thumbnails Advanced', 'rta'), __('Regenerate Thumbnails', 'rta'), 'administrator', 'regenerate_thumbnails_advanced', array($this, 'create_page_callback'));
         return true;
     }
 
@@ -61,52 +62,52 @@ class cc {
         <!--GTA wrap START -->
         <div id="rta">
             <div id="no-js">
-                <h1>Javascript is not enabled or it has a error!</h1>
-                <p>If there is a error in the page (most likely caused by another plugin or even the theme, the regenerate thumbnails advanced plugin will not work properly. Please fix this issue and come back here. YOU WILL NOT SEE THIS WARNING IF EVERYTHING IS WORKING FINE</p>
+                <h1><?php echo __('Javascript is not enabled or it has a error!','rta'); ?></h1>
+                <p><?php echo __('If there is a error in the page (most likely caused by another plugin or even the theme, the regenerate thumbnails advanced plugin will not work properly. Please fix this issue and come back here. YOU WILL NOT SEE THIS WARNING IF EVERYTHING IS WORKING FINE','rta');?></p>
             </div>
             <div id="js-works" class="hidden">
-                <h2>reGenerate Thumbnails Advanced</h2>
+                <h2><?php echo __('reGenerate Thumbnails Advanced','rta');?></h2>
                 <!--Progress bar-->
                 <div id="progressbar">
                     <div class="progress-label">0&#37;</div>
                 </div>
                 <!--Information section-->
                 <div class="info">
-                    Total number of images: <span class="total">0</span><br/>
-                    Images processed: <span class="processed">0</span><br/>
+                    <?php echo __('Total number of images:','rta');?> <span class="total">0</span><br/>
+                    <?php echo __('Images processed:','rta');?><span class="processed">0</span><br/>
                                    <!--Could not process: <span class="errors">0</span> Images<br/>-->
                 </div>
                 <!--Dropdown-->
                 <h3>Select a period</h3>
                 <select name="period" id="rta_period">
                     <!--get all the images in the database-->
-                    <option value="0">All</option>
-                    <option value="1">Past Day</option>
-                    <option value="2">Past Week</option>
-                    <option value="3">Past Month</option>
-                    <option value="4">Between Dates</option>
+                    <option value="0"><?php echo __('All','rta');?></option>
+                    <option value="1"><?php echo __('Past Day','rta');?></option>
+                    <option value="2"><?php echo __('Past Week','rta');?></option>
+                    <option value="3"><?php echo __('Past Month','rta');?></option>
+                    <option value="4"><?php echo __('Between Dates','rta');?></option>
                 </select>
                 <div class="fromTo hidden">
-                    <p><span>Start Date(including):<br/><input type="text" class="datepicker start" readonly /></span></p>
-                    <p><span>End Date(including):<br/><input type="text" class="datepicker end"  readonly /></span></p>
+                    <p><span><?php echo __('Start Date(including):','rta');?><br/><input type="text" class="datepicker start" readonly /></span></p>
+                    <p><span><?php echo __('End Date(including):','rta');?><br/><input type="text" class="datepicker end"  readonly /></span></p>
                 </div>
                 <p class="submit">
-                    <button class="button button-primary RTA">Regenerate Thumbnails</button>
+                    <button class="button button-primary RTA"><?php echo __('Regenerate Thumbnails','rta');?></button>
                 <div class="wrap">
-                    <h3>Progress</h3>
+                    <h3><?php echo __('Progress','rta');?></h3>
                     <div class="logstatus ui-widget-content">
-                        Nothing processed yet
+                        <?php echo __('Nothing processed yet','rta');?>
                     </div>
                 </div><!--where the errors show -->
                 <div class="wrap">
-                    <h3> Errors</h3>
+                    <h3><?php echo __('Errors','rta');?></h3>
                     <div class="errors ui-widget-content">
-                        No errors to display yet
+                        <?php echo __('No errors to display yet','rta');?>
                     </div><!-- where the errors show -->
                     </p>
                 </div>
                 <div class="tutorial">
-                  <h1>Tutorial:</h1>
+                  <h1><?php echo __('Tutorial:','rta');?></h1>
                   <iframe width="560" height="315" src="https://www.youtube.com/embed/a5F5OsWZC28" frameborder="0" allowfullscreen></iframe>
                 </div>
 
@@ -121,7 +122,7 @@ class cc {
 
     public function add_settings_link($links) {
         $mylinks = array(
-            '<a href="' . admin_url('options-general.php?page=regenerate_thumbnails_advanced') . '">Settings</a>',
+            '<a href="' . admin_url('options-general.php?page=regenerate_thumbnails_advanced') . '">'.__('Settings','rta').'</a>',
         );
         return array_merge($links, $mylinks);
     }

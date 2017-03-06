@@ -3,12 +3,58 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://ciprianturcu.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 1.4.3
+  Version: 1.4.2.1
   Author: turcuciprian
   Author URI: http://ciprianturcu.com
   License: GPLv2 or later
   Text Domain: rta
  */
+ // ------------------------------------------------------
+ // Create a helper function for easy SDK access.
+function rta_fs() {
+    global $rta_fs;
+
+    if ( ! isset( $rta_fs ) ) {
+        // Include Freemius SDK.
+        require_once dirname(__FILE__) . '/freemius/start.php';
+
+        $rta_fs = fs_dynamic_init( array(
+            'id'                  => '842',
+            'slug'                => 'egenerate-thumbnails-advanced',
+            'type'                => 'plugin',
+            'public_key'          => 'pk_a17a871d83aad820f5a8f65b9f0ab',
+            'is_premium'          => false,
+            'has_premium_version' => false,
+            'has_addons'          => false,
+            'has_paid_plans'      => false,
+            'menu'                => array(
+                'slug'           => 'regenerate_thumbnails_advanced',
+                'override_exact' => true,
+                'account'        => false,
+                'contact'        => false,
+                'support'        => false,
+                'parent'         => array(
+                    'slug' => 'options-general.php',
+                ),
+            ),
+        ) );
+    }
+
+    return $rta_fs;
+}
+
+ // Init Freemius.
+ rta_fs();
+
+ function rta_fs_settings_url() {
+     return admin_url( 'options-general.php?page=regenerate_thumbnails_advanced' );
+ }
+
+ rta_fs()->add_filter( 'connect_url', 'rta_fs_settings_url' );
+ rta_fs()->add_filter( 'after_skip_url', 'rta_fs_settings_url' );
+ rta_fs()->add_filter( 'after_connect_url', 'rta_fs_settings_url' );
+// ------------------------------------------------------
+
 
 //Global variables for arguments
 require_once("inc/rest.php");

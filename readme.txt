@@ -142,6 +142,13 @@ Added tutorial on generate page.
 = 1.4.2 =
 Updated some tags, no functionality changed
 
+= 1.4.2.1 =
+Added freemius funtionality
+
+
+
+
+
 == Upgrade Notice ==
 
 = 1.4.2.1 =
@@ -237,3 +244,6 @@ Added functionality
 
  = 1.3.3 =
  Requests are being done trough REST API's now
+
+ = 1.4.3 =
+Does not impact functionality

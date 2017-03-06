@@ -3,7 +3,7 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://ciprianturcu.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 1.4.1
+  Version: 1.4.2.3
   Author: turcuciprian
   Author URI: http://ciprianturcu.com
   License: GPLv2 or later
@@ -60,7 +60,7 @@ class cc {
         ?>
         <!--GTA wrap START -->
         <div id="rta">
-            <div id="no-js">s
+            <div id="no-js">
                 <h1>Javascript is not enabled or it has a error!</h1>
                 <p>If there is a error in the page (most likely caused by another plugin or even the theme, the regenerate thumbnails advanced plugin will not work properly. Please fix this issue and come back here. YOU WILL NOT SEE THIS WARNING IF EVERYTHING IS WORKING FINE</p>
             </div>

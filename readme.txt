@@ -1,10 +1,10 @@
 === reGenerate Thumbnails Advanced ===
 Contributors: turcuciprian
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
-Tags: regenerate, thumbnails, advanced, easy, day, weeek, month
+Tags: thumbnail, thumbnails, regenerate , easy, day, week, month, advanced, easy, intuitive, media, oneclick, singleclick, image, images, pdf
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 1.4.1
+Stable tag: 1.4.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,7 +18,8 @@ https://www.youtube.com/watch?v=a5F5OsWZC28
 
 A plugin that makes regenerating thumbnails even easier than before and more flexible.
 If you install a new theme, it might have different image sizes it wants to use. those image sizes are cropped and resized into thumbnails only when you upload new images. So what happens with your old images?
-the ones you already uploaded? They need to be regenerated, this is what this plugin does. It takes each image and generates the thumbnails for each and every one of them.
+the ones you already uploaded? They need to be regenerated, this is what this plugin does. It takes each image and generates the thumbnails for each and every one of them.You have the ability to regenerate thumbnails for a aspecific image
+by cicking a added button on the media page. You will not be redirected to another page, everything happens on that page with REST api and ajax.
 
 
 Features:
@@ -26,7 +27,8 @@ Features:
 *   You can select a period in time for the images to be regenerated from
 *   The period is last day, last week, last month or all
 *   Clean simple interface where you have a progress bar showing you the percentage of images regenerated
-*   You get to see the total number of images affected by your period, as well as the images afected so far when processing
+*   You get to see the total number of images affected by your period, as well as the images affected so far when processing
+* You can regenerate individual image withouth navigating away from the page, everything happening on the media page with 1 click of the image you want to modify
 
 == Installation ==
 
@@ -136,8 +138,13 @@ Added regenerate Thumbnails button to regenerate individual thumbnail
 = 1.4.1 =
 Added tutorial on generate page.
 
+= 1.4.2 =
+Updated some tags, no functionality changed
 
 == Upgrade Notice ==
+
+= 1.4.2.1 =
+Changed tags again, testing.
 
 = 0.7 =
 No issues have been detected since this is the first version that's out there. Please report any issues

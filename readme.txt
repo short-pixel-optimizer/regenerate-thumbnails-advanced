@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: thumbnail, thumbnails, regenerate , easy, day, week, month, advanced, easy, intuitive, media, oneclick, singleclick, image, images, pdf
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 1.4.3
+Stable tag: 1.4.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -145,7 +145,8 @@ Updated some tags, no functionality changed
 = 1.4.2.1 =
 Added freemius funtionality
 
-
+= 1.4.3.2 =
+Removed stats, added donate button
 
 
 

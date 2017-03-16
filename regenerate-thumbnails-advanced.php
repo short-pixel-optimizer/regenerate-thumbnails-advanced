@@ -3,22 +3,12 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://ciprianturcu.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 1.4.2.1
+  Version: 1.4.3.2
   Author: turcuciprian
   Author URI: http://ciprianturcu.com
   License: GPLv2 or later
   Text Domain: rta
  */
- // ------------------------------------------------------
-
- function rta_fs_settings_url() {
-     return admin_url( 'options-general.php?page=regenerate_thumbnails_advanced' );
- }
-
- rta_fs()->add_filter( 'connect_url', 'rta_fs_settings_url' );
- rta_fs()->add_filter( 'after_skip_url', 'rta_fs_settings_url' );
- rta_fs()->add_filter( 'after_connect_url', 'rta_fs_settings_url' );
-// ------------------------------------------------------
 
 
 //Global variables for arguments
@@ -77,6 +67,20 @@ class cc {
                 <p><?php echo __('If there is a error in the page (most likely caused by another plugin or even the theme, the regenerate thumbnails advanced plugin will not work properly. Please fix this issue and come back here. YOU WILL NOT SEE THIS WARNING IF EVERYTHING IS WORKING FINE','rta');?></p>
             </div>
             <div id="js-works" class="hidden">
+              <h3>Help out. DONATE Just <span style="color:green;">1$</span></h3>
+
+
+<!-- Paypal donate button START-->
+              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="BFXKF4HG5U92C">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+<!-- Paypal donate button END-->
+
+
+
                 <h2><?php echo __('reGenerate Thumbnails Advanced','rta');?></h2>
                 <!--Progress bar-->
                 <div id="progressbar">

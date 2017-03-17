@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: thumbnail, thumbnails, regenerate , easy, day, week, month, advanced, easy, intuitive, media, oneclick, singleclick, image, images, pdf
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 1.4.3.2
+Stable tag: 1.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -147,6 +147,14 @@ Added freemius funtionality
 
 = 1.4.3.2 =
 Removed stats, added donate button
+
+= 1.4.4 =
+New feature: Regenerate specific images from media page by checking them and selecting the "regenerate thumbnails" option from the dropdown. It all loads on the same page, no redirect.
+
+
+
+
+
 
 
 

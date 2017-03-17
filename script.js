@@ -252,4 +252,18 @@ jQuery(document).ready(function($) {
         }
       });
     }
+
+
+
+
+
+    //media javascript - regenerate Thumbnails
+
+    var doaction1 = $('#doaction');
+    var doaction2 = $('#doaction2');
+
+    if(doaction1[0] && doaction2[0]){
+      //request for selected id's of checkboxes
+
+    }
 });

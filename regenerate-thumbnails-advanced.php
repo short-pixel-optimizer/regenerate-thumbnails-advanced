@@ -177,7 +177,7 @@ class cc
         ?>
       <script type="text/javascript">
         jQuery(document).ready(function($){
-          $('select[name^="action"] option:last-child').before('<option value="bulk_regenerate_thumbnails"><?php echo esc_attr(__('Regenerate Thumbnails', 'regenerate-thumbnails'));
+          $('select[name^="action"] option:last-child').before('<option value="rtaMR"><?php echo esc_attr(__('Regenerate Thumbnails', 'regenerate-thumbnails'));
         ?></option>');
         });
       </script>

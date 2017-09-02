@@ -3,8 +3,8 @@ Contributors: turcuciprian
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
 Tags: thumbnail, thumbnails, regenerate , easy, day, week, month, advanced, easy, intuitive, media, oneclick, singleclick, image, images, pdf
 Requires at least: 4.0
-Tested up to: 4.7
-Stable tag: 1.4.4
+Tested up to: 4.8
+Stable tag: 1.5.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -148,13 +148,17 @@ Added freemius funtionality
 = 1.4.3.2 =
 Removed stats, added donate button
 
-= 1.4.4 =
-New feature: Regenerate specific images from media page by checking them and selecting the "regenerate thumbnails" option from the dropdown. It all loads on the same page, no redirect.
+= 1.4.6 =
+Removed donate button
 
+= 1.5.0 =
+Added a notification message with a link when a theme is switched
 
+= 1.5.1 =
+Fixed a fatal error bug conflicting with Contact Form Maker
 
-
-
+= 1.5.1.1 =
+Added donate button
 
 
 
@@ -256,3 +260,15 @@ Added functionality
 
  = 1.4.3 =
 Does not impact functionality
+
+= 1.4.6 =
+Does not impact functionality
+
+= 1.5.0 =
+Does not impact functionality
+
+= 1.5.1 =
+Does not impact functionality
+
+= 1.5.1.1 =
+nothing effected in db

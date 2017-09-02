@@ -11,6 +11,7 @@ class rtaREST
     {
         register_rest_route('rta', '/regenerate', array('methods' => 'POST', 'callback' => array($this, 'rtaProcess'), 'args' => array()));
     }
+
     public function rtaProcess()
     {
         if (isset($_POST['type'])) {

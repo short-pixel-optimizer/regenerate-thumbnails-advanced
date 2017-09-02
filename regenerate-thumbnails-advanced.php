@@ -3,7 +3,7 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://ciprianturcu.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 1.4.4
+  Version: 1.5.1.1
   Author: turcuciprian
   Author URI: http://ciprianturcu.com
   License: GPLv2 or later
@@ -25,10 +25,6 @@ class cc
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin'));
         //ajax callback for button click
         add_action('wp_ajax_rta_ajax', array($this, 'ajax_callback'));
-        add_action('admin_head-upload.php', array($this, 'rta_bulk_option'));
-
-        $this->capability = apply_filters( 'regenerate_thumbs_cap', 'manage_options' );
-
     }
 
     public function ajax_callback()
@@ -77,18 +73,20 @@ class cc
         ?></p>
             </div>
             <div id="js-works" class="hidden">
-              <h3>Help out. DONATE Just <span style="color:green;">1$</span></h3>
+              <h3>Help out.  <span style="color:green;">DONATE how much you want!</span></h3>
 
 
-<!-- Paypal donate button START-->
-              <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+ <!-- Paypal donate button START-->
+ <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="BFXKF4HG5U92C">
+<input type="hidden" name="hosted_button_id" value="7EP625Y355BNS">
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
+
 <!-- Paypal donate button END-->
 
+<hr>
 
 
                 <h2><?php echo __('reGenerate Thumbnails Advanced', 'rta');
@@ -169,23 +167,23 @@ class cc
 
         return array_merge($links, $mylinks);
     }
-    public function rta_bulk_option()
-    {
-        if (!current_user_can($this->capability)) {
-            return;
-        }
-        ?>
-      <script type="text/javascript">
-        jQuery(document).ready(function($){
-          $('select[name^="action"] option:last-child').before('<option value="rtaMR"><?php echo esc_attr(__('Regenerate Thumbnails', 'regenerate-thumbnails'));
-        ?></option>');
-        });
-      </script>
-  <?php
-
-    }
 }
 
 /* var @cc cc */
 $cc = new cc();
 $cc->start();
+
+add_action("after_switch_theme", "mytheme_do_something");
+
+function mytheme_do_something () {
+
+add_action( 'admin_notices', 'rta_admin_notice__success' );
+}
+
+function rta_admin_notice__success() {
+  ?>
+  <div class="notice notice-success is-dismissible">
+      <p><?php _e( 'You switched themes! Would you like to regenerate thumbnails so that all your thumbnails work on your theme? <a href="options-general.php?page=regenerate_thumbnails_advanced">YES</a>', 'sample-text-domain' ); ?></p>
+  </div>
+  <?php
+}

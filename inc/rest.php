@@ -153,6 +153,9 @@ class rtaREST
                       $is_image = true;if (isset($_POST['mediaID'])){
                         $image_id = $_POST['mediaID'];
                       }
+                      //delete image thumbnails here
+
+                      //finished code for deleting thumbnails
                       $fullsizepath = get_attached_file($image_id);
 
                       //is image:

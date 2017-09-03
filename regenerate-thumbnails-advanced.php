@@ -13,6 +13,8 @@
 //Global variables for arguments
 require_once 'inc/rest.php';
 require_once 'mediaRows.php';
+require_once 'inc/function_for_media.php';
+
 
 class cc
 {

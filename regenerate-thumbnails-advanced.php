@@ -14,7 +14,6 @@
 require_once 'inc/rest.php';
 require_once 'mediaRows.php';
 require_once 'inc/function_for_media.php';
-require_once 'deletefunct.php';
 
 
 class cc

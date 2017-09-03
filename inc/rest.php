@@ -153,11 +153,7 @@ class rtaREST
                       }
 
                       //delete image thumbnails here
-
-
-
-
-
+                      delete_thumbnails($image_id);
 
 
 

@@ -1,4 +1,13 @@
 <?php
+add_action( 'init', 'xmy_customize_rest_cors', 15 );
+
+function xmy_customize_rest_cors() {
+	remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+		header( 'Access-Control-Allow-Origin: *' );
+		header( 'Access-Control-Allow-Methods: POST, GET, OPTIONS' );
+		header( 'Access-Control-Allow-Credentials: true' );
+		header( 'Access-Control-Expose-Headers: Link', false );
+}
 
 $rtaRESTObj = new rtaREST();
 class rtaREST
@@ -9,13 +18,18 @@ class rtaREST
     }
     public function routesInit($generalArr)
     {
-        register_rest_route('rta', '/regenerate', array('methods' => 'POST', 'callback' => array($this, 'rtaProcess'), 'args' => array()));
+        $namespace = 'rta';
+        // register_rest_route('rta', '/regenerate', array('methods' => 'POST', 'callback' => array($this, 'rtaProcess'), 'args' => array()));
+        register_rest_route( $namespace, '/regenerate', array(
+            'methods' => 'POST',
+            'callback' => array($this, 'rtaProcess'),
+        ) );
     }
 
-    public function rtaProcess()
+    public function rtaProcess($data)
     {
-        if (isset($_POST['type'])) {
-            $type = $_POST['type'];
+        if (isset($data['type'])) {
+            $type = $data['type'];
         }
         $logstatus = '';
         $offset = 0;
@@ -28,8 +42,8 @@ class rtaREST
                   'offset' => 0,
               );
 
-              if (isset($_POST['period'])) {
-                  $period = $_POST['period'];
+              if (isset($data['period'])) {
+                  $period = $data['period'];
 
                   switch ($period) {
                       case '0':
@@ -44,7 +58,7 @@ class rtaREST
                           $date = '-1 month';
                           break;
                       case '4':
-                          $date = $_POST['fromTo'];
+                          $date = $data['fromTo'];
                           break;
                   }
               }
@@ -69,8 +83,8 @@ class rtaREST
               wp_reset_query();
               wp_reset_postdata();
               $logstatus .= '<pre>'.print_r($the_query, true).'</pre>';
-              if (isset($_POST['type'])) {
-                  $typeV = $_POST['type'];
+              if (isset($data['type'])) {
+                  $typeV = $data['type'];
               }
               if (!isset($date) || empty($date)) {
                   $date = '';
@@ -84,11 +98,11 @@ class rtaREST
 
               $logstatus = '';
               $error = array();
-              if (isset($_POST['offset'])) {
-                  $offset = $_POST['offset'];
+              if (isset($data['offset'])) {
+                  $offset = $data['offset'];
               }
-              if (isset($_POST['period'])) {
-                  $period = $_POST['period'];
+              if (isset($data['period'])) {
+                  $period = $data['period'];
 
                   $args = array(
                       'post_type' => 'attachment',
@@ -114,7 +128,7 @@ class rtaREST
                           break;
                       case '4':
 
-                          $date = $_POST['fromTo'];
+                          $date = $data['fromTo'];
                           break;
                   }
               }
@@ -145,13 +159,13 @@ class rtaREST
 
 
               $the_query = new WP_Query($args);
-              if ($the_query->have_posts()) {
+              if ($the_query->havedatas()) {
 
-                  while ($the_query->have_posts()) {
-                      $the_query->the_post();
+                  while ($the_query->havedatas()) {
+                      $the_query->thedata();
                       $image_id = $the_query->post->ID;
-                      $is_image = true;if (isset($_POST['mediaID'])){
-                        $image_id = $_POST['mediaID'];
+                      $is_image = true;if (isset($data['mediaID'])){
+                        $image_id = $data['mediaID'];
                       }
                       $fullsizepath = get_attached_file($image_id);
 
@@ -196,7 +210,7 @@ class rtaREST
               }
               //increment offset
               $result = $offset + 1;
-              $finalResult = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'startTime' => $_POST['startTime'], 'fromTo' => $_POST['fromTo'], 'type' => $_POST['type'], 'period' => $period);
+              $finalResult = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
 
               break;
       }

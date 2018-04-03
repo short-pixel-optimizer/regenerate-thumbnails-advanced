@@ -3,16 +3,18 @@ Contributors: turcuciprian
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
 Tags: thumbnail, thumbnails, regenerate , easy, day, week, month, advanced, easy, intuitive, media, oneclick, singleclick, image, images, pdf
 Requires at least: 4.0
-Tested up to: 4.8
-Stable tag: 1.5.1.1
+Tested up to: 4.9
+Stable tag: 1.5.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
+Description: A plugin that makes regenerating thumbnails even easier than before and more flexible, removing unused thumbnails of existing files.
+
+
 
 == Description ==
 
-High Level Tutorial:
+Quick Tutorial:
 
 https://www.youtube.com/watch?v=a5F5OsWZC28
 
@@ -24,6 +26,7 @@ by cicking a added button on the media page. You will not be redirected to anoth
 
 Features:
 
+*   Removes ( cleans up ) the thumbnails of the existing images that are no longer of any use (since version 1.5.2 )
 *   You can select a period in time for the images to be regenerated from
 *   The period is last day, last week, last month or all
 *   Clean simple interface where you have a progress bar showing you the percentage of images regenerated
@@ -160,7 +163,17 @@ Fixed a fatal error bug conflicting with Contact Form Maker
 = 1.5.1.1 =
 Added donate button
 
+= 1.5.2 =
+Removes (cleans up ) thumbnails that are not in use of existing images before it regenerates them.
 
+= 1.5.2.1 =
+Fixed a space bug.
+
+= 1.5.2.2 =
+Fixed a javascript bug, made it work again, as it wasn't before. Removed the "plugin for sale ad, removed the donate button"
+
+= 1.5.2.3 =
+Fixed a php version incompatibility bug
 
 == Upgrade Notice ==
 
@@ -271,4 +284,16 @@ Does not impact functionality
 Does not impact functionality
 
 = 1.5.1.1 =
+nothing effected in db
+
+= 1.5.2 =
+nothing effected in db
+
+= 1.5.2.1 =
+nothing effected in db
+
+= 1.5.2.2 =
+nothing effected in db
+
+= 1.5.2.3 =
 nothing effected in db

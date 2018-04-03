@@ -3,7 +3,7 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://ciprianturcu.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 1.5.1.1
+  Version: 1.5.2.3
   Author: turcuciprian
   Author URI: http://ciprianturcu.com
   License: GPLv2 or later
@@ -124,7 +124,7 @@ class cc
                     <p><span><?php echo __('Start Date(including):', 'rta');
         ?><br/><input type="text" class="datepicker start" readonly /></span></p>
                     <p><span><?php echo __('End Date(including):', 'rta');
-        ?><br/><input type="text" class="datepicker end"  readonly /></span></p>
+        ?><br/><input type="text" class="datepicker end" readonly /></span></p>
                 </div>
                 <p class="submit">
                     <button class="button button-primary RTA"><?php echo __('Regenerate Thumbnails', 'rta');

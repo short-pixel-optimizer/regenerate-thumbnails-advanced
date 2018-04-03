@@ -15,6 +15,7 @@ jQuery(document).ready(function($) {
         var unique = true;
         var i = 0;
         var y = 0;
+        if(val && val[i])
         while (val[i]) {
             unique = true;
             y = 0;

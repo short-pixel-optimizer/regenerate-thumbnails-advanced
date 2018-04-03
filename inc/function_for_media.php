@@ -1,8 +1,8 @@
- <?php
+<?php
 
-function fileName($images)
+function rta_fileName($images)
 {
-    $arra = [];
+    $arra = array();
     foreach ($images as $key => $value) {
         $url = $value;
 
@@ -16,7 +16,7 @@ function fileName($images)
 
 
 
-function take_name($url)
+function rta_take_name($url)
 {
     $arr = strrpos($url, '/');
     $arr2 = $arr + 1;
@@ -24,18 +24,18 @@ function take_name($url)
     return $file;
 }
 
-function getPath($path)
+function rta_getPath($path)
 {
     $partial_path = strrpos($path, '/');
     $partial_path = substr($path, 0, $partial_path);
     return $partial_path;
 }
 
-function delete_thumbnails($id)
+function rta__delete_thumbnails($id)
 {
     $get_path = get_attached_file($id);
     // echo $get_path;
-    $file_name = take_name($get_path);
+    $file_name = rta_take_name($get_path);
     $file_name = explode(".", $file_name)[0];
     $finalpath = getPath($get_path);
     $images = scandir($finalpath);

@@ -142,27 +142,22 @@ class rtaREST
                   }
 //                    $args = array_merge($args, $period_arr);
               }
+
+
               $the_query = new WP_Query($args);
               if ($the_query->have_posts()) {
+
                   while ($the_query->have_posts()) {
                       $the_query->the_post();
                       $image_id = $the_query->post->ID;
-                      $is_image = true;
-                      if (isset($_POST['mediaID'])) {
-                          $image_id = $_POST['mediaID'];
+                      $is_image = true;if (isset($_POST['mediaID'])){
+                        $image_id = $_POST['mediaID'];
                       }
-
-                      //delete image thumbnails here
-                      delete_thumbnails($image_id);
-
-
-
-
-                      //finished code for deleting thumbnails
                       $fullsizepath = get_attached_file($image_id);
 
                       //is image:
                       if (!is_array(getimagesize($fullsizepath))) {
+
                           $is_image = false;
                       }
 
@@ -171,7 +166,7 @@ class rtaREST
                               $error[] = '<code>'.esc_html($fullsizepath).'</code>';
                           }
                           @set_time_limit(900);
-                          include(ABSPATH . 'wp-admin/includes/image.php');
+                          include( ABSPATH . 'wp-admin/includes/image.php' );
                           $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
                           //get the attachment name
                           $filename_only = basename(get_attached_file($image_id));
@@ -190,7 +185,9 @@ class rtaREST
 
                           $error[] = sprintf('Attachment (<b>%s</b> - ID:%d) is not an image. Skipping', $filename_only, $image_id);
                       }
+
                   }
+
               } else {
                   $error[] = 'No pictures uploaded';
               }
@@ -203,7 +200,7 @@ class rtaREST
 
               break;
       }
-        /* Restore original Post Data */
+      /* Restore original Post Data */
         return $finalResult;
     }
 }

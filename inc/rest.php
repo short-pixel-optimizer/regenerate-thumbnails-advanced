@@ -22,12 +22,13 @@ class rtaREST
         // register_rest_route('rta', '/regenerate', array('methods' => 'POST', 'callback' => array($this, 'rtaProcess'), 'args' => array()));
         register_rest_route( $namespace, '/regenerate', array(
             'methods' => 'POST',
-            'callback' => array($this, 'rtaProcess'),
+            'callback' => array($this, 'rtaProcess')
         ) );
     }
 
     public function rtaProcess($data)
     {
+        $imageUrl='';
         if (isset($data['type'])) {
             $type = $data['type'];
         }
@@ -159,10 +160,10 @@ class rtaREST
 
 
               $the_query = new WP_Query($args);
-              if ($the_query->havedatas()) {
+              if ($the_query->have_posts()) {
 
-                  while ($the_query->havedatas()) {
-                      $the_query->thedata();
+                  while ($the_query->have_posts()) {
+                      $the_query->the_post();
                       $image_id = $the_query->post->ID;
                       $is_image = true;if (isset($data['mediaID'])){
                         $image_id = $data['mediaID'];
@@ -183,7 +184,7 @@ class rtaREST
                           include( ABSPATH . 'wp-admin/includes/image.php' );
                           $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
                           //get the attachment name
-                          $filename_only = basename(get_attached_file($image_id));
+                          $filename_only = wp_get_attachment_url($image_id);
                           if (is_wp_error($metadata)) {
                               $error[] = sprintf('%s Image ID:%d', $metadata->get_error_message(), $image_id);
                           }
@@ -193,13 +194,14 @@ class rtaREST
                           } else {
                               wp_update_attachment_metadata($image_id, $metadata);
                           }
-                          $logstatus = '<br/>'.$filename_only.' - <b>Processed</b>';
+                          $imageUrl = $filename_only;
+                          $logstatus = 'Processed';
                       } else {
-                          $filename_only = basename(get_attached_file($image_id));
+                        $logstatus = 'Error';
+                        $filename_only = basename(get_attached_file($image_id));
 
                           $error[] = sprintf('Attachment (<b>%s</b> - ID:%d) is not an image. Skipping', $filename_only, $image_id);
                       }
-
                   }
 
               } else {
@@ -210,7 +212,7 @@ class rtaREST
               }
               //increment offset
               $result = $offset + 1;
-              $finalResult = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
+              $finalResult = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $imageUrl, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
 
               break;
       }

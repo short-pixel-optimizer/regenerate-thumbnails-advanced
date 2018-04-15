@@ -29,12 +29,12 @@ class rtaREST
     public function rtaProcess($data)
     {
         $imageUrl='';
-        if (isset($data['type'])) {
+      if (isset($data['type'])) {
             $type = $data['type'];
         }
         $logstatus = '';
         $offset = 0;
-        switch ($type) {
+      switch ($type) {
           case 'general':
               $args = array(
                   'post_type' => 'attachment',
@@ -42,7 +42,6 @@ class rtaREST
                   'post_status' => 'any',
                   'offset' => 0,
               );
-
               if (isset($data['period'])) {
                   $period = $data['period'];
 
@@ -50,36 +49,39 @@ class rtaREST
                       case '0':
                           break;
                       case '1':
-                          $date = '-1 day';
-                          break;
+                        $date = '-1 day';
+                        $startDate = date("d/m/Y",strtotime($date));  
+                        $endDate = date("d/m/Y",strtotime('-'.$date));  
+                        $args['date_query'] = array('after' => '1 day ago', 'before' => 'tomorrow');
+                  break;
                       case '2':
-                          $date = '-1 week';
-                          break;
+                        $date = '-1 week';
+                        $startDate = date("d/m/Y",strtotime($date));  
+                        $endDate = date("d/m/Y",strtotime('-'.$date));  
+                        $args['date_query'] = array('after' => '1 week ago', 'before' => 'tomorrow');
+                        break;
                       case '3':
-                          $date = '-1 month';
-                          break;
+                        $date = '-1 month';
+                        $startDate = date("d/m/Y",strtotime($date));  
+                        $endDate = date("d/m/Y",strtotime('-'.$date));  
+                        $args['date_query'] = array('after' => '1 month ago', 'before' => 'tomorrow');
+                        break;
                       case '4':
-                          $date = $data['fromTo'];
-                          break;
-                  }
-              }
-              if (isset($date) && !empty($date)) {
-                  $fromTo = explode('-', $date);
-                  $startDate = date('m/d/Y', strtotime($fromTo[0].' -1 day'));
-                  $endDate = date('m/d/Y', strtotime($fromTo[1].' +1 day'));
-
-                  if (!empty($startDate) && empty($endDate)) {
-                      $args['date_query'] = array('after' => $startDate);
-                  } elseif (!empty($endDate) && empty($startDate)) {
-                      $args['date_query'] = array('before' => $endDate);
-                  } elseif (!empty($startDate) && !empty($endDate)) {
-                      $args['date_query'] = array('after' => $startDate, 'before' => $endDate);
+                        $date = $data['fromTo'];
+                        break;
                   }
               }
               $the_query = new WP_Query($args);
               $post_count = 0;
+              
               if ($the_query->have_posts()) {
                   $post_count = $the_query->post_count;
+              }else{
+                $logstatus = 'No pictures uploaded';
+                $error[] = array('offset' => 0, 'logstatus' => $logstatus, 'imgUrl' => '', 'startTime' => '', 'fromTo' => '', 'type' => $data['type'], 'period' =>'');
+                $finalResult = array('offset' => 0, 'error' => 0, 'logstatus' => $logstatus, 'imgUrl' => '', 'startTime' => '', 'fromTo' => '', 'type' => $data['type'], 'period' =>'');
+                return $finalResult;
+                
               }
               wp_reset_query();
               wp_reset_postdata();
@@ -115,23 +117,30 @@ class rtaREST
                   );
 
                   switch ($period) {
-                      case '0':
-                          break;
-                      case '1':
-                          $date = '-1 day';
-
-                          break;
-                      case '2':
-                          $date = '-1 week';
-                          break;
-                      case '3':
-                          $date = '-1 month';
-                          break;
-                      case '4':
-
-                          $date = $data['fromTo'];
-                          break;
-                  }
+                    case '0':
+                        break;
+                    case '1':
+                      $date = '-1 day';
+                      $startDate = date("d/m/Y",strtotime($date));  
+                      $endDate = date("d/m/Y",strtotime('-'.$date));  
+                      $args['date_query'] = array('after' => '1 day ago', 'before' => 'tomorrow');
+                break;
+                    case '2':
+                      $date = '-1 week';
+                      $startDate = date("d/m/Y",strtotime($date));  
+                      $endDate = date("d/m/Y",strtotime('-'.$date));  
+                      $args['date_query'] = array('after' => '1 week ago', 'before' => 'tomorrow');
+                      break;
+                    case '3':
+                      $date = '-1 month';
+                      $startDate = date("d/m/Y",strtotime($date));  
+                      $endDate = date("d/m/Y",strtotime('-'.$date));  
+                      $args['date_query'] = array('after' => '1 month ago', 'before' => 'tomorrow');
+                      break;
+                    case '4':
+                      $date = $data['fromTo'];
+                      break;
+                }
               }
 
               $args = array(
@@ -160,7 +169,7 @@ class rtaREST
 
 
               $the_query = new WP_Query($args);
-              if ($the_query->have_posts()) {
+      if ($the_query->have_posts()) {
 
                   while ($the_query->have_posts()) {
                       $the_query->the_post();
@@ -176,21 +185,21 @@ class rtaREST
                           $is_image = false;
                       }
 
+                      $filename_only = wp_get_attachment_url($image_id);
                       if ($is_image) {
                           if (false === $fullsizepath || !file_exists($fullsizepath)) {
-                              $error[] = '<code>'.esc_html($fullsizepath).'</code>';
+                              $error[] = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $fullsizepath, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
                           }
                           @set_time_limit(900);
                           include( ABSPATH . 'wp-admin/includes/image.php' );
                           $metadata = wp_generate_attachment_metadata($image_id, $fullsizepath);
                           //get the attachment name
-                          $filename_only = wp_get_attachment_url($image_id);
                           if (is_wp_error($metadata)) {
-                              $error[] = sprintf('%s Image ID:%d', $metadata->get_error_message(), $image_id);
+                              $error[] = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
                           }
                           if (empty($metadata)) {
-                              //$this->die_json_error_msg($image_id, __('Unknown failure reason.', 'regenerate-thumbnails'));
-                              $error[] = sprintf('Unknown failure reason. regenerate-thumbnails %d', $image_id);
+                          $logstatus = 'File is not an image';
+                          $error[] = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
                           } else {
                               wp_update_attachment_metadata($image_id, $metadata);
                           }
@@ -200,19 +209,26 @@ class rtaREST
                         $logstatus = 'Error';
                         $filename_only = basename(get_attached_file($image_id));
 
-                          $error[] = sprintf('Attachment (<b>%s</b> - ID:%d) is not an image. Skipping', $filename_only, $image_id);
+                          $logstatus = 'File is not an image';
+                          $error[] = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
                       }
                   }
 
               } else {
-                  $error[] = 'No pictures uploaded';
-              }
+                          $logstatus = 'No pictures uploaded';
+                          $error[] = array('offset' => 0, 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => '');
+                }
               if (!extension_loaded('gd') && !function_exists('gd_info')) {
-                  $error[] = '<b>PHP GD library is not installed</b> on your web server. Please install in order to have the ability to resize and crop images';
-              }
+                  $filename_only = 'No file';
+                  $logstatus = 'PHP GD library is not installed on your web server. Please install in order to have the ability to resize and crop images';
+                  $error[] = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
+                }
               //increment offset
               $result = $offset + 1;
-              $finalResult = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $imageUrl, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
+              if(!isset($filename_only)){
+                $filename_only = 'No files';
+              }
+            $finalResult = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
 
               break;
       }

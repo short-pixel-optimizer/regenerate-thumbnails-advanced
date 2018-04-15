@@ -3,8 +3,8 @@ Contributors: turcuciprian
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
 Tags: thumbnail, thumbnails, regenerate , easy, day, week, month, advanced, easy, intuitive, media, oneclick, singleclick, image, images, pdf
 Requires at least: 4.0
-Tested up to: 4.9
-Stable tag: 1.5.2.3
+Tested up to: 4.9.5
+Stable tag: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,10 +13,6 @@ Description: A plugin that makes regenerating thumbnails even easier than before
 
 
 == Description ==
-
-Quick Tutorial:
-
-https://www.youtube.com/watch?v=a5F5OsWZC28
 
 A plugin that makes regenerating thumbnails even easier than before and more flexible.
 If you install a new theme, it might have different image sizes it wants to use. those image sizes are cropped and resized into thumbnails only when you upload new images. So what happens with your old images?
@@ -175,6 +171,12 @@ Fixed a javascript bug, made it work again, as it wasn't before. Removed the "pl
 = 1.5.2.3 =
 Fixed a php version incompatibility bug
 
+= 1.6 = 
+
+* brand new interface built entirely on React with redux
+* You can view miniature versions of the images in the regenerated visible results
+* Removed donate button
+
 == Upgrade Notice ==
 
 = 1.4.2.1 =
@@ -297,3 +299,6 @@ nothing effected in db
 
 = 1.5.2.3 =
 nothing effected in db
+
+= 1.6 =
+nothing effected in db. It's safe to update

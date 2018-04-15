@@ -1,5 +1,5 @@
 === reGenerate Thumbnails Advanced ===
-Contributors: turcuciprian
+Contributors: turcuciprian, ioanachichernea
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
 Tags: thumbnail, thumbnails, regenerate , easy, day, week, month, advanced, easy, intuitive, media, oneclick, singleclick, image, images, pdf
 Requires at least: 4.0
@@ -171,7 +171,7 @@ Fixed a javascript bug, made it work again, as it wasn't before. Removed the "pl
 = 1.5.2.3 =
 Fixed a php version incompatibility bug
 
-= 1.6 = 
+= 1.6 =
 
 * brand new interface built entirely on React with redux
 * You can view miniature versions of the images in the regenerated visible results

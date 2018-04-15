@@ -51,114 +51,23 @@ class cc
                 return;
             }
         }
+        wp_enqueue_script('rtaReact', plugin_dir_url(__FILE__).'bundle.js',[],null, true );
         wp_enqueue_script('jquery-ui-progressbar');
         wp_enqueue_script('jquery-ui-datepicker');
         wp_enqueue_style('rta-jquery-ui', plugin_dir_url(__FILE__).'jquery-ui.min.css');
         wp_enqueue_style('rta', plugin_dir_url(__FILE__).'style.css');
         wp_enqueue_script('rta', plugin_dir_url(__FILE__).'script.js');
         //
-        wp_add_inline_script('jquery-migrate', 'var rtaRestURL = \''.site_url().'/wp-json/rta/regenerate\';');
+        wp_add_inline_script('jquery-migrate', 'let RTArestUrl = \''.site_url().'/wp-json/rta/regenerate\';');
     }
 
 //    Callback for the admin_init hook - this is where the page is created.... text, form fields and all
     public function create_page_callback()
     {
-        $total = 1;
-        $offset = 0;
         ?>
-        <!--GTA wrap START -->
-        <div id="rta">
-            <div id="no-js">
-                <h1><?php echo __('Javascript is not enabled or it has a error!', 'rta');
-        ?></h1>
-                <p><?php echo __('If there is a error in the page (most likely caused by another plugin or even the theme, the regenerate thumbnails advanced plugin will not work properly. Please fix this issue and come back here. YOU WILL NOT SEE THIS WARNING IF EVERYTHING IS WORKING FINE', 'rta');
-        ?></p>
+            <div id="rtaContent">
             </div>
-            <div id="js-works" class="hidden">
-              <h3>Help out.  <span style="color:green;">DONATE how much you want!</span></h3>
-
-
- <!-- Paypal donate button START-->
- <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="7EP625Y355BNS">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-<!-- Paypal donate button END-->
-
-<hr>
-
-
-                <h2><?php echo __('reGenerate Thumbnails Advanced', 'rta');
-        ?></h2>
-                <!--Progress bar-->
-                <div id="progressbar">
-                    <div class="progress-label">0&#37;</div>
-                </div>
-                <!--Information section-->
-                <div class="info">
-                    <?php echo __('Total number of images:', 'rta');
-        ?> <span class="total">0</span><br/>
-                    <?php echo __('Images processed:', 'rta');
-        ?><span class="processed">0</span><br/>
-                                   <!--Could not process: <span class="errors">0</span> Images<br/>-->
-                </div>
-                <!--Dropdown-->
-                <h3>Select a period</h3>
-                <select name="period" id="rta_period">
-                    <!--get all the images in the database-->
-                    <option value="0"><?php echo __('All', 'rta');
-        ?></option>
-                    <option value="1"><?php echo __('Past Day', 'rta');
-        ?></option>
-                    <option value="2"><?php echo __('Past Week', 'rta');
-        ?></option>
-                    <option value="3"><?php echo __('Past Month', 'rta');
-        ?></option>
-                    <option value="4"><?php echo __('Between Dates', 'rta');
-        ?></option>
-                </select>
-                <div class="fromTo hidden">
-                    <p><span><?php echo __('Start Date(including):', 'rta');
-        ?><br/><input type="text" class="datepicker start" readonly /></span></p>
-                    <p><span><?php echo __('End Date(including):', 'rta');
-        ?><br/><input type="text" class="datepicker end" readonly /></span></p>
-                </div>
-                <p class="submit">
-                    <button class="button button-primary RTA"><?php echo __('Regenerate Thumbnails', 'rta');
-        ?></button>
-                <div class="wrap">
-                    <h3><?php echo __('Progress', 'rta');
-        ?></h3>
-                    <div class="logstatus ui-widget-content">
-                        <?php echo __('Nothing processed yet', 'r ta');
-        ?>
-                    </div>
-                </div><!--where the errors show -->
-                <div class="wrap">
-                    <h3><?php echo __('Errors', 'rta');
-        ?></h3>
-                    <div class="errors ui-widget-content">
-                        <?php echo __('No errors to display yet', 'rta');
-        ?>
-                    </div><!-- where the errors show -->
-                    </p>
-                </div>
-                <div class="tutorial">
-                  <h2><a href="https://youtu.be/a5F5OsWZC28" target="_blank"><?php echo __('- Tutorial -', 'rta');
-        ?></a></h2>
-                </div>
-
-            </div>
-        </div>
-
-
-        <!-- Js Works End -->
-        <!--GTA wrap END -->
         <?php
-
     }
 
     public function add_settings_link($links)

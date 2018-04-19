@@ -3,7 +3,7 @@
   Plugin Name: reGenerate Thumbnails - advanced
   Plugin URI: http://ciprianturcu.com
   Description: A plugin that makes regenerating thumbnails even easier than before and more flexible.
-  Version: 1.6
+  Version: 1.6.1.5
   Author: turcuciprian
   Author URI: http://ciprianturcu.com
   License: GPLv2 or later
@@ -26,13 +26,7 @@ class cc
         add_filter('plugin_action_links_'.plugin_basename(__FILE__), array($this, 'add_settings_link'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin'));
         //ajax callback for button click
-        add_action('wp_ajax_rta_ajax', array($this, 'ajax_callback'));
     }
-
-    public function ajax_callback()
-    {
-    }
-
 //    Admin menu calback
     public function create_menu()
     {
@@ -46,19 +40,10 @@ class cc
 
     public function enqueue_admin($hook)
     {
-        if (isset($_GET['page']) && isset($hook)) {
-            if ($_GET['page'] !== 'regenerate_thumbnails_advanced' && $hook != 'options-general.php ') {
-                return;
+            if($_GET['page'] == 'regenerate_thumbnails_advanced') {
+                wp_enqueue_script('rtaReact', plugin_dir_url(__FILE__).'bundle.js',[],null, true );
+                wp_add_inline_script('rtaReact', 'let RTArestUrl = \''.site_url().'/wp-json/rta/regenerate\';');
             }
-        }
-        wp_enqueue_script('rtaReact', plugin_dir_url(__FILE__).'bundle.js',[],null, true );
-        wp_enqueue_script('jquery-ui-progressbar');
-        wp_enqueue_script('jquery-ui-datepicker');
-        wp_enqueue_style('rta-jquery-ui', plugin_dir_url(__FILE__).'jquery-ui.min.css');
-        wp_enqueue_style('rta', plugin_dir_url(__FILE__).'style.css');
-        wp_enqueue_script('rta', plugin_dir_url(__FILE__).'script.js');
-        //
-        wp_add_inline_script('jquery-migrate', 'let RTArestUrl = \''.site_url().'/wp-json/rta/regenerate\';');
     }
 
 //    Callback for the admin_init hook - this is where the page is created.... text, form fields and all

@@ -1,13 +1,5 @@
 <?php
-add_action( 'init', 'xmy_customize_rest_cors', 15 );
 
-function xmy_customize_rest_cors() {
-	remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
-		header( 'Access-Control-Allow-Origin: *' );
-		header( 'Access-Control-Allow-Methods: POST, GET, OPTIONS' );
-		header( 'Access-Control-Allow-Credentials: true' );
-		header( 'Access-Control-Expose-Headers: Link', false );
-}
 
 $rtaRESTObj = new rtaREST();
 class rtaREST
@@ -66,9 +58,24 @@ class rtaREST
                         $endDate = date("d/m/Y",strtotime('-'.$date));  
                         $args['date_query'] = array('after' => '1 month ago', 'before' => 'tomorrow');
                         break;
-                      case '4':
-                        $date = $data['fromTo'];
+                    case '4':
+                        $date = '-3 month';
+                        $startDate = date("d/m/Y",strtotime($date));  
+                        $endDate = date("d/m/Y",strtotime('-'.$date));  
+                        $args['date_query'] = array('after' => '3 months ago', 'before' => 'tomorrow');
+                    break;
+                    case '5':
+                        $date = '-6 month';
+                        $startDate = date("d/m/Y",strtotime($date));  
+                        $endDate = date("d/m/Y",strtotime('-'.$date));  
+                        $args['date_query'] = array('after' => '6 months ago', 'before' => 'tomorrow');
                         break;
+                    case '6':
+                        $date = '-1 year';
+                        $startDate = date("d/m/Y",strtotime($date));  
+                        $endDate = date("d/m/Y",strtotime('-'.$date));  
+                        $args['date_query'] = array('after' => '1 year ago', 'before' => 'tomorrow');
+                    break;
                   }
               }
               $the_query = new WP_Query($args);
@@ -120,26 +127,41 @@ class rtaREST
                     case '0':
                         break;
                     case '1':
-                      $date = '-1 day';
-                      $startDate = date("d/m/Y",strtotime($date));  
-                      $endDate = date("d/m/Y",strtotime('-'.$date));  
-                      $args['date_query'] = array('after' => '1 day ago', 'before' => 'tomorrow');
-                break;
-                    case '2':
-                      $date = '-1 week';
-                      $startDate = date("d/m/Y",strtotime($date));  
-                      $endDate = date("d/m/Y",strtotime('-'.$date));  
-                      $args['date_query'] = array('after' => '1 week ago', 'before' => 'tomorrow');
+                        $date = '-1 day';
+                        $startDate = date("d/m/Y",strtotime($date));  
+                        $endDate = date("d/m/Y",strtotime('-'.$date));  
+                        $args['date_query'] = array('after' => '1 day ago', 'before' => 'tomorrow');
+                     break;
+                     case '2':
+                        $date = '-1 week';
+                        $startDate = date("d/m/Y",strtotime($date));  
+                        $endDate = date("d/m/Y",strtotime('-'.$date));  
+                        $args['date_query'] = array('after' => '1 week ago', 'before' => 'tomorrow');
                       break;
-                    case '3':
-                      $date = '-1 month';
-                      $startDate = date("d/m/Y",strtotime($date));  
-                      $endDate = date("d/m/Y",strtotime('-'.$date));  
-                      $args['date_query'] = array('after' => '1 month ago', 'before' => 'tomorrow');
+                     case '3':
+                        $date = '-1 month';
+                        $startDate = date("d/m/Y",strtotime($date));  
+                        $endDate = date("d/m/Y",strtotime('-'.$date));  
+                        $args['date_query'] = array('after' => '1 month ago', 'before' => 'tomorrow');
                       break;
                     case '4':
-                      $date = $data['fromTo'];
+                        $date = '-3 month';
+                        $startDate = date("d/m/Y",strtotime($date));  
+                        $endDate = date("d/m/Y",strtotime('-'.$date));  
+                        $args['date_query'] = array('after' => '3 months ago', 'before' => 'tomorrow');
+                  break;
+                  case '5':
+                        $date = '-6 month';
+                        $startDate = date("d/m/Y",strtotime($date));  
+                        $endDate = date("d/m/Y",strtotime('-'.$date));  
+                        $args['date_query'] = array('after' => '6 months ago', 'before' => 'tomorrow');
                       break;
+                  case '6':
+                        $date = '-1 year';
+                        $startDate = date("d/m/Y",strtotime($date));  
+                        $endDate = date("d/m/Y",strtotime('-'.$date));  
+                        $args['date_query'] = array('after' => '1 year ago', 'before' => 'tomorrow');
+                  break;
                 }
               }
 

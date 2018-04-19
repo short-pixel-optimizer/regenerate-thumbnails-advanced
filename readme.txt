@@ -1,10 +1,10 @@
 === reGenerate Thumbnails Advanced ===
-Contributors: turcuciprian, ioanachichernea
+Contributors: ioanachichernea, turcuciprian
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MU4RJNNF74QKY
 Tags: thumbnail, thumbnails, regenerate , easy, day, week, month, advanced, easy, intuitive, media, oneclick, singleclick, image, images, pdf
 Requires at least: 4.0
 Tested up to: 4.9.5
-Stable tag: 1.6
+Stable tag: 1.6.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,8 +53,6 @@ The script stops, it does not run in the background
 
 1. The plugin page where it all happens
 2. View of the dropdown options
-3. Where you find everything
-4. From - To (between dates) Option
 
 == Changelog ==
 
@@ -172,10 +170,36 @@ Fixed a javascript bug, made it work again, as it wasn't before. Removed the "pl
 Fixed a php version incompatibility bug
 
 = 1.6 =
-
 * brand new interface built entirely on React with redux
 * You can view miniature versions of the images in the regenerated visible results
 * Removed donate button
+
+= 1.6.0.1 =
+Important CORS dev mode removal fix
+
+= 1.6.0.2 =
+Console error fix
+
+= 1.6.1 =
+* Past day fix
+* Added past 3 months
+* Added past 6 months
+* Added past 1 year
+
+= 1.6.1.1 =
+*Removed media page buttons
+
+= 1.6.1.2 =
+Simple version change. no functionality changed
+
+= 1.6.1.3 =
+Style bug fixed
+
+= 1.6.1.4 =
+Style bug fixed again
+
+= 1.6.1.5 =
+Javascript error fix
 
 == Upgrade Notice ==
 
@@ -301,4 +325,28 @@ nothing effected in db
 nothing effected in db
 
 = 1.6 =
+nothing effected in db. It's safe to update
+
+= 1.6.0.1 =
+nothing effected in db. It's safe to update
+
+= 1.6.0.2 =
+nothing effected in db. It's safe to update
+
+= 1.6.1 =
+nothing effected in db. It's safe to update
+
+= 1.6.1.1 =
+nothing effected in db. It's safe to update
+
+= 1.6.1.2 =
+nothing effected in db. It's safe to update
+
+= 1.6.1.3 =
+nothing effected in db. It's safe to update
+
+= 1.6.1.4 =
+nothing effected in db. It's safe to update
+
+= 1.6.1.4 =
 nothing effected in db. It's safe to update

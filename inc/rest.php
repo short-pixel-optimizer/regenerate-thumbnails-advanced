@@ -12,7 +12,7 @@ function rtaCors(){
 	 }
 	 add_action( 'rest_api_init', 'rta_customize_rest_cors', 15 );
 }
-//rtaCors();
+rtaCors();
 //
 $rtaRESTObj = new rtaREST();
 class rtaREST
@@ -243,10 +243,11 @@ class rtaREST
 
                           //if shortpixel is enabled
                         //   http://sc-api-ai.shortpixel.com/client/w_400,h_215,q_lossy,ret_json/http://www.thesupercarblog.com/wp-content/uploads/2017/09/Audi-R8_V10_RWS-Frankfurt-2017-1-1-1024x768.jpg
-                            list($width, $height, $type, $attr) = getimagesize($imageUrl);
-                          
-                          $spData = file_get_contents('http://sc-api-ai.shortpixel.com/client/w_'.$width.',h_'.$height.',q_lossy,ret_json/'.$imageUrl.'');
-                            $spNewArr = json_decode($spData);
+			  list($width, $height, $type, $attr) = getimagesize($imageUrl);
+			     $size = filesize(get_attached_file($image_id));
+			  $spData = file_get_contents('http://sc-api-ai.shortpixel.com/client/w_'.$width.',h_'.$height.',q_lossy,ret_json/'.$imageUrl.'');
+			  $spNewArr = json_decode($spData);
+			  $spNewArr->percent=$spNewArr->FinalSize/$size*100;
                       } else {
                         $logstatus = 'Error';
                         $filename_only = basename(get_attached_file($image_id));

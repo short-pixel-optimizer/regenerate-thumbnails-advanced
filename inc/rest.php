@@ -1,6 +1,17 @@
 <?php
-
-
+//
+function my_customize_rest_cors() {
+	remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
+	add_filter( 'rest_pre_serve_request', function( $value ) {
+		header( 'Access-Control-Allow-Origin: '.get_home_url() );
+		header( 'Access-Control-Allow-Methods: GET,POST,PUSH' );
+		header( 'Access-Control-Allow-Credentials: true' );
+		header( 'Access-Control-Expose-Headers: Link', false );
+		return $value;
+	} );
+}
+add_action( 'rest_api_init', 'my_customize_rest_cors', 15 );
+//
 $rtaRESTObj = new rtaREST();
 class rtaREST
 {
@@ -232,7 +243,6 @@ class rtaREST
                         //   http://sc-api-ai.shortpixel.com/client/w_400,h_215,q_lossy,ret_json/http://www.thesupercarblog.com/wp-content/uploads/2017/09/Audi-R8_V10_RWS-Frankfurt-2017-1-1-1024x768.jpg
                             list($width, $height, $type, $attr) = getimagesize($imageUrl);
                           
-                          $spData = file_get_contents('http://sc-api-ai.shortpixel.com/client/w_'.$width.',h_'.$height.',q_lossy,ret_json/'.$imageUrl.'');
                           $spData = file_get_contents('http://sc-api-ai.shortpixel.com/client/w_'.$width.',h_'.$height.',q_lossy,ret_json/'.$imageUrl.'');
                             $spNewArr = json_decode($spData);
                       } else {

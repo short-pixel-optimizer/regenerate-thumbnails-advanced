@@ -12,7 +12,7 @@ function rtaCors(){
 	 }
 	 add_action( 'rest_api_init', 'rta_customize_rest_cors', 15 );
 }
-rtaCors();
+//rtaCors();
 //
 $rtaRESTObj = new rtaREST();
 class rtaREST
@@ -245,7 +245,7 @@ class rtaREST
 			  list($width, $height, $type, $attr) = getimagesize($imageUrl);
 			     $size = filesize(get_attached_file($image_id));
 			  $spData = file_get_contents('http://sc-api-ai.shortpixel.com/client/w_'.$width.',h_'.$height.',q_lossy,ret_json/'.$imageUrl.'');
-			  $sp:Arr = json_decode($spData);
+			  $spNewArr = json_decode($spData);
 			  $spNewArr->percent=round($spNewArr->FinalSize/$size*100);
                       } else {
                         $logstatus = 'Error';

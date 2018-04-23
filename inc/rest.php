@@ -12,7 +12,7 @@ function rtaCors(){
 	 }
 	 add_action( 'rest_api_init', 'rta_customize_rest_cors', 15 );
 }
-//rtaCors();
+rtaCors();
 //
 $rtaRESTObj = new rtaREST();
 class rtaREST

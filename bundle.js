@@ -83453,7 +83453,12 @@ class ProgressTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             this.props.statusInfo.forEach((element, index) => {
                 let shortPixelContent = [];
                 if (element != null) {
-                    if (element.spData && element.spData.Status.Code == 2 && element.spData.percent) {
+                    const spData = element.spData ? element.spData : null;
+                    console.log('element', spData);
+                    const status = spData.status && spData ? spData.status : null;
+                    const code = status && status.Code ? status.Code : null;
+                    const percent = spData.percent ? spData.percent : null;
+                    if (percent) {
                         shortPixelContent.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             "div",
                             { key: 'spStatus' + index },
@@ -83464,7 +83469,7 @@ class ProgressTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     "b",
                                     null,
-                                    element.spData.percent
+                                    percent
                                 ),
                                 "% in size on this image by compressing it with ",
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(

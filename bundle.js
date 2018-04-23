@@ -20805,7 +20805,7 @@ __webpack_require__(650);
 /* 265 */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\r\n<html >\r\n\r\n<head>\r\n  <meta charset='utf-8'>\r\n  <title>Regenerate  Thumbnails Advanced</title>\r\n</head>\r\n\r\n<body>\r\n  <div id=\"rtaContent\">\r\n  </div>\r\n  <script type=\"text/javascript\">\r\n  var RTArestUrl=\"http://localhost/wordpress/wp-json/rta/regenerate\"\r\n  </script>\r\n \r\n  <!-- <script src=\"dist/commons.js\"></script> -->\r\n  <script src='dist/bundle.js'>\r\n  </script>\r\n</body>\r\n\r\n</html>";
+module.exports = "<!DOCTYPE html>\n<html >\n\n<head>\n  <meta charset='utf-8'>\n  <title>Regenerate  Thumbnails Advanced</title>\n</head>\n\n<body>\n  <div id=\"rtaContent\">\n  </div>\n  <script type=\"text/javascript\">\n  var RTArestUrl=\"http://wp.ciprianturcu.com/wp-json/rta/regenerate\"\n  </script>\n \n  <!-- <script src=\"dist/commons.js\"></script> -->\n  <script src='dist/bundle.js'>\n  </script>\n</body>\n\n</html>";
 
 /***/ }),
 /* 266 */
@@ -77863,7 +77863,7 @@ exports = module.exports = __webpack_require__(147)(false);
 
 
 // module
-exports.push([module.i, "#rtaContent {\n  margin: 0px;\n  padding: 0px;\n  height: 100%;\n  width: 100%;\n  background-color: #fff; }\n  #rtaContent .btnStart {\n    margin-top: 30px;\n    margin-left: 30px; }\n  #rtaContent .listContainer {\n    margin-top: 30px;\n    width: 100%; }\n    #rtaContent .listContainer .statuslist {\n      width: 50%;\n      float: left; }\n      #rtaContent .listContainer .statuslist ul {\n        width: 100%;\n        padding: 0;\n        position: relative;\n        float: left;\n        margin-top: 2px;\n        margin-bottom: 3px;\n        overflow: hidden;\n        border-radius: 10px;\n        -moz-border-radius: 10px;\n        -webkit-border-radius: 10px;\n        border: 0px solid #dedede;\n        -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);\n        -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);\n        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75); }\n        #rtaContent .listContainer .statuslist ul li {\n          display: flex;\n          align-items: center;\n          justify-content: center;\n          width: 50%;\n          margin: 0px;\n          overflow: hidden;\n          float: left;\n          text-decoration: none;\n          border-left: 1px solid #c3c3c3; }\n          #rtaContent .listContainer .statuslist ul li.headLi {\n            padding-right: 10px; }\n            #rtaContent .listContainer .statuslist ul li.headLi:nth-child(n) {\n              background-color: #e5f2fd; }\n            #rtaContent .listContainer .statuslist ul li.headLi:nth-child(2n) {\n              background-color: #b3d9fd; }\n            #rtaContent .listContainer .statuslist ul li.headLi:nth-child(3n) {\n              background-color: #85c4ff; }\n          #rtaContent .listContainer .statuslist ul li:first-child {\n            border-left: 0px; }\n          #rtaContent .listContainer .statuslist ul li.contentLi {\n            padding: 10px;\n            min-height: 130px; }\n            #rtaContent .listContainer .statuslist ul li.contentLi img {\n              max-height: 100px;\n              max-width: 150px; }\n      #rtaContent .listContainer .statuslist .listTitle {\n        font-weight: 900;\n        color: black;\n        margin-bottom: 10px; }\n  #rtaContent #rtaContent .timeDropdown {\n    padding: 10px; }\n  #rtaContent #rtaContent .pickDate {\n    padding: 10px;\n    display: inline-block; }\n", ""]);
+exports.push([module.i, "#rtaContent {\n  margin: 0px;\n  padding: 0px;\n  height: 100%;\n  width: 100%;\n  background-color: #fff; }\n  #rtaContent .btnStart {\n    margin-top: 30px;\n    margin-left: 30px; }\n  #rtaContent .listContainer {\n    margin-top: 30px;\n    width: 100%; }\n    #rtaContent .listContainer .statuslist {\n      width: 50%;\n      float: left; }\n      #rtaContent .listContainer .statuslist ul {\n        width: 100%;\n        padding: 0;\n        position: relative;\n        float: left;\n        margin-top: 2px;\n        margin-bottom: 3px;\n        overflow: hidden;\n        border-radius: 10px;\n        -moz-border-radius: 10px;\n        -webkit-border-radius: 10px;\n        border: 0px solid #dedede;\n        -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);\n        -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);\n        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75); }\n        #rtaContent .listContainer .statuslist ul li {\n          width: 50%;\n          margin: 0px;\n          overflow: hidden;\n          float: left;\n          text-decoration: none;\n          border-left: 1px solid #c3c3c3; }\n          #rtaContent .listContainer .statuslist ul li.headLi {\n            padding-right: 10px; }\n            #rtaContent .listContainer .statuslist ul li.headLi:nth-child(n) {\n              background-color: #e5f2fd; }\n            #rtaContent .listContainer .statuslist ul li.headLi:nth-child(2n) {\n              background-color: #b3d9fd; }\n            #rtaContent .listContainer .statuslist ul li.headLi:nth-child(3n) {\n              background-color: #85c4ff; }\n          #rtaContent .listContainer .statuslist ul li:first-child {\n            border-left: 0px; }\n          #rtaContent .listContainer .statuslist ul li.contentLi {\n            padding: 10px;\n            min-height: 130px; }\n            #rtaContent .listContainer .statuslist ul li.contentLi img {\n              max-height: 100px;\n              max-width: 150px; }\n      #rtaContent .listContainer .statuslist .listTitle {\n        font-weight: 900;\n        color: black;\n        margin-bottom: 10px; }\n  #rtaContent #rtaContent .timeDropdown {\n    padding: 10px; }\n  #rtaContent #rtaContent .pickDate {\n    padding: 10px;\n    display: inline-block; }\n", ""]);
 
 // exports
 
@@ -82411,24 +82411,20 @@ class RegenerateButton extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] 
 
         __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post(RTArestUrl, dataSubmit).then(function (response) {
             const _data = response.data;
-            console.log(_data, 'data');
-
             var tempLoaderInfo = {
                 total: count,
                 offset: _data.offset,
                 period: tThis.props.loaderStatus.period ? tThis.props.loaderStatus.period : 0
             };
             tThis.props.setLoaderInfo(tempLoaderInfo);
-
             if (_data.error == 0) {
                 let newStoreData = [];
                 if (tThis.props.statusInfo) {
                     newStoreData = tThis.props.statusInfo;
                 }
-
                 var actionInsert = {
                     index: newStoreData.length,
-                    item: { status: _data.logstatus, imgUrl: _data.imgUrl }
+                    item: { status: _data.logstatus, imgUrl: _data.imgUrl, spData: _data.spData }
                 };
                 const newArray = tThis.insertItem(newStoreData, actionInsert);
 
@@ -83455,7 +83451,32 @@ class ProgressTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
             tableTitle = "Progress";
 
             this.props.statusInfo.forEach((element, index) => {
+                let shortPixelContent = [];
                 if (element != null) {
+                    if (element.spData && element.spData.Status.Code == 2 && element.spData.percent) {
+                        shortPixelContent.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { key: 'spStatus' + index },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                "p",
+                                null,
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    "a",
+                                    { href: "https://shortpixel.com/h/af/IQFR7OU381753" },
+                                    "Compress image"
+                                ),
+                                " ",
+                                element.spData.percent,
+                                "% with ",
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    "a",
+                                    { href: "https://shortpixel.com/h/af/IQFR7OU381753" },
+                                    "ShortPixel"
+                                ),
+                                "."
+                            )
+                        ));
+                    }
                     contents.unshift(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         "ul",
                         { key: index, className: "list-group contentsLI1" },
@@ -83467,21 +83488,8 @@ class ProgressTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             "li",
                             { className: "list-group-item contentLi" },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                "div",
-                                null,
-                                element.status
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                "div",
-                                null,
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    "a",
-                                    { href: "https://shortpixel.com/h/af/IQFR7OU381753" },
-                                    "get ShortPixel"
-                                ),
-                                " to compress this file"
-                            )
+                            element.status,
+                            shortPixelContent
                         )
                     ));
                 }
@@ -83527,7 +83535,7 @@ class ProgressTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "li",
                     { className: "list-group-item headLi" },
-                    "Status"
+                    "Info"
                 )
             ),
             contents
@@ -83536,11 +83544,7 @@ class ProgressTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 }
 function mapStateToProps(state) {
 
-    return {
-        loaderStatus: state.loaderStatus,
-        statusInfo: state.statusInfo,
-        errorInfo: state.errorInfo
-    };
+    return { loaderStatus: state.loaderStatus, statusInfo: state.statusInfo, errorInfo: state.errorInfo };
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["connect"])(mapStateToProps, null)(ProgressTable));

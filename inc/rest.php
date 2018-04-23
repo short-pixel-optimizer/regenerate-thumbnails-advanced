@@ -233,6 +233,7 @@ class rtaREST
                             list($width, $height, $type, $attr) = getimagesize($imageUrl);
                           
                           $spData = file_get_contents('http://sc-api-ai.shortpixel.com/client/w_'.$width.',h_'.$height.',q_lossy,ret_json/'.$imageUrl.'');
+                          $spData = file_get_contents('http://sc-api-ai.shortpixel.com/client/w_'.$width.',h_'.$height.',q_lossy,ret_json/'.$imageUrl.'');
                             $spNewArr = json_decode($spData);
                       } else {
                         $logstatus = 'Error';

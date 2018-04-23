@@ -227,6 +227,13 @@ class rtaREST
                           }
                           $imageUrl = $filename_only;
                           $logstatus = 'Processed';
+
+                          //if shortpixel is enabled
+                        //   http://sc-api-ai.shortpixel.com/client/w_400,h_215,q_lossy,ret_json/http://www.thesupercarblog.com/wp-content/uploads/2017/09/Audi-R8_V10_RWS-Frankfurt-2017-1-1-1024x768.jpg
+                            list($width, $height, $type, $attr) = getimagesize($imageUrl);
+                          
+                          $spData = file_get_contents('http://sc-api-ai.shortpixel.com/client/w_'.$width.',h_'.$height.',q_lossy,ret_json/'.$imageUrl.'');
+                            $spNewArr = json_decode($spData);
                       } else {
                         $logstatus = 'Error';
                         $filename_only = basename(get_attached_file($image_id));
@@ -245,12 +252,17 @@ class rtaREST
                   $logstatus = 'PHP GD library is not installed on your web server. Please install in order to have the ability to resize and crop images';
                   $error[] = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
                 }
-              //increment offset
-              $result = $offset + 1;
-              if(!isset($filename_only)){
-                $filename_only = 'No files';
-              }
-            $finalResult = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
+                    //increment offset
+                    $result = $offset + 1;
+                    if(!isset($filename_only)){
+                        $filename_only = 'No files';
+                    }
+                    $finalResult = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
+                    // if sp data
+                    if($spNewArr){
+                    $finalResult['spData'] = $spNewArr;
+
+                    }
 
               break;
       }

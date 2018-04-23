@@ -82411,6 +82411,8 @@ class RegenerateButton extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] 
 
         __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post(RTArestUrl, dataSubmit).then(function (response) {
             const _data = response.data;
+            console.log(_data, 'data');
+
             var tempLoaderInfo = {
                 total: count,
                 offset: _data.offset,
@@ -83465,7 +83467,21 @@ class ProgressTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             "li",
                             { className: "list-group-item contentLi" },
-                            element.status
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                "div",
+                                null,
+                                element.status
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                "div",
+                                null,
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    "a",
+                                    { href: "https://shortpixel.com/h/af/IQFR7OU381753" },
+                                    "get ShortPixel"
+                                ),
+                                " to compress this file"
+                            )
                         )
                     ));
                 }

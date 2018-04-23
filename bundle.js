@@ -83460,14 +83460,35 @@ class ProgressTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 "p",
                                 null,
+                                "Win ",
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    "b",
+                                    null,
+                                    element.spData.percent
+                                ),
+                                "% in size on this image by compressing it with ",
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     "a",
                                     { href: "https://shortpixel.com/h/af/IQFR7OU381753" },
-                                    "Compress image"
+                                    "ShortPixel"
                                 ),
-                                " ",
-                                element.spData.percent,
-                                "% with ",
+                                "."
+                            )
+                        ));
+                    } else {
+                        shortPixelContent.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            "div",
+                            { key: 'spStatus' + index },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                "p",
+                                null,
+                                "click Generate again to see how much you can gain in size by ",
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    "a",
+                                    { href: "https://shortpixel.com/h/af/IQFR7OU381753" },
+                                    "Compressing image"
+                                ),
+                                "  with ",
                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                     "a",
                                     { href: "https://shortpixel.com/h/af/IQFR7OU381753" },

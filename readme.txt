@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: thumbnail, thumbnails, regenerate , easy, day, week, month, advanced, easy, intuitive, media, oneclick, singleclick, image, images, pdf
 Requires at least: 4.0
 Tested up to: 4.9.5
-Stable tag: 1.6.2
+Stable tag: 1.6.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -205,6 +205,10 @@ Javascript error fix
 Cors security added for routes
 Added ShortPixel informative data
 
+= 1.6.2.1 =
+Added more details to the info column
+
+
 == Upgrade Notice ==
 
 = 1.4.2.1 =
@@ -356,3 +360,7 @@ nothing effected in db. It's safe to update
 nothing effected in db. It's safe to update
 
 = 1.6.2 =
+nothing effected in db. It's safe to update
+
+= 1.6.2.1 =
+nothing effected in db. It's safe to update

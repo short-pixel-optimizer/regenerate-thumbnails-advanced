@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: thumbnail, thumbnails, regenerate , easy, day, week, month, advanced, easy, intuitive, media, oneclick, singleclick, image, images, pdf
 Requires at least: 4.0
 Tested up to: 4.9.5
-Stable tag: 1.6.2.2
+Stable tag: 1.6.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -211,6 +211,9 @@ Added more details to the info column
 = 1.6.2.2 =
 Improved accuracy percentage for compressed images
 
+= 1.6.2.3 =
+Added shortpixel logo and promotion
+
 
 == Upgrade Notice ==
 
@@ -369,4 +372,7 @@ nothing effected in db. It's safe to update
 nothing effected in db. It's safe to update
 
 = 1.6.2.2 =
+nothing effected in db. It's safe to update
+
+= 1.6.2.3 =
 nothing effected in db. It's safe to update

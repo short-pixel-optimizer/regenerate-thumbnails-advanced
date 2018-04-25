@@ -20805,7 +20805,7 @@ __webpack_require__(650);
 /* 265 */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\n<html >\n\n<head>\n  <meta charset='utf-8'>\n  <title>Regenerate  Thumbnails Advanced</title>\n</head>\n\n<body>\n  <div id=\"rtaContent\">\n  </div>\n  <script type=\"text/javascript\">\n  var RTArestUrl=\"http://wp.ciprianturcu.com/wp-json/rta/regenerate\";\n  let RTA_PLUGIN_URL = 'http://localhost:3000/';\n  </script>\n \n  <!-- <script src=\"dist/commons.js\"></script> -->\n  <script src='dist/bundle.js'>\n  </script>\n</body>\n\n</html>";
+module.exports = "<!DOCTYPE html>\n<html >\n\n<head>\n  <meta charset='utf-8'>\n  <title>Regenerate  Thumbnails Advanced</title>\n</head>\n\n<body>\n  <div id=\"rtaContent\">\n  </div>\n  <script type=\"text/javascript\">\n  var RTArestUrl=\"http://wp.ciprianturcu.com/wp-json/rta/regenerate\";\n  var RTApluginURL = 'http://localhost:3000/';\n  </script>\n \n  <!-- <script src=\"dist/commons.js\"></script> -->\n  <script src='dist/bundle.js'>\n  </script>\n</body>\n\n</html>";
 
 /***/ }),
 /* 266 */
@@ -80223,7 +80223,7 @@ class FrontPage extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "a",
                     { href: "https://shortpixel.com/h/af/IQFR7OU381753" },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: RTA_PLUGIN_URL + './src/img/shortPixelLogo.png' })
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: window.RTApluginURL + './src/img/shortPixelLogo.png' })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("hr", null),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__containers_progressBar_jsx__["a" /* default */], null),

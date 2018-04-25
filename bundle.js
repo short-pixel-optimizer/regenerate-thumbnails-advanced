@@ -82411,6 +82411,8 @@ class RegenerateButton extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] 
 
         __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post(RTArestUrl, dataSubmit).then(function (response) {
             const _data = response.data;
+            console.log('dataSubmit', _data);
+
             var tempLoaderInfo = {
                 total: count,
                 offset: _data.offset,
@@ -82422,9 +82424,13 @@ class RegenerateButton extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] 
                 if (tThis.props.statusInfo) {
                     newStoreData = tThis.props.statusInfo;
                 }
+                let newSPData = _data.spData;
+                if (newSPData.OptimizedSize && newSPData.FinalSize) {
+                    newSPData.percent = Math.round(newSPData.OptimizedSize / newSPData.FinalSize * 100);
+                }
                 var actionInsert = {
                     index: newStoreData.length,
-                    item: { status: _data.logstatus, imgUrl: _data.imgUrl, spData: _data.spData }
+                    item: { status: _data.logstatus, imgUrl: _data.imgUrl, spData: newSPData }
                 };
                 const newArray = tThis.insertItem(newStoreData, actionInsert);
 

@@ -41,8 +41,8 @@ class cc
     public function enqueue_admin($hook)
     {
             if($_GET['page'] == 'regenerate_thumbnails_advanced') {
-                wp_add_inline_script('rtaReact', 'var RTArestUrl = \''.site_url().'/wp-json/rta/regenerate\';var RTApluginURL = \''.plugin_dir_url( __FILE__ ).'\';');
                 wp_enqueue_script('rtaReact', plugin_dir_url(__FILE__).'bundle.js',[] );
+                wp_add_inline_script('rtaReact', 'var RTArestUrl = \''.site_url().'/wp-json/rta/regenerate\';var RTApluginURL = \''.plugin_dir_url( __FILE__ ).'\';');
             }
     }
 

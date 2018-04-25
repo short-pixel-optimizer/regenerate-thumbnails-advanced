@@ -80223,7 +80223,7 @@ class FrontPage extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     "a",
                     { href: "https://shortpixel.com/h/af/IQFR7OU381753" },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: window.RTApluginURL + './src/img/shortPixelLogo.png' })
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", { src: RTApluginURL + './src/img/shortPixelLogo.png' })
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("hr", null),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__containers_progressBar_jsx__["a" /* default */], null),

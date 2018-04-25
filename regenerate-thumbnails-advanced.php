@@ -42,7 +42,7 @@ class cc
     {
             if($_GET['page'] == 'regenerate_thumbnails_advanced') {
                 wp_add_inline_script('rtaInline', 'var RTArestUrl = \''.site_url().'/wp-json/rta/regenerate\';var RTApluginURL = \''.plugin_dir_url( __FILE__ ).'\';');
-                wp_enqueue_script('rtaReact', plugin_dir_url(__FILE__).'bundle.js',[],null, true );
+                wp_enqueue_script('rtaReact', plugin_dir_url(__FILE__).'bundle.js',[] );
             }
     }
 

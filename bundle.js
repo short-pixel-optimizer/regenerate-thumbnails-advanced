@@ -77863,7 +77863,7 @@ exports = module.exports = __webpack_require__(147)(false);
 
 
 // module
-exports.push([module.i, "#rtaContent {\n  margin: 0px;\n  padding: 0px;\n  height: 100%;\n  width: 100%;\n  background-color: #fff; }\n  #rtaContent .btnStart {\n    margin-top: 30px;\n    margin-left: 30px; }\n  #rtaContent .listContainer {\n    margin-top: 30px;\n    width: 100%; }\n    #rtaContent .listContainer .statuslist {\n      width: 50%;\n      float: left; }\n      #rtaContent .listContainer .statuslist ul {\n        width: 100%;\n        padding: 0;\n        position: relative;\n        float: left;\n        margin-top: 2px;\n        margin-bottom: 3px;\n        overflow: hidden;\n        border-radius: 10px;\n        -moz-border-radius: 10px;\n        -webkit-border-radius: 10px;\n        border: 0px solid #dedede;\n        -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);\n        -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);\n        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75); }\n        #rtaContent .listContainer .statuslist ul li {\n          width: 50%;\n          margin: 0px;\n          overflow: hidden;\n          float: left;\n          text-decoration: none;\n          border-left: 1px solid #c3c3c3; }\n          #rtaContent .listContainer .statuslist ul li.headLi {\n            padding-right: 10px; }\n            #rtaContent .listContainer .statuslist ul li.headLi:nth-child(n) {\n              background-color: #e5f2fd; }\n            #rtaContent .listContainer .statuslist ul li.headLi:nth-child(2n) {\n              background-color: #b3d9fd; }\n            #rtaContent .listContainer .statuslist ul li.headLi:nth-child(3n) {\n              background-color: #85c4ff; }\n          #rtaContent .listContainer .statuslist ul li:first-child {\n            border-left: 0px; }\n          #rtaContent .listContainer .statuslist ul li.contentLi {\n            padding: 10px;\n            min-height: 130px; }\n            #rtaContent .listContainer .statuslist ul li.contentLi img {\n              max-height: 100px;\n              max-width: 150px; }\n      #rtaContent .listContainer .statuslist .listTitle {\n        font-weight: 900;\n        color: black;\n        margin-bottom: 10px; }\n  #rtaContent #rtaContent .timeDropdown {\n    padding: 10px; }\n  #rtaContent #rtaContent .pickDate {\n    padding: 10px;\n    display: inline-block; }\n", ""]);
+exports.push([module.i, "#rtaContent {\n  margin: 0px;\n  padding: 0px;\n  height: 100%;\n  width: 100%;\n  background-color: #fff; }\n  #rtaContent .btnStart {\n    margin-top: 30px;\n    margin-left: 30px; }\n  #rtaContent .listContainer {\n    margin-top: 30px;\n    width: 100%; }\n    #rtaContent .listContainer .statuslist {\n      width: 50%;\n      float: left; }\n      #rtaContent .listContainer .statuslist ul {\n        width: 100%;\n        padding: 0;\n        position: relative;\n        float: left;\n        margin-top: 2px;\n        margin-bottom: 3px;\n        overflow: hidden;\n        border-radius: 10px;\n        -moz-border-radius: 10px;\n        -webkit-border-radius: 10px;\n        border: 0px solid #dedede;\n        -webkit-box-shadow: 0px 1px 2px 0px rgba(148, 87, 87, 0.75);\n        -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);\n        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75); }\n        #rtaContent .listContainer .statuslist ul li {\n          width: 50%;\n          margin: 0px;\n          overflow: hidden;\n          float: left;\n          text-decoration: none;\n          border-left: 1px solid #c3c3c3; }\n          #rtaContent .listContainer .statuslist ul li.headLi {\n            padding-right: 10px; }\n            #rtaContent .listContainer .statuslist ul li.headLi:nth-child(n) {\n              background-color: #e5f2fd; }\n            #rtaContent .listContainer .statuslist ul li.headLi:nth-child(2n) {\n              background-color: #b3d9fd; }\n            #rtaContent .listContainer .statuslist ul li.headLi:nth-child(3n) {\n              background-color: #85c4ff; }\n          #rtaContent .listContainer .statuslist ul li:first-child {\n            border-left: 0px; }\n          #rtaContent .listContainer .statuslist ul li.contentLi {\n            padding: 10px;\n            min-height: 130px; }\n            #rtaContent .listContainer .statuslist ul li.contentLi img {\n              max-height: 100px;\n              max-width: 150px; }\n      #rtaContent .listContainer .statuslist .listTitle {\n        font-weight: 900;\n        color: black;\n        margin-bottom: 10px; }\n  #rtaContent #rtaContent .timeDropdown {\n    padding: 10px; }\n  #rtaContent #rtaContent .pickDate {\n    padding: 10px;\n    display: inline-block; }\n  #rtaContent .cpbParent {\n    loat: left; }\n    #rtaContent .cpbParent .CircularProgressbar {\n      width: 100px; }\n", ""]);
 
 // exports
 
@@ -80256,6 +80256,12 @@ class FrontPage extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_redux__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_progressbar__ = __webpack_require__(686);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_progressbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_progressbar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_circular_progressbar__ = __webpack_require__(727);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_circular_progressbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_circular_progressbar__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_circular_progressbar_dist_styles_css__ = __webpack_require__(728);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_circular_progressbar_dist_styles_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_circular_progressbar_dist_styles_css__);
+
+
 
 
 
@@ -80272,6 +80278,11 @@ class ProgressBar extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
 
         let procentStatus = !this.props.loaderStatus.offset || !this.props.loaderStatus.total ? 0 : this.props.loaderStatus.offset * 100 / this.props.loaderStatus.total;
         procentStatus = Math.floor(procentStatus);
+        const progressData = total != 0 ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "cpbParent" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_circular_progressbar___default.a, { percentage: procentStatus })
+        ) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null);
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
             null,
@@ -80280,21 +80291,13 @@ class ProgressBar extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 null,
                 "Regenerate Thumbnails Advanced"
             ),
-            "completed ",
-            procentStatus,
-            "%",
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_react_progressbar___default.a, { completed: procentStatus })
+            progressData
         );
     }
 }
 
 function mapStateToProps(state) {
-    return {
-        timeIntervals: state.timeIntervals,
-        progressStatusData: state.progressStatusData,
-        loaderStatus: state.loaderStatus
-
-    };
+    return { timeIntervals: state.timeIntervals, progressStatusData: state.progressStatusData, loaderStatus: state.loaderStatus };
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(mapStateToProps, null)(ProgressBar));
@@ -82418,20 +82421,29 @@ class RegenerateButton extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] 
 
         __WEBPACK_IMPORTED_MODULE_5_axios___default.a.post(RTArestUrl, dataSubmit).then(function (response) {
             const _data = response.data;
-            console.log('dataSubmit', _data);
+            // console.log('dataSubmit',_data);
+            let newSPData = _data.spData;
+            const totalSize = newSPData.FinalSize ? newSPData.FinalSize : 0;
+            const oTotalSize = tThis.props.loaderStatus.totalKb ? tThis.props.loaderStatus.totalKb : 0;
+            const newSize = newSPData.OptimizedSize ? newSPData.OptimizedSize : 0;
+            const oNewSize = tThis.props.loaderStatus.OptimizedSize ? tThis.props.loaderStatus.OptimizedSize : 0;
 
+            const wonSize = newSize != 0 ? totalSize - newSize : tThis.props.loaderStatus.kbWon;
             var tempLoaderInfo = {
+                'totalKb': oTotalSize + totalSize,
+                'kbWon': oNewSize + wonSize,
                 total: count,
                 offset: _data.offset,
                 period: tThis.props.loaderStatus.period ? tThis.props.loaderStatus.period : 0
             };
+            console.log('tempLoaderInfo', tempLoaderInfo);
+
             tThis.props.setLoaderInfo(tempLoaderInfo);
             if (_data.error == 0) {
                 let newStoreData = [];
                 if (tThis.props.statusInfo) {
                     newStoreData = tThis.props.statusInfo;
                 }
-                let newSPData = _data.spData;
                 if (newSPData.OptimizedSize && newSPData.FinalSize) {
                     newSPData.percent = Math.round(newSPData.OptimizedSize / newSPData.FinalSize * 100);
                 }
@@ -82440,7 +82452,6 @@ class RegenerateButton extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] 
                     item: { status: _data.logstatus, imgUrl: _data.imgUrl, spData: newSPData }
                 };
                 const newArray = tThis.insertItem(newStoreData, actionInsert);
-
                 tThis.props.setStatusInfo(newArray);
             } else {
                 let newStoreDataErrors = [];
@@ -83394,10 +83405,20 @@ module.exports = function spread(callback) {
 
 
 class LoaderInfo extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
-
+    precisionRound(number, precision) {
+        var factor = Math.pow(10, precision);
+        return Math.round(number * factor) / factor;
+    }
     render() {
-        let total = this.props.loaderStatus.total ? this.props.loaderStatus.total : 0;
+        const total = this.props.loaderStatus.total ? this.props.loaderStatus.total : 0;
         const offset = this.props.loaderStatus.offset ? this.props.loaderStatus.offset : 0;
+        const totalKb = this.props.loaderStatus.totalKb ? this.props.loaderStatus.totalKb : 0;
+        const kbWon = this.props.loaderStatus.kbWon ? this.props.loaderStatus.kbWon : 0;
+        console.log('kbWon', kbWon);
+
+        if (total == 0) {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null);
+        }
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "div",
             null,
@@ -83416,6 +83437,26 @@ class LoaderInfo extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 null,
                 " ",
                 offset
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+            "Images total size: ",
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "b",
+                null,
+                " ",
+                totalKb > 1000000 ? this.precisionRound(totalKb / 1000000, 2) : totalKb,
+                " ",
+                totalKb > 1000000 ? 'MB' : 'KB'
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", null),
+            "Size gained if compressed: ",
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                "b",
+                null,
+                " ",
+                kbWon > 1000000 ? this.precisionRound(kbWon / 1000000, 2) : kbWon,
+                " ",
+                kbWon > 1000000 ? 'MB' : 'KB'
             )
         );
     }
@@ -83467,7 +83508,6 @@ class ProgressTable extends __WEBPACK_IMPORTED_MODULE_0_react__["Component"] {
                 let shortPixelContent = [];
                 if (element != null) {
                     const spData = element.spData ? element.spData : null;
-                    console.log('element', spData);
                     const status = spData.status && spData ? spData.status : null;
                     const code = status && status.Code ? status.Code : null;
                     const percent = spData.percent ? spData.percent : null;
@@ -83691,6 +83731,182 @@ function matchDispatchToProps(dispatch) {
     }, dispatch);
 }
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["connect"])(mapStateToProps, matchDispatchToProps)(TimePeriod));
+
+/***/ }),
+/* 727 */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function (e, t) {
+   true ? module.exports = t(__webpack_require__(0)) : "function" == typeof define && define.amd ? define(["react"], t) : "object" == typeof exports ? exports.CircularProgressbar = t(require("react")) : e.CircularProgressbar = t(e.React);
+}(this, function (e) {
+  return function (e) {
+    function t(n) {
+      if (r[n]) return r[n].exports;var o = r[n] = { i: n, l: !1, exports: {} };return e[n].call(o.exports, o, o.exports, t), o.l = !0, o.exports;
+    }var r = {};return t.m = e, t.c = r, t.i = function (e) {
+      return e;
+    }, t.d = function (e, r, n) {
+      t.o(e, r) || Object.defineProperty(e, r, { configurable: !1, enumerable: !0, get: n });
+    }, t.n = function (e) {
+      var r = e && e.__esModule ? function () {
+        return e.default;
+      } : function () {
+        return e;
+      };return t.d(r, "a", r), r;
+    }, t.o = function (e, t) {
+      return Object.prototype.hasOwnProperty.call(e, t);
+    }, t.p = "", t(t.s = 7);
+  }([function (e, t, r) {
+    "use strict";
+    function n(e) {
+      return e && e.__esModule ? e : { default: e };
+    }function o(e, t) {
+      if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }function a(e, t) {
+      if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }function i(e, t) {
+      if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: !1, writable: !0, configurable: !0 } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+    }Object.defineProperty(t, "__esModule", { value: !0 });var s = function () {
+      function e(e, t) {
+        for (var r = 0; r < t.length; r++) {
+          var n = t[r];n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+        }
+      }return function (t, r, n) {
+        return r && e(t.prototype, r), n && e(t, n), t;
+      };
+    }(),
+        u = r(6),
+        c = n(u),
+        l = r(4),
+        p = n(l),
+        f = function (e) {
+      function t(e) {
+        o(this, t);var r = a(this, (t.__proto__ || Object.getPrototypeOf(t)).call(this, e));return r.state = { percentage: e.initialAnimation ? 0 : e.percentage }, r;
+      }return i(t, e), s(t, [{ key: "componentDidMount", value: function () {
+          var e = this;this.props.initialAnimation && (this.initialTimeout = setTimeout(function () {
+            e.requestAnimationFrame = window.requestAnimationFrame(function () {
+              e.setState({ percentage: e.props.percentage });
+            });
+          }, 0));
+        } }, { key: "componentWillReceiveProps", value: function (e) {
+          this.setState({ percentage: e.percentage });
+        } }, { key: "componentWillUnmount", value: function () {
+          clearTimeout(this.initialTimeout), window.cancelAnimationFrame(this.requestAnimationFrame);
+        } }, { key: "getBackgroundPadding", value: function () {
+          return this.props.background ? null == this.props.backgroundPadding ? this.props.strokeWidth : this.props.backgroundPadding : 0;
+        } }, { key: "getPathDescription", value: function () {
+          var e = this.getPathRadius(),
+              t = this.props.counterClockwise ? 1 : 0;return "\n      M 50,50\n      m 0,-" + e + "\n      a " + e + "," + e + " " + t + " 1 1 0," + 2 * e + "\n      a " + e + "," + e + " " + t + " 1 1 0,-" + 2 * e + "\n    ";
+        } }, { key: "getPathStyles", value: function () {
+          var e = 2 * Math.PI * this.getPathRadius(),
+              t = Math.min(Math.max(this.state.percentage, 0), 100),
+              r = (100 - t) / 100 * e;return { strokeDasharray: e + "px " + e + "px", strokeDashoffset: (this.props.counterClockwise ? -r : r) + "px" };
+        } }, { key: "getPathRadius", value: function () {
+          return 50 - this.props.strokeWidth / 2 - this.getBackgroundPadding();
+        } }, { key: "render", value: function () {
+          var e = this.props,
+              t = e.percentage,
+              r = e.textForPercentage,
+              n = e.className,
+              o = e.classes,
+              a = e.styles,
+              i = e.strokeWidth,
+              s = this.props.classForPercentage ? this.props.classForPercentage(t) : "",
+              u = this.getPathDescription(),
+              l = r ? r(t) : null;return c.default.createElement("svg", { className: o.root + " " + n + " " + s, viewBox: "0 0 100 100" }, this.props.background ? c.default.createElement("circle", { className: o.background, style: a.background, cx: 50, cy: 50, r: 50 }) : null, c.default.createElement("path", { className: o.trail, style: a.trail, d: u, strokeWidth: i, fillOpacity: 0 }), c.default.createElement("path", { className: o.path, d: u, strokeWidth: i, fillOpacity: 0, style: Object.assign({}, a.path, this.getPathStyles()) }), l ? c.default.createElement("text", { className: o.text, style: a.text, x: 50, y: 50 }, l) : null);
+        } }]), t;
+    }(c.default.Component);f.propTypes = { percentage: p.default.number.isRequired, className: p.default.string, classes: p.default.objectOf(p.default.string), styles: p.default.objectOf(p.default.object), strokeWidth: p.default.number, background: p.default.bool, backgroundPadding: p.default.number, initialAnimation: p.default.bool, counterClockwise: p.default.bool, classForPercentage: p.default.func, textForPercentage: p.default.func }, f.defaultProps = { strokeWidth: 8, className: "", classes: { root: "CircularProgressbar", trail: "CircularProgressbar-trail", path: "CircularProgressbar-path", text: "CircularProgressbar-text", background: "CircularProgressbar-background" }, styles: { root: {}, trail: {}, path: {}, text: {}, background: {} }, background: !1, backgroundPadding: null, initialAnimation: !1, counterClockwise: !1, classForPercentage: null, textForPercentage: function (e) {
+        return e + "%";
+      } }, t.default = f;
+  }, function (e, t, r) {
+    "use strict";
+    function n(e) {
+      return function () {
+        return e;
+      };
+    }var o = function () {};o.thatReturns = n, o.thatReturnsFalse = n(!1), o.thatReturnsTrue = n(!0), o.thatReturnsNull = n(null), o.thatReturnsThis = function () {
+      return this;
+    }, o.thatReturnsArgument = function (e) {
+      return e;
+    }, e.exports = o;
+  }, function (e, t, r) {
+    "use strict";
+    function n(e, t, r, n, a, i, s, u) {
+      if (o(t), !e) {
+        var c;if (void 0 === t) c = new Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else {
+          var l = [r, n, a, i, s, u],
+              p = 0;c = new Error(t.replace(/%s/g, function () {
+            return l[p++];
+          })), c.name = "Invariant Violation";
+        }throw c.framesToPop = 1, c;
+      }
+    }var o = function (e) {};e.exports = n;
+  }, function (e, t, r) {
+    "use strict";
+    var n = r(1),
+        o = r(2),
+        a = r(5);e.exports = function () {
+      function e(e, t, r, n, i, s) {
+        s !== a && o(!1, "Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");
+      }function t() {
+        return e;
+      }e.isRequired = e;var r = { array: e, bool: e, func: e, number: e, object: e, string: e, symbol: e, any: e, arrayOf: t, element: e, instanceOf: t, node: e, objectOf: t, oneOf: t, oneOfType: t, shape: t, exact: t };return r.checkPropTypes = n, r.PropTypes = r, r;
+    };
+  }, function (e, t, r) {
+    e.exports = r(3)();
+  }, function (e, t, r) {
+    "use strict";
+    e.exports = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
+  }, function (t, r) {
+    t.exports = e;
+  }, function (e, t, r) {
+    e.exports = r(0);
+  }]);
+});
+
+/***/ }),
+/* 728 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(729);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(149)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../css-loader/index.js!./styles.css", function() {
+			var newContent = require("!!../../css-loader/index.js!./styles.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 729 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(147)(false);
+// imports
+
+
+// module
+exports.push([module.i, "/*\n * react-circular-progressbar styles\n *\n * All of the styles in this file are optional and configurable!\n */\n\n.CircularProgressbar {\n  /*\n   * This fixes an issue where the CircularProgressbar svg has\n   * 0 width inside a \"display: flex\" container, and thus not visible.\n   *\n   * If you're not using \"display: flex\", you can remove this style.\n   */\n  width: 100%;\n}\n\n.CircularProgressbar .CircularProgressbar-path {\n  stroke: #3e98c7;\n  stroke-linecap: round;\n  transition: stroke-dashoffset 0.5s ease 0s;\n}\n\n.CircularProgressbar .CircularProgressbar-trail {\n  stroke: #d6d6d6;\n}\n\n.CircularProgressbar .CircularProgressbar-text {\n  fill: #3e98c7;\n  font-size: 20px;\n  dominant-baseline: middle;\n  text-anchor: middle;\n}\n\n.CircularProgressbar .CircularProgressbar-background {\n  fill: #d6d6d6;\n}\n\n/*\n * Sample background styles. Use these with e.g.:\n *\n *   <CircularProgressbar\n *     className=\"CircularProgressbar-inverted\"\n *     background\n *     percentage={50}\n *   />\n */\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-background {\n  fill: #3e98c7;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-text {\n  fill: #fff;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-path {\n  stroke: #fff;\n}\n\n.CircularProgressbar.CircularProgressbar-inverted .CircularProgressbar-trail {\n  stroke: transparent;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

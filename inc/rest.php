@@ -286,7 +286,8 @@ class rtaREST
                   while ($the_query->have_posts()) {
                       $the_query->the_post();
                       $image_id = $the_query->post->ID;
-                      $is_image = true;if (isset($data['mediaID'])){
+                      $is_image = true;
+                      if (isset($data['mediaID'])){
                         $image_id = $data['mediaID'];
                       }
                       $fullsizepath = get_attached_file($image_id);
@@ -325,7 +326,8 @@ class rtaREST
                         $filename_only = wp_get_attachment_thumb_url($image_id);
 
                           $logstatus = 'File is not an image';
-                          $error[] = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
+                        $filename_only = wp_get_attachment_url($image_id);
+                        $error[] = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
                       }
                   }
               } else {

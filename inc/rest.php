@@ -318,33 +318,15 @@ class rtaREST
                           $imageUrl = $filename_only;
                           $logstatus = 'Processed';
 
-                          //if shortpixel is enabled
-              list($width, $height, $type, $attr) = getimagesize($imageUrl);
-              if($width>2000){
-                  $newWidth = 1950;
-                  //$x/100*width = 1950 -- 1950/width*100 --- height - proc/100*width
-                  $newHeight = $height- (1959 / $width*100)/100*$width;
-                $imageUrl = image_resize_crop($imageUrl,$newWidth,$newHeight);
-              list($width, $height, $type, $attr) = getimagesize($imageUrl);
-            }
-			     $size = filesize(get_attached_file($image_id));
-			  $spData = file_get_contents('http://sc-api-ai.shortpixel.com/client/w_'.$width.',h_'.$height.',q_lossy,ret_json/'.$imageUrl.'');
-			  $spData = file_get_contents('http://sc-api-ai.shortpixel.com/client/w_'.$width.',h_'.$height.',q_lossy,ret_json/'.$imageUrl.'');
-			  $spData = file_get_contents('http://sc-api-ai.shortpixel.com/client/w_'.$width.',h_'.$height.',q_lossy,ret_json/'.$imageUrl.'');
-			  $spData = file_get_contents('http://sc-api-ai.shortpixel.com/client/w_'.$width.',h_'.$height.',q_lossy,ret_json/'.$imageUrl.'');
-			  $spNewArr = json_decode($spData);
+                        $filename_only = image_resize_crop($filename_only,100,100);
+                        $size = filesize(get_attached_file($image_id));
 			  $OptimizedSize = 0;
 			  $FinalSize = 0;
-			  if(isset($spNewArr->OptimizedSize)){
-			  	$optimizedSize = $spNewArr->OptimizedSize;
-			  }
-			  if(isset($spNewArr->FinalSize)){
-			  	$FinalSize = $spNewArr->FinalSize;
-			  }
-			  $spNewArr->percent=0;
+			  
 		      } else {
                         $logstatus = 'Error';
                         $filename_only = basename(get_attached_file($image_id));
+                        $filename_only = image_resize_crop($filename_only,100,100);
 
                           $logstatus = 'File is not an image';
                           $error[] = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
@@ -367,7 +349,6 @@ class rtaREST
                     $finalResult = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
                     // if sp data
                     if($spNewArr){
-                    $finalResult['spData'] = $spNewArr;
 
                     }
 

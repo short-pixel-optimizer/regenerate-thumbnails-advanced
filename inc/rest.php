@@ -311,7 +311,8 @@ class rtaREST
                           }
                           if (empty($metadata)) {
                           $logstatus = 'File is not an image';
-                          $error[] = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
+                        $filename_only = wp_get_attachment_url($image_id);
+                        $error[] = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
                           } else {
                               wp_update_attachment_metadata($image_id, $metadata);
                           }

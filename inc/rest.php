@@ -297,7 +297,7 @@ class rtaREST
                           $is_image = false;
                       }
 
-                      $filename_only = wp_get_attachment_url($image_id);
+                        $filename_only = wp_get_attachment_thumb_url($image_id);
                       if ($is_image) {
                           if (false === $fullsizepath || !file_exists($fullsizepath)) {
                               $error[] = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $fullsizepath, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
@@ -317,7 +317,6 @@ class rtaREST
                           }
                           $imageUrl = $filename_only;
                           $logstatus = 'Processed';
-
                         $filename_only = wp_get_attachment_thumb_url($image_id);
 			  
 		      } else {

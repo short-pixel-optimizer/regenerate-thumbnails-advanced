@@ -1,4 +1,81 @@
 <?php
+function image_resize_crop ( $src, $w, $h, $dest = null, $override = false, $createNewIfExists = false ) {
+    $ext = array_pop ( explode ('.', $src) );
+    $filenameSrc = str_replace (".$ext", '', basename($src) );
+    $filename = "{$filenameSrc}-{$w}X{$h}";
+    $arrayUploadPath = wp_upload_dir();
+    $fileUploadSubDir = str_replace(basename($src),'', str_replace($arrayUploadPath['baseurl'], '', $src));
+    $fileUploadDir = $arrayUploadPath['basedir'] . $fileUploadSubDir;
+    
+    if(is_null($dest)) $dest = $fileUploadDir;
+    
+    $i = null;
+    if( ! $override && $createNewIfExists ) {
+        $i = 0;
+        while ( file_exists("$dest$filename-$i.png") ) $i++;
+        $i = '-' . $i;
+    }
+    
+    $fileFullPath = "$dest$filename$i.png";
+    $fileFullUrl = $arrayUploadPath['baseurl'] . $fileUploadSubDir . $filename.$i .'.png';
+    
+    //return cached file if $override == false and file's already there
+    if( ! $override && file_exists($fileFullPath) ) return $fileFullUrl;
+    
+    if( $override ) @unlink($fileFullPath);
+    
+    switch ($ext) {
+        case 'jpg':
+        case 'jpeg' : $image = imagecreatefromjpeg($src); break;
+        case 'gif' : $image = imagecreatefromgif($src); break;
+        case 'png' : $image = imagecreatefrompng($src); break;
+        case 'wbmp' :
+        case 'bmp': $image = imagecreatefromwbmp($src); break;
+        default: $image = imagecreatefromgd2($src);
+    }
+    
+    $width = imagesx($image);
+    $height = imagesy($image);
+
+    $original_aspect = $width / $height;
+    $thumb_aspect = $w / $h;
+    
+    if ( $original_aspect >= $thumb_aspect ) {
+        if( $width > $w ) {
+            $new_height = $h;
+            $new_width = $width / ($height / $h);
+        }else{
+            $new_height = $height;
+            $new_width = $width;
+        }
+        
+    } else {
+       if ( $width > $w ) {
+           $new_width = $w;
+           $new_height = $height / ($width / $w);
+       } else {
+           $new_width = $width;
+           $new_height = $height;
+       }
+    }
+    
+    $thumb = imagecreatetruecolor($w, $h);
+    $bg = imagecolorallocate($thumb, 255, 255, 255);
+    imagefill($thumb, 0, 0, $bg);
+
+    imagecopyresampled($thumb,
+                       $image,
+                       0 - ($new_width - $w) / 2,
+                       0 - ($new_height - $h) / 2,
+                       0, 0,
+                       $new_width, $new_height,
+                       $width, $height);
+    
+    imagepng($thumb, $fileFullPath, 9);
+    imagedestroy($image);
+    
+    return $fileFullUrl;
+}
 function rtaCors(){
 	 function rta_customize_rest_cors() {
 		remove_filter( 'rest_pre_serve_request', 'rest_send_cors_headers' );
@@ -242,7 +319,14 @@ class rtaREST
                           $logstatus = 'Processed';
 
                           //if shortpixel is enabled
-			  list($width, $height, $type, $attr) = getimagesize($imageUrl);
+              list($width, $height, $type, $attr) = getimagesize($imageUrl);
+              if($width>2000){
+                  $newWidth = 1950;
+                  //$x/100*width = 1950 -- 1950/width*100 --- height - proc/100*width
+                  $newHeight = $height- (1959 / $width*100)/100*$width;
+                $imageUrl = image_resize_crop($imageUrl,$newWidth,$newHeight);
+              list($width, $height, $type, $attr) = getimagesize($imageUrl);
+            }
 			     $size = filesize(get_attached_file($image_id));
 			  $spData = file_get_contents('http://sc-api-ai.shortpixel.com/client/w_'.$width.',h_'.$height.',q_lossy,ret_json/'.$imageUrl.'');
 			  $spNewArr = json_decode($spData);

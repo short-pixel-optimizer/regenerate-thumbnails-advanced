@@ -342,11 +342,6 @@ class rtaREST
                         $filename_only = 'No files';
                     }
                     $finalResult = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);
-                    // if sp data
-                    if($spNewArr){
-
-                    }
-
               break;
       }
       /* Restore original Post Data */

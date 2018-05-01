@@ -318,15 +318,11 @@ class rtaREST
                           $imageUrl = $filename_only;
                           $logstatus = 'Processed';
 
-                        $filename_only = image_resize_crop($filename_only,100,100);
-                        $size = filesize(get_attached_file($image_id));
-			  $OptimizedSize = 0;
-			  $FinalSize = 0;
+                        $filename_only = wp_get_attachment_thumb_url($image_id);
 			  
 		      } else {
                         $logstatus = 'Error';
-                        $filename_only = basename(get_attached_file($image_id));
-                        $filename_only = image_resize_crop($filename_only,100,100);
+                        $filename_only = wp_get_attachment_thumb_url($image_id);
 
                           $logstatus = 'File is not an image';
                           $error[] = array('offset' => ($offset + 1), 'error' => $error, 'logstatus' => $logstatus, 'imgUrl' => $filename_only, 'startTime' => $data['startTime'], 'fromTo' => $data['fromTo'], 'type' => $data['type'], 'period' => $period);

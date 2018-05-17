@@ -40,7 +40,7 @@ class cc
 
     public function enqueue_admin($hook)
     {
-            if($_GET['page'] == 'regenerate_thumbnails_advanced') {
+            if(isset($_GET['page']) && $_GET['page'] == 'regenerate_thumbnails_advanced') {
                 wp_enqueue_script('rtaReact', plugin_dir_url(__FILE__).'bundle.js',[],null, true );
                 wp_add_inline_script('jquery-core', 'var RTArestUrl = \''.site_url().'/wp-json/rta/regenerate\';var RTApluginURL = \''.plugin_dir_url( __FILE__ ).'\';');
             }
